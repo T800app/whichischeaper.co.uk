@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Is Cheaper? — Compare Prices by Unit</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Google Consent Mode v2: everything denied until the user gives consent -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+      // Restore a previously given consent choice
+      (function () {
+        if (localStorage.getItem('cookiesAccepted') === 'yes') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+          });
+        }
+      })();
+    </script>
+
+    <!-- Google AdSense Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363136655011505"
+     crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21XW9GXD6G"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-21XW9GXD6G');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #1e293b;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+        header {
+            text-align: center;
+            padding: 28px 0 24px;
+        }
+        .site-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.5px;
+        }
+        .site-title .icon-cart {
+            color: #2563eb;
+            flex-shrink: 0;
+        }
+        header .subtitle {
+            color: #64748b;
+            font-size: 1.05rem;
+            margin-top: 6px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card p {
+            color: #475569;
+            font-size: 0.98rem;
+        }
+        .icon-blue { color: #2563eb; flex-shrink: 0; }
+        .icon-green { color: #16a34a; flex-shrink: 0; }
+        .icon-orange { color: #f59e0b; flex-shrink: 0; }
+        .howto-section {
+            background: #f0fdf4;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .howto-section h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #16a34a;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .step-card:last-of-type { margin-bottom: 0; }
+        .step-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .step-content strong {
+            display: block;
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .step-content p {
+            color: #475569;
+            font-size: 0.92rem;
+        }
+        .steps-list {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 16px 18px;
+            margin-top: 16px;
+        }
+        .step-num {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #0f172a;
+            font-weight: 500;
+            padding: 6px 0;
+        }
+        .step-num span {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .important-note {
+            background: #fefce8;
+            border: 1px solid #fde68a;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-top: 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+        .important-note strong { color: #92400e; }
+        .product-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        label {
+            display: block;
+            margin: 16px 0 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #0f172a;
+        }
+        label:first-of-type { margin-top: 0; }
+        input[type="number"], select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #f8fafc;
+            color: #0f172a;
+            transition: border-color 0.15s, background 0.15s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #ffffff;
+        }
+        input::placeholder { color: #94a3b8; }
+        .amount-row {
+            display: flex;
+            gap: 10px;
+        }
+        .amount-row input { flex: 1; min-width: 0; }
+        .amount-row .select-wrap {
+            position: relative;
+            width: 110px;
+            flex-shrink: 0;
+        }
+        .amount-row select {
+            width: 100%;
+            padding-right: 32px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .select-wrap::after {
+            content: "";
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #64748b;
+            border-bottom: 2px solid #64748b;
+            transform: translateY(-70%) rotate(45deg);
+            pointer-events: none;
+        }
+        .compare-btn {
+            width: 100%;
+            padding: 16px;
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+            transition: background 0.15s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        .compare-btn:hover { background: #1d4ed8; }
+        .compare-btn:active { transform: translateY(1px); }
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 14px;
+            display: none;
+        }
+        .result-box.show { display: block; }
+        .result-box.win {
+            background: #dcfce7;
+            border: 2px solid #16a34a;
+        }
+        .result-box.tie {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+        }
+        .result-heading {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .result-box.win .result-heading { color: #15803d; }
+        .result-box.tie .result-heading { color: #b45309; }
+        .price-line {
+            font-size: 1rem;
+            margin: 6px 0;
+            color: #0f172a;
+            font-weight: 500;
+        }
+        .price-line .best { font-weight: 700; color: #15803d; }
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        footer a:hover { text-decoration: underline; }
+        .cookie-overlay {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(24px);
+            width: calc(100% - 32px);
+            max-width: 600px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 22px 22px 20px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(15, 23, 42, 0.06);
+            z-index: 100;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+        }
+        .cookie-overlay.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .cookie-head {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cookie-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+        }
+        .cookie-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.2px;
+        }
+        .cookie-text {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.55;
+            margin: 0 0 16px 0;
+        }
+        .cookie-text a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .cookie-buttons button {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+        .btn-decline {
+            background: transparent;
+            color: #475569;
+            border: 1.5px solid #e2e8f0;
+        }
+        .btn-decline:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .btn-accept {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+        .btn-accept:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.42);
+        }
+        @media (max-width: 480px) {
+            body { padding: 12px 12px 32px; }
+            header { padding: 18px 0 16px; }
+            .site-title { font-size: 1.45rem; gap: 8px; }
+            .site-title .icon-cart { width: 26px; height: 26px; }
+            header .subtitle { font-size: 0.92rem; }
+            .card, .howto-section { padding: 18px; border-radius: 16px; }
+            .card h2, .howto-section h2 { font-size: 1.1rem; }
+            .product-card h3 { font-size: 1.15rem; }
+            .step-card { padding: 14px; gap: 10px; }
+            .step-content strong { font-size: 0.95rem; }
+            .step-content p { font-size: 0.86rem; }
+            .steps-list { padding: 14px; }
+            .step-num { font-size: 0.9rem; }
+            .amount-row .select-wrap { width: 96px; }
+            .amount-row select { padding: 14px 28px 14px 12px; font-size: 0.95rem; }
+            input[type="number"] { padding: 14px 12px; font-size: 16px; }
+            .compare-btn { padding: 15px; font-size: 1.02rem; }
+            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); }
+            .cookie-title { font-size: 0.95rem; }
+            .cookie-text { font-size: 0.84rem; }
+            .cookie-buttons button { padding: 11px; font-size: 0.88rem; }
+        }
+        @media (max-width: 360px) {
+            .site-title { font-size: 1.25rem; }
+            .site-title .icon-cart { width: 22px; height: 22px; }
+            .amount-row .select-wrap { width: 84px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="site-title">
+        <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        Which Is Cheaper?
+    </div>
+    <p class="subtitle">Compare prices by unit. Simple, fast, free.</p>
+</header>
+<div class="card">
+    <h2>
+        <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        About This Tool
+    </h2>
+    <p>Quickly compare prices between different pack sizes. Works for groceries, household items, toiletries — any product where you need to find the best value.</p>
+</div>
+<div class="howto-section">
+    <h2>
+        <svg class="icon-green" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        How to Use
+    </h2>
+    <div class="step-card">
+        <div class="step-icon">
+            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+        </div>
+        <div class="step-content">
+            <strong>Weight — Grams (g) or Kilograms (kg)</strong>
+            <p>Enter total weight, e.g. 500 for 500g, or 1.5 for 1.5kg</p>
+        </div>
+    </div>
+    <div class="step-card">
+        <div class="step-icon">
+            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+        </div>
+        <div class="step-content">
+            <strong>Volume — Millilitres (ml) or Litres (L)</strong>
+            <p>Enter total volume, e.g. 750 for 750ml, or 2 for 2 Litres</p>
+        </div>
+    </div>
+    <div class="step-card">
+        <div class="step-icon">
+            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        </div>
+        <div class="step-content">
+            <strong>Quantity — Packs or Individual Items</strong>
+            <p>Enter how many items are in the pack, e.g. 6 for a 6-pack</p>
+        </div>
+    </div>
+    <div class="steps-list">
+        <div class="step-num"><span>1</span> Enter total price in £</div>
+        <div class="step-num"><span>2</span> Enter the weight, volume, or quantity</div>
+        <div class="step-num"><span>3</span> Select the unit type</div>
+        <div class="step-num"><span>4</span> Click Compare Prices</div>
+    </div>
+    <div class="important-note">
+        <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <span><strong>Important:</strong> Always compare the same units. g with g, ml with ml, pack with pack.</span>
+    </div>
+</div>
+<div class="card product-card">
+    <h3>
+        <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Product 1
+    </h3>
+    <label for="p1-price">Total Price (£)</label>
+    <input type="number" id="p1-price" step="0.01" min="0" placeholder="e.g. 3.50">
+    <label for="p1-size">Weight, Volume or Quantity</label>
+    <div class="amount-row">
+        <input type="number" id="p1-size" step="0.001" min="0" placeholder="Enter amount">
+        <div class="select-wrap">
+            <select id="p1-unit">
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+                <option value="ml">ml</option>
+                <option value="l">L</option>
+                <option value="each">pack / each</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="card product-card">
+    <h3>
+        <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Product 2
+    </h3>
+    <label for="p2-price">Total Price (£)</label>
+    <input type="number" id="p2-price" step="0.01" min="0" placeholder="e.g. 2.30">
+    <label for="p2-size">Weight, Volume or Quantity</label>
+    <div class="amount-row">
+        <input type="number" id="p2-size" step="0.001" min="0" placeholder="Enter amount">
+        <div class="select-wrap">
+            <select id="p2-unit">
+                <option value="g">g</option>
+                <option value="kg">kg</option>
+                <option value="ml">ml</option>
+                <option value="l">L</option>
+                <option value="each">pack / each</option>
+            </select>
+        </div>
+    </div>
+</div>
+<button class="compare-btn" onclick="doCompare()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    Compare Prices
+</button>
+<div id="result-box" class="result-box">
+    <div class="result-heading" id="result-heading"></div>
+    <p class="price-line" id="p1-result"></p>
+    <p class="price-line" id="p2-result"></p>
+</div>
+<footer>
+    <p>&copy; <span id="year"></span> Which Is Cheaper? &nbsp;|&nbsp;
+        <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="cookies.html">Cookie Policy</a> &nbsp;|&nbsp;
+        <a href="terms.html">Terms of Use</a>
+    </p>
+</footer>
+<div id="cookie-notice" class="cookie-overlay">
+    <div class="cookie-head">
+        <span class="cookie-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
+        </span>
+        <span class="cookie-title">We value your privacy</span>
+    </div>
+    <p class="cookie-text">We use essential cookies to make this site work. With your consent we also use analytics cookies (Google Analytics) and advertising cookies (Google AdSense) to measure traffic and show relevant ads. You can accept or decline non-essential cookies. Read our <a href="cookies.html">Cookie Policy</a>.</p>
+    <div class="cookie-buttons">
+        <button class="btn-decline" onclick="declineCookies()">Decline</button>
+        <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
+    </div>
+</div>
+<script>
+    (function () {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-notice').classList.add('show');
+        }
+    })();
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'yes');
+        gtag('consent', 'update', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            ad_personalization: 'granted',
+            analytics_storage: 'granted'
+        });
+        document.getElementById('cookie-notice').classList.remove('show');
+    }
+    function declineCookies() {
+        localStorage.setItem('cookiesAccepted', 'no');
+        gtag('consent', 'update', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied'
+        });
+        document.getElementById('cookie-notice').classList.remove('show');
+    }
+    function normalise(value, unit) {
+        if (unit === 'kg') return value * 1000;
+        if (unit === 'l')  return value * 1000;
+        return value;
+    }
+    function displayLabel(unit) {
+        if (unit === 'g' || unit === 'kg') return '100g';
+        if (unit === 'ml' || unit === 'l') return '100ml';
+        return 'pack / item';
+    }
+    function displayMultiplier(unit) {
+        return unit === 'each' ? 1 : 100;
+    }
+    var iconCheck = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
+    var iconEqual = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>';
+    function doCompare() {
+        var price1 = parseFloat(document.getElementById('p1-price').value);
+        var price2 = parseFloat(document.getElementById('p2-price').value);
+        var size1  = parseFloat(document.getElementById('p1-size').value);
+        var size2  = parseFloat(document.getElementById('p2-size').value);
+        var unit1  = document.getElementById('p1-unit').value;
+        var unit2  = document.getElementById('p2-unit').value;
+        if (!price1 || !price2 || !size1 || !size2 || price1 <= 0 || price2 <= 0 || size1 <= 0 || size2 <= 0) {
+            alert('Please fill in all fields with valid numbers!');
+            return;
+        }
+        var norm1 = normalise(size1, unit1);
+        var norm2 = normalise(size2, unit2);
+        var perUnit1 = price1 / norm1;
+        var perUnit2 = price2 / norm2;
+        var label = displayLabel(unit1);
+        var mult  = displayMultiplier(unit1);
+        var disp1 = perUnit1 * mult;
+        var disp2 = perUnit2 * mult;
+        var box     = document.getElementById('result-box');
+        var heading = document.getElementById('result-heading');
+        var r1      = document.getElementById('p1-result');
+        var r2      = document.getElementById('p2-result');
+        box.classList.add('show');
+        if (Math.abs(disp1 - disp2) < 0.001) {
+            box.className = 'result-box show tie';
+            heading.innerHTML = iconEqual + ' Same price!';
+            r1.innerHTML = 'Product 1 — £' + disp1.toFixed(2) + ' per ' + label;
+            r2.innerHTML = 'Product 2 — £' + disp2.toFixed(2) + ' per ' + label;
+        } else if (disp1 < disp2) {
+            box.className = 'result-box show win';
+            heading.innerHTML = iconCheck + ' Product 1 is better value!';
+            r1.innerHTML = '<span class="best">Product 1 — £' + disp1.toFixed(2) + ' per ' + label + ' (cheaper)</span>';
+            r2.innerHTML = 'Product 2 — £' + disp2.toFixed(2) + ' per ' + label;
+        } else {
+            box.className = 'result-box show win';
+            heading.innerHTML = iconCheck + ' Product 2 is better value!';
+            r1.innerHTML = 'Product 1 — £' + disp1.toFixed(2) + ' per ' + label;
+            r2.innerHTML = '<span class="best">Product 2 — £' + disp2.toFixed(2) + ' per ' + label + ' (cheaper)</span>';
+        }
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
