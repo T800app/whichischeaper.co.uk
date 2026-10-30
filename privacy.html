@@ -40,17 +40,58 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.6;
-            color: #333;
+            background: #F7F8FA;
+            color: #1D2129;
+            line-height: 1.65;
+            padding: 24px 20px 60px;
+            min-height: 100vh;
+            margin: 0;
         }
-        h1 { font-size: 28px; margin-bottom: 30px; }
-        h2 { font-size: 20px; margin-top: 30px; margin-bottom: 10px; }
-        p { margin-bottom: 15px; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #165DFF;
+            letter-spacing: -0.3px;
+        }
+        .last-updated {
+            color: #86909C;
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 19px;
+            margin: 32px 0 12px;
+            color: #1D2129;
+            padding-left: 12px;
+            border-left: 4px solid #165DFF;
+        }
+        p { margin-bottom: 15px; color: #4E5969; }
+        ul { margin-bottom: 15px; padding-left: 24px; color: #4E5969; }
+        li { margin-bottom: 8px; }
         a { color: #165DFF; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .back-link {
+            display: inline-block;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #E5E6EB;
+            font-weight: 500;
+        }
+        @media (max-width: 480px) {
+            body { padding: 16px 12px 40px; }
+            .container { padding: 24px 20px; border-radius: 14px; }
+            h1 { font-size: 23px; }
+            h2 { font-size: 17px; }
+        }
     
         /* Cookie consent banner */
         .cookie-overlay {
@@ -148,8 +189,9 @@
     </style>
 </head>
 <body>
+<div class="container">
 <h1>Privacy Policy</h1>
-<p><em>Last updated: October 26, 2026</em></p>
+<p class="last-updated">Last updated: October 26, 2026</p>
 <h2>1. About Us</h2>
 <p>Which Is Cheaper is a simple price comparison tool designed to help shoppers in the United Kingdom compare prices per unit. We are committed to protecting your personal information and being transparent about how we use it.</p>
 <h2>2. Information We Collect</h2>
@@ -176,8 +218,9 @@
 </ul>
 <h2>8. Contact Us</h2>
 <p>If you have any questions about this Privacy Policy, please contact us at: <strong>whichischeaperapp@gmail.com</strong></p>
-<p><a href="index.html">← Back to calculator</a></p>
+<p class="back-link"><a href="index.html">← Back to calculator</a></p>
 
+</div>
 <div id="cookie-notice" class="cookie-overlay">
     <div class="cookie-head">
         <span class="cookie-icon">
