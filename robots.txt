@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whichischeaper.co.uk/sitemap.xml
