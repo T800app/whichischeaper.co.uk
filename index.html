@@ -430,6 +430,34 @@
             .site-title .icon-cart { width: 22px; height: 22px; }
             .amount-row .select-wrap { width: 84px; }
         }
+
+        /* ===== Which Is Cheaper Assistant Widget (fluid) ===== */
+        .ai-fab { position: fixed; bottom: clamp(12px, 2vw, 18px); right: clamp(12px, 2vw, 18px); width: clamp(48px, 12vw, 56px); height: clamp(48px, 12vw, 56px); border-radius: 50%; background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; border: none; cursor: pointer; z-index: 9999; box-shadow: 0 6px 20px rgba(22,163,74,0.45); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; }
+        .ai-fab:hover { transform: scale(1.1); }
+        .ai-fab svg { width: clamp(22px, 5vw, 28px); height: clamp(22px, 5vw, 28px); }
+        .ai-panel { position: fixed; bottom: calc(clamp(48px, 12vw, 56px) + clamp(14px, 2.5vw, 22px)); right: clamp(12px, 2vw, 18px); width: min(340px, calc(100vw - clamp(24px, 5vw, 40px))); height: min(480px, calc(100vh - clamp(90px, 18vh, 130px))); background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.22); z-index: 9999; display: none; flex-direction: column; overflow: hidden; animation: aiSlideUp 0.25s ease; }
+        .ai-panel.open { display: flex; }
+        @keyframes aiSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .ai-header { background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+        .ai-header-title { font-weight: 700; font-size: clamp(0.84rem, 2.2vw, 0.95rem); display: flex; align-items: center; gap: 8px; }
+        .ai-header-title svg { width: clamp(18px, 4.5vw, 22px); height: clamp(18px, 4.5vw, 22px); flex-shrink: 0; }
+        .ai-header-actions { display: flex; gap: 12px; align-items: center; }
+        .ai-header button { background: none; border: none; color: #fff; cursor: pointer; font-size: 0.8rem; opacity: 0.9; padding: 2px; }
+        .ai-header button:hover { opacity: 1; }
+        .ai-messages { flex: 1; overflow-y: auto; padding: clamp(10px, 2vw, 14px); background: #f0fdf4; display: flex; flex-direction: column; gap: 8px; -webkit-overflow-scrolling: touch; }
+        .ai-msg { max-width: 86%; padding: clamp(8px, 1.8vw, 10px) clamp(10px, 2vw, 12px); border-radius: 12px; font-size: clamp(0.82rem, 2vw, 0.9rem); line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+        .ai-msg.user { align-self: flex-end; background: #16a34a; color: #fff; border-bottom-right-radius: 4px; }
+        .ai-msg.bot { align-self: flex-start; background: #fff; color: #1e293b; border: 1px solid #dcfce7; border-bottom-left-radius: 4px; }
+        .ai-typing { align-self: flex-start; background: #fff; border: 1px solid #dcfce7; padding: 9px 12px; border-radius: 12px; display: none; }
+        .ai-typing span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #86efac; margin: 0 2px; animation: aiBounce 1.2s infinite; }
+        .ai-typing span:nth-child(2) { animation-delay: 0.15s; }
+        .ai-typing span:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes aiBounce { 0%,60%,100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+        .ai-input-row { display: flex; gap: 8px; padding: clamp(8px, 1.8vw, 10px); border-top: 1px solid #dcfce7; background: #fff; flex-shrink: 0; }
+        .ai-input { flex: 1; padding: clamp(9px, 2vw, 11px) clamp(11px, 2.2vw, 13px); border: 1px solid #bbf7d0; border-radius: 10px; font-size: clamp(0.84rem, 2vw, 0.9rem); outline: none; min-height: 42px; }
+        .ai-input:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
+        .ai-send { background: #16a34a; color: #fff; border: none; border-radius: 10px; padding: 0 clamp(12px, 3vw, 16px); cursor: pointer; font-weight: 600; font-size: clamp(0.82rem, 2vw, 0.9rem); min-height: 42px; }
+        .ai-send:hover { background: #15803d; }
     </style>
 </head>
 <body>
@@ -645,6 +673,122 @@
         box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Which Is Cheaper Assistant Widget -->
+<button class="ai-fab" id="aiFab" aria-label="Ask shopping assistant" title="Ask Which Is Cheaper Assistant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+</button>
+<div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+        <div class="ai-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            Shopping Assistant
+        </div>
+        <div class="ai-header-actions">
+            <button id="aiHide" title="Hide assistant">Hide</button>
+            <button id="aiClose" title="Minimize">&times;</button>
+        </div>
+    </div>
+    <div class="ai-messages" id="aiMessages">
+        <div class="ai-msg bot">Hi! I'm your shopping assistant. Compare two products by unit price — e.g. "2 litres for £3 vs 500ml for £1" or "1kg for £4 vs 500g for £2.20". I'll tell you which is better value! &#128722;</div>
+    </div>
+    <div class="ai-typing" id="aiTyping"><span></span><span></span><span></span></div>
+    <div class="ai-input-row">
+        <input class="ai-input" id="aiInput" placeholder="e.g. 1L £1.50 vs 500ml £0.80" />
+        <button class="ai-send" id="aiSend">Send</button>
+    </div>
+</div>
+
+<script>
+(function(){
+    function normQty(qty, unit){
+        // returns {type: 'ml'|'g'|'unit', val: number}
+        var u = (unit||'').toLowerCase();
+        var q = parseFloat(qty);
+        if(/^(l|litre|liter|litres|liters)$/.test(u)) return {type:'ml', val: q*1000};
+        if(/^ml$/.test(u) || /^millilit/.test(u)) return {type:'ml', val: q};
+        if(/^kg$/.test(u) || /^kilogram/.test(u)) return {type:'g', val: q*1000};
+        if(/^g$/.test(u) || /^gram/.test(u)) return {type:'g', val: q};
+        return {type:'unit', val: q};
+    }
+    function parsePrice(pound, pence){
+        if(pound!==undefined && pound!=='') return parseFloat(pound);
+        if(pence!==undefined && pence!=='') return parseFloat(pence)/100;
+        return null;
+    }
+    function findProducts(text){
+        var t = text.toLowerCase();
+        var prods = [];
+        var re, m;
+        // Pattern A: price first — £X / Xp  [for]  qty  unit
+        re = /(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)\s*(?:for|=|per|@)?\s*(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)?/g;
+        while((m = re.exec(t)) !== null){
+            var price = parsePrice(m[1], m[2]);
+            var nq = normQty(m[3], m[4]);
+            if(price && nq.val > 0) prods.push({price: price, qty: nq.val, type: nq.type, unit: m[4]||'unit'});
+        }
+        // Pattern B: qty first — qty unit  [for]  £X / Xp
+        re = /(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)\s*(?:for|=|@|costs?|is)?\s*(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)/g;
+        while((m = re.exec(t)) !== null){
+            var price2 = parsePrice(m[3], m[4]);
+            var nq2 = normQty(m[1], m[2]);
+            if(price2 && nq2.val > 0) prods.push({price: price2, qty: nq2.val, type: nq2.type, unit: m[2]});
+        }
+        // dedupe by (price,qty)
+        var seen = {}, out = [];
+        for(var i=0;i<prods.length;i++){
+            var k = prods[i].price+'_'+prods[i].qty+'_'+prods[i].type;
+            if(!seen[k]){ seen[k]=1; out.push(prods[i]); }
+        }
+        return out.slice(0,2);
+    }
+    function unitPrice(p){
+        if(p.type==='ml') return {per: '100ml', val: p.price/(p.qty/100)};
+        if(p.type==='g') return {per: '100g', val: p.price/(p.qty/100)};
+        return {per: 'unit', val: p.price/p.qty};
+    }
+    function fmt(n){ return '£'+n.toFixed(2); }
+    function respond(text){
+        var t = text.toLowerCase().trim();
+        if(/^(hi|hello|hey|good (morning|afternoon|evening))\b/.test(t)) return "Hi! Compare two products and I'll tell you which is better value. E.g. '2L for £3 vs 500ml for £1' — or use the calculator above for exact results!";
+        if(/thank|thanks|cheers/.test(t)) return "You're welcome! Happy shopping — always check the per-unit price!";
+        if(/help|what can you do|how do (you|this) work/.test(t)) return "I compare unit prices! Try:\n• '1 litre for £1.50 vs 500ml for 80p'\n• '1kg for £4 vs 750g for £3.20'\n• '6 pack for £3 vs 4 pack for £2.20'\nFor exact results, use the calculator above.";
+        var prods = findProducts(text);
+        if(prods.length < 2){
+            return "I need two products to compare! Tell me both with quantity and price — e.g. '2 litres for £3 vs 500ml for £1'. Or enter them in the calculator above for exact results.";
+        }
+        var a = prods[0], b = prods[1];
+        if(a.type !== b.type){
+            return "Hmm, those are different unit types ("+a.unit+" vs "+b.unit+") — I can only compare like-for-like (ml with ml, g with g, pieces with pieces). Try again or use the calculator above.";
+        }
+        var ua = unitPrice(a), ub = unitPrice(b);
+        var cheaper, dearer;
+        if(ua.val < ub.val){ cheaper={p:a, u:ua}; dearer={p:b, u:ub}; }
+        else if(ub.val < ua.val){ cheaper={p:b, u:ub}; dearer={p:a, u:ua}; }
+        else return "They cost exactly the same per "+ua.per+"! Either is fine — use the calculator above to double-check.";
+        var saveAbs = dearer.u.val - cheaper.u.val;
+        var savePct = (saveAbs / dearer.u.val * 100).toFixed(0);
+        return "Product A: "+fmt(a.price)+" for "+a.qty+(a.type==='ml'?'ml':a.type==='g'?'g':' units')+" = "+fmt(ua.val)+"/"+ua.per+"\nProduct B: "+fmt(b.price)+" for "+b.qty+(b.type==='ml'?'ml':b.type==='g'?'g':' units')+" = "+fmt(ub.val)+"/"+ub.per+"\n→ The "+(cheaper.p===a?'FIRST':'SECOND')+" product is better value! It's "+savePct+"% cheaper per "+ua.per+" (you save "+fmt(saveAbs)+" per "+ua.per+").\nTip: bigger packs are usually better value — always check the per-unit price!";
+    }
+    var fab=document.getElementById("aiFab"), panel=document.getElementById("aiPanel"),
+        msgs=document.getElementById("aiMessages"), input=document.getElementById("aiInput"),
+        send=document.getElementById("aiSend"), typing=document.getElementById("aiTyping"),
+        closeBtn=document.getElementById("aiClose"), hideBtn=document.getElementById("aiHide");
+    if(localStorage.getItem("aiHiddenWIC")==="1") fab.style.display="none";
+    fab.addEventListener("click",function(){ panel.classList.toggle("open"); if(panel.classList.contains("open")) input.focus(); });
+    closeBtn.addEventListener("click",function(){ panel.classList.remove("open"); });
+    hideBtn.addEventListener("click",function(){ panel.classList.remove("open"); fab.style.display="none"; localStorage.setItem("aiHiddenWIC","1"); });
+    function render(text,who){ var d=document.createElement("div"); d.className="ai-msg "+who; d.textContent=text; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; }
+    function sendMsg(text){
+        if(!text.trim()) return;
+        render(text,"user"); input.value="";
+        typing.style.display="block"; msgs.scrollTop=msgs.scrollHeight;
+        setTimeout(function(){ typing.style.display="none"; render(respond(text),"bot"); }, 600);
+    }
+    send.addEventListener("click",function(){ sendMsg(input.value); });
+    input.addEventListener("keydown",function(e){ if(e.key==="Enter") sendMsg(input.value); });
+})();
 </script>
 </body>
 </html>
