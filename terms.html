@@ -218,6 +218,20 @@
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.85rem; }
         }
+
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -255,6 +269,13 @@
 <p class="back-link"><a href="index.html">← Back to calculator</a></p>
 
 </div>
+<footer>
+    <p>&copy; <span id="year"></span> Which Is Cheaper? &nbsp;|&nbsp;
+        <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="cookies.html">Cookie Policy</a> &nbsp;|&nbsp;
+        <a href="terms.html">Terms of Use</a>
+    </p>
+</footer>
 <div id="cookie-notice" class="cookie-overlay">
     <div class="cookie-head">
         <span class="cookie-icon">
@@ -269,6 +290,7 @@
     </div>
 </div>
 <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
     (function () {
         if (!localStorage.getItem('cookiesAccepted')) {
             document.getElementById('cookie-notice').classList.add('show');
