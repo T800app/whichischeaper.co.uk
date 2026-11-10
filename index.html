@@ -54,25 +54,30 @@
     </script>
     
     <style>
+        /* ===== Apple-inspired modern design ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
-            background-color: #f5f7fa;
-            color: #1e293b;
-            line-height: 1.6;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
             max-width: 640px;
             margin: 0 auto;
-            padding: 20px 16px 40px;
+            padding: 24px 16px 40px;
             overflow-x: hidden;
             -webkit-text-size-adjust: 100%;
+            letter-spacing: -0.01em;
         }
         header {
             text-align: center;
-            padding: 28px 0 24px;
+            padding: 32px 0 28px;
         }
         .site-title {
             display: flex;
@@ -80,25 +85,27 @@
             justify-content: center;
             gap: 12px;
             font-size: 2rem;
-            font-weight: 800;
-            color: #1e293b;
-            letter-spacing: -0.5px;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
         }
         .site-title .icon-cart {
-            color: #2563eb;
+            color: #007AFF;
             flex-shrink: 0;
         }
         header .subtitle {
-            color: #64748b;
+            color: #6e6e73;
             font-size: 1.05rem;
-            margin-top: 6px;
+            margin-top: 8px;
+            letter-spacing: -0.01em;
         }
         .card {
             background: #ffffff;
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
         }
         .card h2 {
             font-size: 1.25rem;
@@ -107,29 +114,112 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
         }
         .card p {
-            color: #475569;
+            color: #6e6e73;
             font-size: 0.98rem;
+            letter-spacing: -0.01em;
         }
-        .icon-blue { color: #2563eb; flex-shrink: 0; }
+        .icon-blue { color: #007AFF; flex-shrink: 0; }
         .icon-green { color: #16a34a; flex-shrink: 0; }
         .icon-orange { color: #f59e0b; flex-shrink: 0; }
-        .howto-section {
-            background: #f0fdf4;
-            border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 20px;
+
+        /* ===== Collapsible cards (details/summary) ===== */
+        .collapsible-card {
+            padding: 0;
+            margin-bottom: 16px;
+            overflow: hidden;
         }
-        .howto-section h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #16a34a;
-            margin-bottom: 18px;
+        .collapsible-card > details > summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 22px 24px;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            -webkit-user-select: none;
+            background: transparent;
+            transition: background 0.2s ease;
+        }
+        .collapsible-card > details > summary::-webkit-details-marker { display: none; }
+        .collapsible-card > details > summary::marker { content: ""; }
+        .collapsible-card > details > summary:focus { outline: none; }
+        .collapsible-card > details > summary:focus-visible { outline: none; }
+        .summary-content {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
         }
+        .chevron {
+            width: 18px;
+            height: 18px;
+            color: #86868b;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        details[open] > summary .chevron {
+            transform: rotate(180deg);
+        }
+        .collapsible-card > details > .content {
+            padding: 4px 24px 24px;
+        }
+
+        /* How to Use section (green themed collapsible) */
+        .howto-section {
+            background: #f0fdf4;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+            border: 1px solid rgba(22, 163, 74, 0.08);
+            padding: 0;
+            overflow: hidden;
+        }
+        .howto-section > details > summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 22px 24px;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+            -webkit-user-select: none;
+            background: transparent;
+            transition: background 0.2s ease;
+        }
+        .howto-section > details > summary::-webkit-details-marker { display: none; }
+        .howto-section > details > summary::marker { content: ""; }
+        .howto-section > details > summary:focus { outline: none; }
+        .howto-section > details > summary:focus-visible { outline: none; }
+        .howto-section .summary-content {
+            color: #16a34a;
+        }
+        .howto-section .chevron {
+            color: #16a34a;
+        }
+        .howto-section > details > .content {
+            padding: 4px 24px 24px;
+        }
+
+        /* Hover effects only on devices that truly support hover (prevents sticky hover on mobile) */
+        @media (hover: hover) and (pointer: fine) {
+            .collapsible-card > details > summary:hover {
+                background: rgba(0, 0, 0, 0.02);
+            }
+            .howto-section > details > summary:hover {
+                background: rgba(22, 163, 74, 0.05);
+            }
+        }
+
+        /* ===== Step cards (inside How to Use) ===== */
         .step-card {
             background: #ffffff;
             border-radius: 14px;
@@ -147,11 +237,12 @@
         .step-content strong {
             display: block;
             font-size: 1rem;
-            color: #0f172a;
+            color: #1d1d1f;
             margin-bottom: 4px;
+            letter-spacing: -0.01em;
         }
         .step-content p {
-            color: #475569;
+            color: #6e6e73;
             font-size: 0.92rem;
         }
         .steps-list {
@@ -165,7 +256,7 @@
             align-items: center;
             gap: 12px;
             font-size: 0.95rem;
-            color: #0f172a;
+            color: #1d1d1f;
             font-weight: 500;
             padding: 6px 0;
         }
@@ -174,7 +265,7 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: #2563eb;
+            background: #007AFF;
             color: #ffffff;
             font-weight: 700;
             font-size: 0.85rem;
@@ -195,41 +286,50 @@
             color: #92400e;
         }
         .important-note strong { color: #92400e; }
+
+        /* ===== Product cards / inputs ===== */
         .product-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #0f172a;
+            color: #1d1d1f;
             margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: -0.02em;
         }
         label {
             display: block;
             margin: 16px 0 6px;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
-            color: #0f172a;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
         }
         label:first-of-type { margin-top: 0; }
         input[type="number"], select {
             width: 100%;
             padding: 14px 16px;
-            border: 1.5px solid #e2e8f0;
+            border: 1px solid transparent;
             border-radius: 12px;
             font-size: 1rem;
-            background: #f8fafc;
-            color: #0f172a;
-            transition: border-color 0.15s, background 0.15s;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            transition: background 0.15s ease, border-color 0.15s ease;
             -webkit-appearance: none;
             appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        input[type="number"]:hover, select:hover {
+            background: #efeff2;
         }
         input[type="number"]:focus, select:focus {
             outline: none;
-            border-color: #2563eb;
+            border-color: #007AFF;
             background: #ffffff;
+            box-shadow: none;
         }
-        input::placeholder { color: #94a3b8; }
+        input::placeholder { color: #a1a1a6; }
         .amount-row {
             display: flex;
             gap: 10px;
@@ -253,35 +353,45 @@
             top: 50%;
             width: 10px;
             height: 10px;
-            border-right: 2px solid #64748b;
-            border-bottom: 2px solid #64748b;
+            border-right: 2px solid #86868b;
+            border-bottom: 2px solid #86868b;
             transform: translateY(-70%) rotate(45deg);
             pointer-events: none;
         }
+
+        /* ===== Compare button (no overflowing shadow) ===== */
         .compare-btn {
             width: 100%;
             padding: 16px;
-            background: #2563eb;
+            background: #007AFF;
             color: #ffffff;
             border: none;
             border-radius: 14px;
             font-size: 1.1rem;
             font-weight: 700;
+            letter-spacing: -0.01em;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: 8px;
-            transition: background 0.15s;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            margin: 8px 0 16px;
+            transition: background 0.15s ease, transform 0.1s ease;
+            box-shadow: none;
         }
-        .compare-btn:hover { background: #1d4ed8; }
-        .compare-btn:active { transform: translateY(1px); }
+        .compare-btn:hover {
+            background: #0071e3;
+        }
+        .compare-btn:active {
+            transform: scale(0.98);
+            background: #0066cc;
+        }
+
+        /* ===== Result box ===== */
         .result-box {
-            margin-top: 20px;
+            margin-top: 4px;
             padding: 20px;
-            border-radius: 14px;
+            border-radius: 18px;
             display: none;
         }
         .result-box.show { display: block; }
@@ -300,29 +410,34 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: -0.02em;
         }
         .result-box.win .result-heading { color: #15803d; }
         .result-box.tie .result-heading { color: #b45309; }
         .price-line {
             font-size: 1rem;
             margin: 6px 0;
-            color: #0f172a;
+            color: #1d1d1f;
             font-weight: 500;
         }
         .price-line .best { font-weight: 700; color: #15803d; }
+
+        /* ===== Footer ===== */
         footer {
             text-align: center;
             margin-top: 32px;
             padding: 16px;
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: #86868b;
         }
         footer a {
-            color: #2563eb;
+            color: #007AFF;
             text-decoration: none;
             margin: 0 6px;
         }
         footer a:hover { text-decoration: underline; }
+
+        /* ===== Cookie notice ===== */
         .cookie-overlay {
             position: fixed;
             bottom: 16px;
@@ -331,10 +446,10 @@
             width: calc(100% - 32px);
             max-width: 600px;
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 18px;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
             padding: 22px 22px 20px;
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
             z-index: 100;
             visibility: hidden;
             opacity: 0;
@@ -360,22 +475,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2563eb;
+            color: #007AFF;
         }
         .cookie-title {
             font-size: 1.02rem;
             font-weight: 700;
-            color: #0f172a;
-            letter-spacing: -0.2px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
         }
         .cookie-text {
             font-size: 0.9rem;
-            color: #475569;
+            color: #6e6e73;
             line-height: 1.55;
             margin: 0 0 16px 0;
         }
         .cookie-text a {
-            color: #2563eb;
+            color: #007AFF;
             text-decoration: underline;
             font-weight: 500;
         }
@@ -394,32 +509,57 @@
         }
         .btn-decline {
             background: transparent;
-            color: #475569;
-            border: 1.5px solid #e2e8f0;
+            color: #6e6e73;
+            border: 1px solid #d2d2d7;
         }
         .btn-decline:hover {
-            background: #f1f5f9;
-            border-color: #cbd5e1;
+            background: #f5f5f7;
+            border-color: #86868b;
         }
         .btn-accept {
-            background: #2563eb;
+            background: #007AFF;
             color: #ffffff;
             border: none;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
         }
         .btn-accept:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.42);
+            background: #0071e3;
         }
+
+        /* ===== Guides / FAQ accordion (nested inside collapsible card) ===== */
+        .guides-intro { color: #6e6e73; font-size: 0.95rem; margin-bottom: 14px; }
+        .acc-item { background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+        .acc-item:last-child { margin-bottom: 0; }
+        .acc-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; min-height: 46px; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #1d1d1f; list-style: none; letter-spacing: -0.01em; }
+        .acc-summary::-webkit-details-marker { display: none; }
+        .acc-summary::marker { content: ""; }
+        .acc-summary .acc-q { flex: 1; }
+        .acc-chevron { flex-shrink: 0; width: 18px; height: 18px; color: #007AFF; transition: transform 0.25s ease; }
+        details[open] > .acc-summary .acc-chevron { transform: rotate(180deg); }
+        details[open] > .acc-summary { border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .acc-body { padding: 14px 16px 16px; color: #6e6e73; font-size: 0.9rem; }
+        .acc-body p { margin-bottom: 10px; color: #6e6e73; font-size: 0.9rem; }
+        .acc-body p:last-child { margin-bottom: 0; }
+        .acc-body ul, .acc-body ol { margin: 0 0 10px 18px; }
+        .acc-body li { margin-bottom: 6px; }
+        .acc-body strong { color: #1d1d1f; }
+        .acc-example { background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; }
+        .acc-example strong { color: #0071e3; }
+
+        /* ===== Responsive ===== */
         @media (max-width: 480px) {
             body { padding: 12px 12px 32px; }
-            header { padding: 18px 0 16px; }
-            .site-title { font-size: 1.45rem; gap: 8px; }
+            header { padding: 20px 0 18px; }
+            .site-title { font-size: 1.5rem; gap: 8px; }
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
-            .card, .howto-section { padding: 18px; border-radius: 16px; }
-            .card h2, .howto-section h2 { font-size: 1.1rem; }
+            .card, .howto-section { border-radius: 18px; }
+            .card { padding: 18px; }
+            .card h2 { font-size: 1.1rem; }
+            .collapsible-card > details > summary,
+            .howto-section > details > summary { padding: 18px; }
+            .collapsible-card > details > .content,
+            .howto-section > details > .content { padding: 4px 18px 18px; }
+            .summary-content { font-size: 1.1rem; }
             .product-card h3 { font-size: 1.15rem; }
             .step-card { padding: 14px; gap: 10px; }
             .step-content strong { font-size: 0.95rem; }
@@ -430,71 +570,25 @@
             .amount-row select { padding: 14px 28px 14px 12px; font-size: 0.95rem; }
             input[type="number"] { padding: 14px 12px; font-size: 16px; }
             .compare-btn { padding: 15px; font-size: 1.02rem; }
-            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); }
+            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; }
             .cookie-title { font-size: 0.95rem; }
             .cookie-text { font-size: 0.84rem; }
             .cookie-buttons button { padding: 11px; font-size: 0.88rem; }
-        }
-        @media (max-width: 360px) {
-            .site-title { font-size: 1.25rem; }
-            .site-title .icon-cart { width: 22px; height: 22px; }
-            .amount-row .select-wrap { width: 84px; }
-        }
-
-        /* ===== Which Is Cheaper Assistant Widget (fluid) ===== */
-        .ai-fab { position: fixed; bottom: clamp(12px, 2vw, 18px); right: clamp(12px, 2vw, 18px); width: clamp(48px, 12vw, 56px); height: clamp(48px, 12vw, 56px); border-radius: 50%; background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; border: none; cursor: pointer; z-index: 9999; box-shadow: 0 6px 20px rgba(22,163,74,0.45); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; }
-        .ai-fab:hover { transform: scale(1.1); }
-        .ai-fab svg { width: clamp(22px, 5vw, 28px); height: clamp(22px, 5vw, 28px); }
-        .ai-panel { position: fixed; bottom: calc(clamp(48px, 12vw, 56px) + clamp(14px, 2.5vw, 22px)); right: clamp(12px, 2vw, 18px); width: min(340px, calc(100vw - clamp(24px, 5vw, 40px))); height: min(480px, calc(100vh - clamp(90px, 18vh, 130px))); background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.22); z-index: 9999; display: none; flex-direction: column; overflow: hidden; animation: aiSlideUp 0.25s ease; }
-        .ai-panel.open { display: flex; }
-        @keyframes aiSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .ai-header { background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-        .ai-header-title { font-weight: 700; font-size: clamp(0.84rem, 2.2vw, 0.95rem); display: flex; align-items: center; gap: 8px; }
-        .ai-header-title svg { width: clamp(18px, 4.5vw, 22px); height: clamp(18px, 4.5vw, 22px); flex-shrink: 0; }
-        .ai-header-actions { display: flex; gap: 12px; align-items: center; }
-        .ai-header button { background: none; border: none; color: #fff; cursor: pointer; font-size: 0.8rem; opacity: 0.9; padding: 2px; }
-        .ai-header button:hover { opacity: 1; }
-        .ai-messages { flex: 1; overflow-y: auto; padding: clamp(10px, 2vw, 14px); background: #f0fdf4; display: flex; flex-direction: column; gap: 8px; -webkit-overflow-scrolling: touch; }
-        .ai-msg { max-width: 86%; padding: clamp(8px, 1.8vw, 10px) clamp(10px, 2vw, 12px); border-radius: 12px; font-size: clamp(0.82rem, 2vw, 0.9rem); line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
-        .ai-msg.user { align-self: flex-end; background: #16a34a; color: #fff; border-bottom-right-radius: 4px; }
-        .ai-msg.bot { align-self: flex-start; background: #fff; color: #1e293b; border: 1px solid #dcfce7; border-bottom-left-radius: 4px; }
-        .ai-typing { align-self: flex-start; background: #fff; border: 1px solid #dcfce7; padding: 9px 12px; border-radius: 12px; display: none; }
-        .ai-typing span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #86efac; margin: 0 2px; animation: aiBounce 1.2s infinite; }
-        .ai-typing span:nth-child(2) { animation-delay: 0.15s; }
-        .ai-typing span:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes aiBounce { 0%,60%,100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
-        .ai-input-row { display: flex; gap: 8px; padding: clamp(8px, 1.8vw, 10px); border-top: 1px solid #dcfce7; background: #fff; flex-shrink: 0; }
-        .ai-input { flex: 1; padding: clamp(9px, 2vw, 11px) clamp(11px, 2.2vw, 13px); border: 1px solid #bbf7d0; border-radius: 10px; font-size: clamp(0.84rem, 2vw, 0.9rem); outline: none; min-height: 42px; }
-        .ai-input:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
-        .ai-send { background: #16a34a; color: #fff; border: none; border-radius: 10px; padding: 0 clamp(12px, 3vw, 16px); cursor: pointer; font-weight: 600; font-size: clamp(0.82rem, 2vw, 0.9rem); min-height: 42px; }
-        .ai-send:hover { background: #15803d; }
-
-        /* ===== Shopping guides & FAQ accordion (responsive: mobile / tablet / desktop) ===== */
-        .guides-card { padding: clamp(18px, 4vw, 24px); }
-        .guides-intro { color: #475569; font-size: clamp(0.9rem, 2.4vw, 0.98rem); margin-bottom: 14px; }
-        .acc-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
-        .acc-item:last-child { margin-bottom: 0; }
-        .acc-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; min-height: 46px; cursor: pointer; font-weight: 600; font-size: clamp(0.92rem, 2.4vw, 1rem); color: #0f172a; list-style: none; }
-        .acc-summary::-webkit-details-marker { display: none; }
-        .acc-summary .acc-q { flex: 1; }
-        .acc-chevron { flex-shrink: 0; width: 20px; height: 20px; color: #2563eb; transition: transform 0.25s ease; }
-        details[open] .acc-chevron { transform: rotate(180deg); }
-        details[open] .acc-summary { border-bottom: 1px solid #e2e8f0; }
-        .acc-body { padding: 14px 16px 16px; color: #475569; font-size: clamp(0.88rem, 2.3vw, 0.95rem); }
-        .acc-body p { margin-bottom: 10px; color: #475569; font-size: clamp(0.88rem, 2.3vw, 0.95rem); }
-        .acc-body p:last-child { margin-bottom: 0; }
-        .acc-body ul, .acc-body ol { margin: 0 0 10px 18px; }
-        .acc-body li { margin-bottom: 6px; }
-        .acc-body strong { color: #0f172a; }
-        .acc-example { background: #eff6ff; border-left: 3px solid #2563eb; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: clamp(0.86rem, 2.2vw, 0.93rem); color: #1e3a8a; }
-        .acc-example strong { color: #1d4ed8; }
-        @media (max-width: 480px) {
             .acc-summary { padding: 13px 14px; min-height: 44px; }
             .acc-body { padding: 12px 14px 14px; }
             .acc-example { padding: 10px 12px; }
         }
+        @media (max-width: 360px) {
+            .site-title { font-size: 1.28rem; }
+            .site-title .icon-cart { width: 22px; height: 22px; }
+            .amount-row .select-wrap { width: 84px; }
+        }
         @media (min-width: 768px) {
-            .guides-card .acc-item { margin-bottom: 12px; }
+            .collapsible-card > details > summary,
+            .howto-section > details > summary { padding: 24px 28px; }
+            .collapsible-card > details > .content,
+            .howto-section > details > .content { padding: 4px 28px 28px; }
+            .acc-item { margin-bottom: 12px; }
             .acc-summary { padding: 15px 18px; }
             .acc-body { padding: 15px 18px 17px; }
         }
@@ -529,184 +623,203 @@
     </h2>
     <p>Quickly compare prices between different pack sizes. Works for groceries, household items, toiletries — any product where you need to find the best value.</p>
 </div>
-<div class="card guides-card">
-    <h2>
-        <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
-        Shopping Guides &amp; FAQs
-    </h2>
-    <p class="guides-intro">Practical, plain-English guides to help you compare unit prices like a pro — from price per 100g to multipack value. Tap any question to open the answer.</p>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">What is unit price — and why does it matter?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p><strong>Unit price</strong> (or price per unit) is the cost of one standard measure of a product — for example 100 grams, 100 millilitres, 1 kilogram, 1 litre or a single item. The total price on the shelf tells you how much you pay in total; the unit price tells you how much value you actually get. Two packs can look similar in price while containing very different amounts.</p>
-            <p>In UK supermarkets, shelf-edge labels usually show the price per kg or per litre underneath the product price. This tool does the same calculation for any two products, including packs sold in grams, millilitres or counts, so you can compare like-for-like in seconds.</p>
-            <p>Comparing unit prices also protects you from <strong>shrinkflation</strong>: when a manufacturer keeps the price similar but reduces the contents (for example a 500g bag becoming 450g). Only the unit price reveals that the item has quietly become more expensive.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">How to compare price per 100g and per kg (food, coffee, cereal, rice)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>For solid foods and dry goods (coffee, cereal, rice, pasta, flour, sugar, pet food), compare by weight. Convert kilograms to grams first (1 kg = 1000 g), then use the formula:</p>
-            <div class="acc-example"><strong>Price per 100g = (total price &divide; total weight in g) &times; 100</strong></div>
-            <div class="acc-example"><strong>Worked example:</strong> Pack A: 500g coffee for &pound;3.50 &rarr; 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Pack B: 1kg (1000g) coffee for &pound;6.50 &rarr; 6.50 &divide; 1000 &times; 100 = &pound;0.65 per 100g. Pack B is cheaper per 100g even though its total price is higher.</div>
-            <ul>
-                <li>Always convert kg to g before comparing, or simply pick the kg option in the calculator.</li>
-                <li>For tinned foods, check the <strong>drained weight</strong> (e.g. beans in sauce) — the label lists both drained and total weight.</li>
-                <li>Compare within the same quality tier: premium ground coffee or speciality blends can cost more per gram for good reason.</li>
-            </ul>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">How to compare price per litre and per 100ml (drinks, detergent, softener)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>For liquids (milk, soft drinks, juice, washing-up liquid, fabric conditioner, bleach, shampoo), compare by volume. Remember that 1 litre = 1000 ml.</p>
-            <div class="acc-example"><strong>Price per 100ml = (total price &divide; total volume in ml) &times; 100</strong></div>
-            <div class="acc-example"><strong>Worked example:</strong> Pack A: 2 litres cola for &pound;1.65 &rarr; 165p &divide; 2000 &times; 100 = 8.25p per 100ml. Pack B: 500ml bottle for 45p &rarr; 45 &divide; 500 &times; 100 = 9.0p per 100ml. The 2-litre bottle works out cheaper.</div>
-            <ul>
-                <li>Concentrated products (dilute-as-directed juice, concentrated fabric softener) should be compared on the diluted final amount, not the bottle size.</li>
-                <li>Multipacks of small bottles often cost more per 100ml than one large bottle.</li>
-                <li>Read the dilution instructions before assuming that a bigger bottle equals better value.</li>
-            </ul>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Are bigger packs always better value?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Larger packs usually cost less per unit, but not always. Before buying the biggest size on the shelf, check these points:</p>
-            <ul>
-                <li><strong>Waste:</strong> will you use it before the best-before date? Spoiled food at any price is expensive.</li>
-                <li><strong>Storage:</strong> bulky rice, toilet roll or pet food needs cupboard or freezer space.</li>
-                <li><strong>Branding:</strong> some &ldquo;family size&rdquo; packs carry a premium price rather than a saving.</li>
-                <li><strong>Offers:</strong> a half-price small pack can beat a full-price large pack on unit price.</li>
-            </ul>
-            <p>The safest approach is to compare the unit price of both sizes with this tool, then buy the largest size you will realistically use.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Multipacks vs single items (toilet roll, nappies, tins, cans)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>For counted items (toilet roll, nappies, tins, cans, biscuits, bottled drinks), compare the price per item:</p>
-            <div class="acc-example"><strong>Price per item = total price &divide; number of items</strong></div>
-            <div class="acc-example"><strong>Worked example:</strong> 6-pack of toilet rolls for &pound;2.40 = 40p per roll. 4-pack for &pound;1.70 = 42.5p per roll. The 6-pack wins.</div>
-            <p>Special offers need extra care:</p>
-            <ul>
-                <li>&ldquo;Buy one get one free&rdquo; only saves money if you need both items and can store them.</li>
-                <li>&ldquo;3 for 2&rdquo; is cheapest when all three items have a similar unit price.</li>
-                <li>A multipack of small portions can cost more per item than loose items sold individually.</li>
-            </ul>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Top UK categories where unit-price comparison saves the most</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Across typical UK supermarket ranges, these categories reward checking the unit price every week:</p>
-            <ul>
-                <li><strong>Coffee and tea</strong> — bags vs loose, jars vs instant sachets.</li>
-                <li><strong>Cereals, granola and porridge oats</strong>.</li>
-                <li><strong>Rice, pasta, flour and lentils</strong> — value own-label vs branded.</li>
-                <li><strong>Laundry and dishwasher tablets</strong> — compare the price per wash, not per box.</li>
-                <li><strong>Nappies and toilet roll</strong> — price per nappy / per roll.</li>
-                <li><strong>Soft drinks, juice and milk</strong>.</li>
-                <li><strong>Pet food</strong> — tins vs pouches vs dry kibble, compared per kg.</li>
-                <li><strong>Cleaning sprays, washing-up liquid and toiletries</strong>.</li>
-            </ul>
-            <p>Supermarket own-label and value lines are frequently 20&ndash;40% cheaper per unit than leading brands with very similar ingredients.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Common supermarket shopping mistakes that quietly cost money</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <ul>
-                <li>Judging by the total price tag instead of the unit price.</li>
-                <li>Comparing two different units (for example a 1kg bag against a 750g bag without converting).</li>
-                <li>Assuming multipacks and &ldquo;value&rdquo; packs are automatically cheaper.</li>
-                <li>Skipping the supermarket&rsquo;s own-label range, which often matches branded quality.</li>
-                <li>Buying reduced-to-clear items without checking their normal unit price first.</li>
-                <li>Stocking up on perishable goods that expire before they can be used.</li>
-            </ul>
-            <p>Two minutes of unit-price comparison on the items you buy every week typically saves more than chasing one-off discounts.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">How do I calculate the price per 100g?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Divide the total price by the total weight in grams, then multiply by 100. For example, &pound;3.50 for 500g = 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Enter both products in the calculator above and it does the maths for you, instantly.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Which units can this tool compare?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare the same unit type: grams with grams, millilitres with millilitres, packs with packs.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Can I compare two different brands?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Yes. The calculator compares the unit price of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Is the calculator free to use?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Why does the same product cost different amounts in different sizes?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. The unit price normalises these differences so you can see the true cost per measure, not just the headline sticker price.</p>
-        </div>
-    </details>
-    <details class="acc-item">
-        <summary class="acc-summary"><span class="acc-q">Does it work for non-food products?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="acc-body">
-            <p>Yes. Compare laundry detergent, fabric conditioner, toilet rolls, nappies, cleaning sprays, shampoo, toothpaste and pet food — anything sold by weight, volume or count.</p>
+
+<!-- ===== Shopping Guides & FAQs (collapsible) ===== -->
+<div class="card collapsible-card">
+    <details>
+        <summary>
+            <span class="summary-content">
+                <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+                <span>Shopping Guides &amp; FAQs</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="content">
+            <p class="guides-intro">Practical, plain-English guides to help you compare unit prices like a pro — from price per 100g to multipack value. Tap any question to open the answer.</p>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">What is unit price — and why does it matter?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p><strong>Unit price</strong> (or price per unit) is the cost of one standard measure of a product — for example 100 grams, 100 millilitres, 1 kilogram, 1 litre or a single item. The total price on the shelf tells you how much you pay in total; the unit price tells you how much value you actually get. Two packs can look similar in price while containing very different amounts.</p>
+                    <p>In UK supermarkets, shelf-edge labels usually show the price per kg or per litre underneath the product price. This tool does the same calculation for any two products, including packs sold in grams, millilitres or counts, so you can compare like-for-like in seconds.</p>
+                    <p>Comparing unit prices also protects you from <strong>shrinkflation</strong>: when a manufacturer keeps the price similar but reduces the contents (for example a 500g bag becoming 450g). Only the unit price reveals that the item has quietly become more expensive.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">How to compare price per 100g and per kg (food, coffee, cereal, rice)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>For solid foods and dry goods (coffee, cereal, rice, pasta, flour, sugar, pet food), compare by weight. Convert kilograms to grams first (1 kg = 1000 g), then use the formula:</p>
+                    <div class="acc-example"><strong>Price per 100g = (total price &divide; total weight in g) &times; 100</strong></div>
+                    <div class="acc-example"><strong>Worked example:</strong> Pack A: 500g coffee for &pound;3.50 &rarr; 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Pack B: 1kg (1000g) coffee for &pound;6.50 &rarr; 6.50 &divide; 1000 &times; 100 = &pound;0.65 per 100g. Pack B is cheaper per 100g even though its total price is higher.</div>
+                    <ul>
+                        <li>Always convert kg to g before comparing, or simply pick the kg option in the calculator.</li>
+                        <li>For tinned foods, check the <strong>drained weight</strong> (e.g. beans in sauce) — the label lists both drained and total weight.</li>
+                        <li>Compare within the same quality tier: premium ground coffee or speciality blends can cost more per gram for good reason.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">How to compare price per litre and per 100ml (drinks, detergent, softener)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>For liquids (milk, soft drinks, juice, washing-up liquid, fabric conditioner, bleach, shampoo), compare by volume. Remember that 1 litre = 1000 ml.</p>
+                    <div class="acc-example"><strong>Price per 100ml = (total price &divide; total volume in ml) &times; 100</strong></div>
+                    <div class="acc-example"><strong>Worked example:</strong> Pack A: 2 litres cola for &pound;1.65 &rarr; 165p &divide; 2000 &times; 100 = 8.25p per 100ml. Pack B: 500ml bottle for 45p &rarr; 45 &divide; 500 &times; 100 = 9.0p per 100ml. The 2-litre bottle works out cheaper.</div>
+                    <ul>
+                        <li>Concentrated products (dilute-as-directed juice, concentrated fabric softener) should be compared on the diluted final amount, not the bottle size.</li>
+                        <li>Multipacks of small bottles often cost more per 100ml than one large bottle.</li>
+                        <li>Read the dilution instructions before assuming that a bigger bottle equals better value.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Are bigger packs always better value?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Larger packs usually cost less per unit, but not always. Before buying the biggest size on the shelf, check these points:</p>
+                    <ul>
+                        <li><strong>Waste:</strong> will you use it before the best-before date? Spoiled food at any price is expensive.</li>
+                        <li><strong>Storage:</strong> bulky rice, toilet roll or pet food needs cupboard or freezer space.</li>
+                        <li><strong>Branding:</strong> some &ldquo;family size&rdquo; packs carry a premium price rather than a saving.</li>
+                        <li><strong>Offers:</strong> a half-price small pack can beat a full-price large pack on unit price.</li>
+                    </ul>
+                    <p>The safest approach is to compare the unit price of both sizes with this tool, then buy the largest size you will realistically use.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Multipacks vs single items (toilet roll, nappies, tins, cans)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>For counted items (toilet roll, nappies, tins, cans, biscuits, bottled drinks), compare the price per item:</p>
+                    <div class="acc-example"><strong>Price per item = total price &divide; number of items</strong></div>
+                    <div class="acc-example"><strong>Worked example:</strong> 6-pack of toilet rolls for &pound;2.40 = 40p per roll. 4-pack for &pound;1.70 = 42.5p per roll. The 6-pack wins.</div>
+                    <p>Special offers need extra care:</p>
+                    <ul>
+                        <li>&ldquo;Buy one get one free&rdquo; only saves money if you need both items and can store them.</li>
+                        <li>&ldquo;3 for 2&rdquo; is cheapest when all three items have a similar unit price.</li>
+                        <li>A multipack of small portions can cost more per item than loose items sold individually.</li>
+                    </ul>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Top UK categories where unit-price comparison saves the most</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Across typical UK supermarket ranges, these categories reward checking the unit price every week:</p>
+                    <ul>
+                        <li><strong>Coffee and tea</strong> — bags vs loose, jars vs instant sachets.</li>
+                        <li><strong>Cereals, granola and porridge oats</strong>.</li>
+                        <li><strong>Rice, pasta, flour and lentils</strong> — value own-label vs branded.</li>
+                        <li><strong>Laundry and dishwasher tablets</strong> — compare the price per wash, not per box.</li>
+                        <li><strong>Nappies and toilet roll</strong> — price per nappy / per roll.</li>
+                        <li><strong>Soft drinks, juice and milk</strong>.</li>
+                        <li><strong>Pet food</strong> — tins vs pouches vs dry kibble, compared per kg.</li>
+                        <li><strong>Cleaning sprays, washing-up liquid and toiletries</strong>.</li>
+                    </ul>
+                    <p>Supermarket own-label and value lines are frequently 20&ndash;40% cheaper per unit than leading brands with very similar ingredients.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Common supermarket shopping mistakes that quietly cost money</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <ul>
+                        <li>Judging by the total price tag instead of the unit price.</li>
+                        <li>Comparing two different units (for example a 1kg bag against a 750g bag without converting).</li>
+                        <li>Assuming multipacks and &ldquo;value&rdquo; packs are automatically cheaper.</li>
+                        <li>Skipping the supermarket&rsquo;s own-label range, which often matches branded quality.</li>
+                        <li>Buying reduced-to-clear items without checking their normal unit price first.</li>
+                        <li>Stocking up on perishable goods that expire before they can be used.</li>
+                    </ul>
+                    <p>Two minutes of unit-price comparison on the items you buy every week typically saves more than chasing one-off discounts.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">How do I calculate the price per 100g?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Divide the total price by the total weight in grams, then multiply by 100. For example, &pound;3.50 for 500g = 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Enter both products in the calculator above and it does the maths for you, instantly.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Which units can this tool compare?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare the same unit type: grams with grams, millilitres with millilitres, packs with packs.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Can I compare two different brands?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Yes. The calculator compares the unit price of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Is the calculator free to use?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Why does the same product cost different amounts in different sizes?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. The unit price normalises these differences so you can see the true cost per measure, not just the headline sticker price.</p>
+                </div>
+            </details>
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Does it work for non-food products?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>Yes. Compare laundry detergent, fabric conditioner, toilet rolls, nappies, cleaning sprays, shampoo, toothpaste and pet food — anything sold by weight, volume or count.</p>
+                </div>
+            </details>
         </div>
     </details>
 </div>
+
+<!-- ===== How to Use (collapsible) ===== -->
 <div class="howto-section">
-    <h2>
-        <svg class="icon-green" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        How to Use
-    </h2>
-    <div class="step-card">
-        <div class="step-icon">
-            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+    <details>
+        <summary>
+            <span class="summary-content">
+                <svg class="icon-green" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span>How to Use</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="content">
+            <div class="step-card">
+                <div class="step-icon">
+                    <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+                </div>
+                <div class="step-content">
+                    <strong>Weight — Grams (g) or Kilograms (kg)</strong>
+                    <p>Enter total weight, e.g. 500 for 500g, or 1.5 for 1.5kg</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                </div>
+                <div class="step-content">
+                    <strong>Volume — Millilitres (ml) or Litres (L)</strong>
+                    <p>Enter total volume, e.g. 750 for 750ml, or 2 for 2 Litres</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                </div>
+                <div class="step-content">
+                    <strong>Quantity — Packs or Individual Items</strong>
+                    <p>Enter how many items are in the pack, e.g. 6 for a 6-pack</p>
+                </div>
+            </div>
+            <div class="steps-list">
+                <div class="step-num"><span>1</span> Enter total price in £</div>
+                <div class="step-num"><span>2</span> Enter the weight, volume, or quantity</div>
+                <div class="step-num"><span>3</span> Select the unit type</div>
+                <div class="step-num"><span>4</span> Click Compare Prices</div>
+            </div>
+            <div class="important-note">
+                <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                <span><strong>Important:</strong> Always compare the same units. g with g, ml with ml, pack with pack.</span>
+            </div>
         </div>
-        <div class="step-content">
-            <strong>Weight — Grams (g) or Kilograms (kg)</strong>
-            <p>Enter total weight, e.g. 500 for 500g, or 1.5 for 1.5kg</p>
-        </div>
-    </div>
-    <div class="step-card">
-        <div class="step-icon">
-            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
-        </div>
-        <div class="step-content">
-            <strong>Volume — Millilitres (ml) or Litres (L)</strong>
-            <p>Enter total volume, e.g. 750 for 750ml, or 2 for 2 Litres</p>
-        </div>
-    </div>
-    <div class="step-card">
-        <div class="step-icon">
-            <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
-        </div>
-        <div class="step-content">
-            <strong>Quantity — Packs or Individual Items</strong>
-            <p>Enter how many items are in the pack, e.g. 6 for a 6-pack</p>
-        </div>
-    </div>
-    <div class="steps-list">
-        <div class="step-num"><span>1</span> Enter total price in £</div>
-        <div class="step-num"><span>2</span> Enter the weight, volume, or quantity</div>
-        <div class="step-num"><span>3</span> Select the unit type</div>
-        <div class="step-num"><span>4</span> Click Compare Prices</div>
-    </div>
-    <div class="important-note">
-        <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-        <span><strong>Important:</strong> Always compare the same units. g with g, ml with ml, pack with pack.</span>
-    </div>
+    </details>
 </div>
+
 <div class="card product-card">
     <h3>
         <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
@@ -862,122 +975,6 @@
         box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-
-<!-- Which Is Cheaper Assistant Widget -->
-<button class="ai-fab" id="aiFab" aria-label="Ask shopping assistant" title="Ask Which Is Cheaper Assistant">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-</button>
-<div class="ai-panel" id="aiPanel">
-    <div class="ai-header">
-        <div class="ai-header-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-            Shopping Assistant
-        </div>
-        <div class="ai-header-actions">
-            <button id="aiHide" title="Hide assistant">Hide</button>
-            <button id="aiClose" title="Minimize">&times;</button>
-        </div>
-    </div>
-    <div class="ai-messages" id="aiMessages">
-        <div class="ai-msg bot">Hi! I'm your shopping assistant. Compare two products by unit price — e.g. "2 litres for £3 vs 500ml for £1" or "1kg for £4 vs 500g for £2.20". I'll tell you which is better value! &#128722;</div>
-    </div>
-    <div class="ai-typing" id="aiTyping"><span></span><span></span><span></span></div>
-    <div class="ai-input-row">
-        <input class="ai-input" id="aiInput" placeholder="e.g. 1L £1.50 vs 500ml £0.80" />
-        <button class="ai-send" id="aiSend">Send</button>
-    </div>
-</div>
-
-<script>
-(function(){
-    function normQty(qty, unit){
-        // returns {type: 'ml'|'g'|'unit', val: number}
-        var u = (unit||'').toLowerCase();
-        var q = parseFloat(qty);
-        if(/^(l|litre|liter|litres|liters)$/.test(u)) return {type:'ml', val: q*1000};
-        if(/^ml$/.test(u) || /^millilit/.test(u)) return {type:'ml', val: q};
-        if(/^kg$/.test(u) || /^kilogram/.test(u)) return {type:'g', val: q*1000};
-        if(/^g$/.test(u) || /^gram/.test(u)) return {type:'g', val: q};
-        return {type:'unit', val: q};
-    }
-    function parsePrice(pound, pence){
-        if(pound!==undefined && pound!=='') return parseFloat(pound);
-        if(pence!==undefined && pence!=='') return parseFloat(pence)/100;
-        return null;
-    }
-    function findProducts(text){
-        var t = text.toLowerCase();
-        var prods = [];
-        var re, m;
-        // Pattern A: price first — £X / Xp  [for]  qty  unit
-        re = /(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)\s*(?:for|=|per|@)?\s*(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)?/g;
-        while((m = re.exec(t)) !== null){
-            var price = parsePrice(m[1], m[2]);
-            var nq = normQty(m[3], m[4]);
-            if(price && nq.val > 0) prods.push({price: price, qty: nq.val, type: nq.type, unit: m[4]||'unit'});
-        }
-        // Pattern B: qty first — qty unit  [for]  £X / Xp
-        re = /(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)\s*(?:for|=|@|costs?|is)?\s*(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)/g;
-        while((m = re.exec(t)) !== null){
-            var price2 = parsePrice(m[3], m[4]);
-            var nq2 = normQty(m[1], m[2]);
-            if(price2 && nq2.val > 0) prods.push({price: price2, qty: nq2.val, type: nq2.type, unit: m[2]});
-        }
-        // dedupe by (price,qty)
-        var seen = {}, out = [];
-        for(var i=0;i<prods.length;i++){
-            var k = prods[i].price+'_'+prods[i].qty+'_'+prods[i].type;
-            if(!seen[k]){ seen[k]=1; out.push(prods[i]); }
-        }
-        return out.slice(0,2);
-    }
-    function unitPrice(p){
-        if(p.type==='ml') return {per: '100ml', val: p.price/(p.qty/100)};
-        if(p.type==='g') return {per: '100g', val: p.price/(p.qty/100)};
-        return {per: 'unit', val: p.price/p.qty};
-    }
-    function fmt(n){ return '£'+n.toFixed(2); }
-    function respond(text){
-        var t = text.toLowerCase().trim();
-        if(/^(hi|hello|hey|good (morning|afternoon|evening))\b/.test(t)) return "Hi! Compare two products and I'll tell you which is better value. E.g. '2L for £3 vs 500ml for £1' — or use the calculator above for exact results!";
-        if(/thank|thanks|cheers/.test(t)) return "You're welcome! Happy shopping — always check the per-unit price!";
-        if(/help|what can you do|how do (you|this) work/.test(t)) return "I compare unit prices! Try:\n• '1 litre for £1.50 vs 500ml for 80p'\n• '1kg for £4 vs 750g for £3.20'\n• '6 pack for £3 vs 4 pack for £2.20'\nFor exact results, use the calculator above.";
-        var prods = findProducts(text);
-        if(prods.length < 2){
-            return "I need two products to compare! Tell me both with quantity and price — e.g. '2 litres for £3 vs 500ml for £1'. Or enter them in the calculator above for exact results.";
-        }
-        var a = prods[0], b = prods[1];
-        if(a.type !== b.type){
-            return "Hmm, those are different unit types ("+a.unit+" vs "+b.unit+") — I can only compare like-for-like (ml with ml, g with g, pieces with pieces). Try again or use the calculator above.";
-        }
-        var ua = unitPrice(a), ub = unitPrice(b);
-        var cheaper, dearer;
-        if(ua.val < ub.val){ cheaper={p:a, u:ua}; dearer={p:b, u:ub}; }
-        else if(ub.val < ua.val){ cheaper={p:b, u:ub}; dearer={p:a, u:ua}; }
-        else return "They cost exactly the same per "+ua.per+"! Either is fine — use the calculator above to double-check.";
-        var saveAbs = dearer.u.val - cheaper.u.val;
-        var savePct = (saveAbs / dearer.u.val * 100).toFixed(0);
-        return "Product A: "+fmt(a.price)+" for "+a.qty+(a.type==='ml'?'ml':a.type==='g'?'g':' units')+" = "+fmt(ua.val)+"/"+ua.per+"\nProduct B: "+fmt(b.price)+" for "+b.qty+(b.type==='ml'?'ml':b.type==='g'?'g':' units')+" = "+fmt(ub.val)+"/"+ub.per+"\n→ The "+(cheaper.p===a?'FIRST':'SECOND')+" product is better value! It's "+savePct+"% cheaper per "+ua.per+" (you save "+fmt(saveAbs)+" per "+ua.per+").\nTip: bigger packs are usually better value — always check the per-unit price!";
-    }
-    var fab=document.getElementById("aiFab"), panel=document.getElementById("aiPanel"),
-        msgs=document.getElementById("aiMessages"), input=document.getElementById("aiInput"),
-        send=document.getElementById("aiSend"), typing=document.getElementById("aiTyping"),
-        closeBtn=document.getElementById("aiClose"), hideBtn=document.getElementById("aiHide");
-    if(localStorage.getItem("aiHiddenWIC")==="1") fab.style.display="none";
-    fab.addEventListener("click",function(){ panel.classList.toggle("open"); if(panel.classList.contains("open")) input.focus(); });
-    closeBtn.addEventListener("click",function(){ panel.classList.remove("open"); });
-    hideBtn.addEventListener("click",function(){ panel.classList.remove("open"); fab.style.display="none"; localStorage.setItem("aiHiddenWIC","1"); });
-    function render(text,who){ var d=document.createElement("div"); d.className="ai-msg "+who; d.textContent=text; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; }
-    function sendMsg(text){
-        if(!text.trim()) return;
-        render(text,"user"); input.value="";
-        typing.style.display="block"; msgs.scrollTop=msgs.scrollHeight;
-        setTimeout(function(){ typing.style.display="none"; render(respond(text),"bot"); }, 600);
-    }
-    send.addEventListener("click",function(){ sendMsg(input.value); });
-    input.addEventListener("keydown",function(e){ if(e.key==="Enter") sendMsg(input.value); });
-})();
 </script>
 </body>
 </html>

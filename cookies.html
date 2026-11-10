@@ -48,69 +48,174 @@
       gtag('config', 'G-21XW9GXD6G');
     </script>
     <style>
-        :root {
-            --primary: #165DFF;
-            --text: #1D2129;
-            --text-secondary: #4E5969;
-            --bg: #F7F8FA;
-            --card: #FFFFFF;
-            --border: #E5E6EB;
-        }
+        /* ===== Apple-inspired modern design ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 20px 16px 40px;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.5;
+            padding: 24px 16px 40px;
             min-height: 100vh;
+            letter-spacing: -0.01em;
         }
         .container {
             max-width: 640px;
             margin: 0 auto;
-            background: var(--card);
-            padding: 24px;
-            border-radius: 18px;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+            background: #ffffff;
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.03);
         }
         h1 {
-            font-size: 1.35rem;
-            margin-bottom: 24px;
-            color: var(--primary);
+            font-size: 1.55rem;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+        }
+        .last-updated {
+            color: #6e6e73;
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+            font-style: italic;
+            letter-spacing: -0.01em;
         }
         h2 {
-            font-size: 1.05rem;
+            font-size: 1.08rem;
             margin: 32px 0 12px;
+            color: #1d1d1f;
+            padding-left: 12px;
+            border-left: 4px solid #007AFF;
+            letter-spacing: -0.02em;
+            font-weight: 700;
         }
-        p, ul {
-            margin-bottom: 16px;
-            color: var(--text-secondary);
+        h3 {
+            font-size: 1rem;
+            margin: 24px 0 10px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+        p {
+            font-size: 0.92rem;
+            margin-bottom: 15px;
+            color: #6e6e73;
+            letter-spacing: -0.01em;
         }
         ul {
+            margin-bottom: 15px;
             padding-left: 24px;
+            color: #6e6e73;
         }
         li {
             margin-bottom: 8px;
+            font-size: 0.92rem;
+            letter-spacing: -0.01em;
         }
-        a {
-            color: var(--primary);
-            text-decoration: none;
+        strong { color: #1d1d1f; }
+        code {
+            background: #f5f5f7;
+            padding: 1px 6px;
+            border-radius: 5px;
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-size: 0.85em;
+            color: #1d1d1f;
         }
-        a:hover {
-            text-decoration: underline;
-        }
+        a { color: #007AFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
         .back-link {
             display: inline-block;
             margin-top: 32px;
             padding-top: 24px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            font-weight: 500;
         }
-    
+
+        /* Cookie table */
+        .cookie-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 14px 0;
+        }
+        .cookie-table {
+            width: 100%;
+            min-width: 560px;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .cookie-table thead tr {
+            background: #f5f5f7;
+            text-align: left;
+        }
+        .cookie-table th,
+        .cookie-table td {
+            padding: 8px;
+            border: 1px solid rgba(0,0,0,0.06);
+            color: #6e6e73;
+        }
+        .cookie-table th {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        /* Site header (matches index) */
+        header {
+            text-align: center;
+            padding: 8px 0 24px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        a.site-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+        }
+        a.site-title:hover { text-decoration: none; color: #1d1d1f; }
+        .site-title .icon-cart {
+            color: #007AFF;
+            flex-shrink: 0;
+        }
+        header .subtitle {
+            color: #6e6e73;
+            font-size: 1.05rem;
+            margin-top: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px;
+            font-size: 0.8rem;
+            color: #86868b;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        footer a {
+            color: #007AFF;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        footer a:hover { text-decoration: underline; }
+
         /* Cookie consent banner */
+        .cookie-overlay, .cookie-overlay * { box-sizing: border-box; }
         .cookie-overlay {
             position: fixed;
             bottom: 16px;
@@ -119,14 +224,15 @@
             width: calc(100% - 32px);
             max-width: 600px;
             background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 18px;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
             padding: 22px 22px 20px;
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
             z-index: 100;
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         .cookie-overlay.show {
             visibility: visible;
@@ -148,22 +254,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2563eb;
+            color: #007AFF;
         }
         .cookie-title {
             font-size: 1.02rem;
             font-weight: 700;
-            color: #0f172a;
-            letter-spacing: -0.2px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
         }
         .cookie-text {
             font-size: 0.9rem;
-            color: #475569;
+            color: #6e6e73;
             line-height: 1.55;
             margin: 0 0 16px 0;
         }
         .cookie-text a {
-            color: #2563eb;
+            color: #007AFF;
             text-decoration: underline;
             font-weight: 500;
         }
@@ -179,104 +285,46 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.18s ease;
+            font-family: inherit;
         }
         .btn-decline {
             background: transparent;
-            border: 1.5px solid #cbd5e1;
-            color: #475569;
+            border: 1px solid #d2d2d7;
+            color: #6e6e73;
         }
-        .btn-decline:hover { background: #f1f5f9; }
+        .btn-decline:hover { background: #f5f5f7; border-color: #86868b; }
         .btn-accept {
-            background: #2563eb;
+            background: #007AFF;
             color: white;
             border: none;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
         }
         .btn-accept:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.42);
+            background: #0071e3;
         }
+
+        /* ===== Responsive ===== */
         @media (max-width: 480px) {
-            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); }
-            .cookie-title { font-size: 0.9rem; }
+            body { padding: 12px 12px 32px; }
+            .container { padding: 20px; border-radius: 18px; }
+            h1 { font-size: 1.3rem; }
+            h2 { font-size: 1rem; }
+            h3 { font-size: 0.95rem; }
+            a.site-title { font-size: 1.5rem; gap: 8px; }
+            .site-title .icon-cart { width: 26px; height: 26px; }
+            header .subtitle { font-size: 0.92rem; }
+            header { padding: 8px 0 18px; }
+            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; }
+            .cookie-title { font-size: 0.95rem; }
             .cookie-text { font-size: 0.84rem; }
             .cookie-buttons button { padding: 11px; font-size: 0.88rem; }
         }
-
-        /* Site header (matches index) */
-        header {
-            text-align: center;
-            padding: 8px 0 20px;
+        @media (max-width: 360px) {
+            a.site-title { font-size: 1.28rem; }
+            .site-title .icon-cart { width: 22px; height: 22px; }
         }
-        a.site-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1e293b;
-            letter-spacing: -0.5px;
-            text-decoration: none;
+        @media (min-width: 768px) {
+            .container { padding: 32px; }
         }
-        a.site-title:hover { text-decoration: none; color: #1e293b; }
-        .site-title .icon-cart {
-            color: #2563eb;
-            flex-shrink: 0;
-        }
-        header .subtitle {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-top: 6px;
-        }
-        @media (max-width: 480px) {
-            a.site-title { font-size: 1.35rem; gap: 8px; }
-            .site-title .icon-cart { width: 26px; height: 26px; }
-            header .subtitle { font-size: 0.85rem; }
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 32px;
-            padding: 16px;
-            font-size: 0.8rem;
-            color: #94a3b8;
-        }
-        footer a {
-            color: #2563eb;
-            text-decoration: none;
-            margin: 0 6px;
-        }
-        footer a:hover { text-decoration: underline; }
-
-        /* ===== Which Is Cheaper Assistant Widget (fluid) ===== */
-        .ai-fab { position: fixed; bottom: clamp(12px, 2vw, 18px); right: clamp(12px, 2vw, 18px); width: clamp(48px, 12vw, 56px); height: clamp(48px, 12vw, 56px); border-radius: 50%; background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; border: none; cursor: pointer; z-index: 9999; box-shadow: 0 6px 20px rgba(22,163,74,0.45); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; }
-        .ai-fab:hover { transform: scale(1.1); }
-        .ai-fab svg { width: clamp(22px, 5vw, 28px); height: clamp(22px, 5vw, 28px); }
-        .ai-panel { position: fixed; bottom: calc(clamp(48px, 12vw, 56px) + clamp(14px, 2.5vw, 22px)); right: clamp(12px, 2vw, 18px); width: min(340px, calc(100vw - clamp(24px, 5vw, 40px))); height: min(480px, calc(100vh - clamp(90px, 18vh, 130px))); background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.22); z-index: 9999; display: none; flex-direction: column; overflow: hidden; animation: aiSlideUp 0.25s ease; }
-        .ai-panel.open { display: flex; }
-        @keyframes aiSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .ai-header { background: linear-gradient(135deg, #16a34a, #15803d); color: #fff; padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 16px); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-        .ai-header-title { font-weight: 700; font-size: clamp(0.84rem, 2.2vw, 0.95rem); display: flex; align-items: center; gap: 8px; }
-        .ai-header-title svg { width: clamp(18px, 4.5vw, 22px); height: clamp(18px, 4.5vw, 22px); flex-shrink: 0; }
-        .ai-header-actions { display: flex; gap: 12px; align-items: center; }
-        .ai-header button { background: none; border: none; color: #fff; cursor: pointer; font-size: 0.8rem; opacity: 0.9; padding: 2px; }
-        .ai-header button:hover { opacity: 1; }
-        .ai-messages { flex: 1; overflow-y: auto; padding: clamp(10px, 2vw, 14px); background: #f0fdf4; display: flex; flex-direction: column; gap: 8px; -webkit-overflow-scrolling: touch; }
-        .ai-msg { max-width: 86%; padding: clamp(8px, 1.8vw, 10px) clamp(10px, 2vw, 12px); border-radius: 12px; font-size: clamp(0.82rem, 2vw, 0.9rem); line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
-        .ai-msg.user { align-self: flex-end; background: #16a34a; color: #fff; border-bottom-right-radius: 4px; }
-        .ai-msg.bot { align-self: flex-start; background: #fff; color: #1e293b; border: 1px solid #dcfce7; border-bottom-left-radius: 4px; }
-        .ai-typing { align-self: flex-start; background: #fff; border: 1px solid #dcfce7; padding: 9px 12px; border-radius: 12px; display: none; }
-        .ai-typing span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #86efac; margin: 0 2px; animation: aiBounce 1.2s infinite; }
-        .ai-typing span:nth-child(2) { animation-delay: 0.15s; }
-        .ai-typing span:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes aiBounce { 0%,60%,100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
-        .ai-input-row { display: flex; gap: 8px; padding: clamp(8px, 1.8vw, 10px); border-top: 1px solid #dcfce7; background: #fff; flex-shrink: 0; }
-        .ai-input { flex: 1; padding: clamp(9px, 2vw, 11px) clamp(11px, 2.2vw, 13px); border: 1px solid #bbf7d0; border-radius: 10px; font-size: clamp(0.84rem, 2vw, 0.9rem); outline: none; min-height: 42px; }
-        .ai-input:focus { border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
-        .ai-send { background: #16a34a; color: #fff; border: none; border-radius: 10px; padding: 0 clamp(12px, 3vw, 16px); cursor: pointer; font-weight: 600; font-size: clamp(0.82rem, 2vw, 0.9rem); min-height: 42px; }
-        .ai-send:hover { background: #15803d; }
     </style>
 </head>
 <body>
@@ -290,10 +338,10 @@
 
     <div class="container">
         <h1>Cookie Policy</h1>
-        <p><strong>Last updated:</strong> October 26, 2026</p>
+        <p class="last-updated">Last updated: October 26, 2026</p>
         <h2>What are cookies?</h2>
         <p>Cookies are small text files that are placed on your computer or mobile device by websites that you visit. They are widely used to make websites work, or work more efficiently, as well as to provide information to the owners of the site.</p>
-        <p>To find out more about cookies, visit <a href="https://www.allaboutcookies.org" target="_blank">allaboutcookies.org</a> — this provides comprehensive information about cookies and how they are used.</p><p>Our use of cookies and similar technologies complies with the <strong>Privacy and Electronic Communications Regulations 2003 (PECR)</strong>, which requires us to obtain your consent before placing non-essential cookies on your device. Essential cookies necessary for the site to function may be set without consent.</p>
+        <p>To find out more about cookies, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a> — this provides comprehensive information about cookies and how they are used.</p><p>Our use of cookies and similar technologies complies with the <strong>Privacy and Electronic Communications Regulations 2003 (PECR)</strong>, which requires us to obtain your consent before placing non-essential cookies on your device. Essential cookies necessary for the site to function may be set without consent.</p>
         <h2>How we use cookies</h2>
         <p>We ask for your consent before placing any non-essential cookies. We use the following types of cookies:</p>
         <ul>
@@ -301,24 +349,44 @@
             <li><strong>Analytics/performance cookies:</strong> With your consent, we use Google Analytics to recognise and count the number of visitors and to see how visitors move around our website. This helps us improve the way our website works. The data collected is anonymous and aggregated.</li>
             <li><strong>Advertising cookies:</strong> With your consent, we use Google AdSense to display advertisements. Google uses advertising cookies to show you ads that are more relevant to you, to limit how many times you see an ad, and to measure the effectiveness of advertising campaigns. These cookies track your activity across websites. For details on how Google uses data, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</li>
         </ul>
-        <h2><h3>Cookies and similar technologies we use</h3>
-<p>The table below lists the specific cookies and similar technologies that may be used. Analytics and advertising cookies are set only after you give consent via the cookie banner.</p>
-<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0"><table style="width:100%;min-width:560px;border-collapse:collapse;font-size:14px">
-<thead><tr style="background:#f1f5f9;text-align:left">
-<th style="padding:8px;border:1px solid #e2e8f0">Cookie / technology</th>
-<th style="padding:8px;border:1px solid #e2e8f0">Purpose</th>
-<th style="padding:8px;border:1px solid #e2e8f0">Duration</th>
-<th style="padding:8px;border:1px solid #e2e8f0">Set by</th>
-</tr></thead>
-<tbody>
-<tr><td style="padding:8px;border:1px solid #e2e8f0">Local storage (saved preferences &amp; consent choice)</td><td style="padding:8px;border:1px solid #e2e8f0">Remembers your settings and your cookie consent choice — necessary for the site to work</td><td style="padding:8px;border:1px solid #e2e8f0">Persistent (until you clear it)</td><td style="padding:8px;border:1px solid #e2e8f0">This site (first party)</td></tr>
-<tr><td style="padding:8px;border:1px solid #e2e8f0"><code>_ga</code>, <code>_ga_&lt;container-id&gt;</code> (Google Analytics 4)</td><td style="padding:8px;border:1px solid #e2e8f0">Counts visitors and shows how the site is used (anonymous, aggregated)</td><td style="padding:8px;border:1px solid #e2e8f0">2 years</td><td style="padding:8px;border:1px solid #e2e8f0">This site (first party, processed by Google)</td></tr>
-<tr><td style="padding:8px;border:1px solid #e2e8f0"><code>__gads</code>, <code>__gpi</code> (Google AdSense)</td><td style="padding:8px;border:1px solid #e2e8f0">Shows relevant ads, limits how often you see an ad, and measures ad performance</td><td style="padding:8px;border:1px solid #e2e8f0">Up to 1 year</td><td style="padding:8px;border:1px solid #e2e8f0">Google (third party)</td></tr>
-</tbody></table></div>
-<p>Google may also set additional cookies (such as <code>NID</code> and <code>1P_JAR</code>) when serving ads. For the full, up-to-date list see <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google's cookie policy</a>.</p>
-<h3>How we use consent (Google Consent Mode v2)</h3>
-<p>We use Google Consent Mode v2. Before you accept, all advertising and analytics cookies are blocked by default — the four Google signals (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code> and <code>analytics_storage</code>) are set to <code>'denied'</code>. When you click <strong>Accept</strong>, they are set to <code>'granted'</code>; when you click <strong>Decline</strong>, they remain <code>'denied'</code> and no advertising or analytics cookies are set. You can change your choice at any time by clearing your browser cookies and local storage for this site — the consent banner will reappear.</p>
-What happens if you decline cookies?</h2>
+        <h3>Cookies and similar technologies we use</h3>
+        <p>The table below lists the specific cookies and similar technologies that may be used. Analytics and advertising cookies are set only after you give consent via the cookie banner.</p>
+        <div class="cookie-table-wrap">
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie / technology</th>
+                        <th>Purpose</th>
+                        <th>Duration</th>
+                        <th>Set by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Local storage (saved preferences &amp; consent choice)</td>
+                        <td>Remembers your settings and your cookie consent choice — necessary for the site to work</td>
+                        <td>Persistent (until you clear it)</td>
+                        <td>This site (first party)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_ga</code>, <code>_ga_&lt;container-id&gt;</code> (Google Analytics 4)</td>
+                        <td>Counts visitors and shows how the site is used (anonymous, aggregated)</td>
+                        <td>2 years</td>
+                        <td>This site (first party, processed by Google)</td>
+                    </tr>
+                    <tr>
+                        <td><code>__gads</code>, <code>__gpi</code> (Google AdSense)</td>
+                        <td>Shows relevant ads, limits how often you see an ad, and measures ad performance</td>
+                        <td>Up to 1 year</td>
+                        <td>Google (third party)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Google may also set additional cookies (such as <code>NID</code> and <code>1P_JAR</code>) when serving ads. For the full, up-to-date list see <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google's cookie policy</a>.</p>
+        <h3>How we use consent (Google Consent Mode v2)</h3>
+        <p>We use Google Consent Mode v2. Before you accept, all advertising and analytics cookies are blocked by default — the four Google signals (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code> and <code>analytics_storage</code>) are set to <code>'denied'</code>. When you click <strong>Accept</strong>, they are set to <code>'granted'</code>; when you click <strong>Decline</strong>, they remain <code>'denied'</code> and no advertising or analytics cookies are set. You can change your choice at any time by clearing your browser cookies and local storage for this site — the consent banner will reappear.</p>
+        <h2>What happens if you decline cookies?</h2>
         <p>If you click "Decline" on the cookie banner, we will not place analytics or advertising cookies. The website will still work fully, and you will still see advertisements — but they will be generic and less relevant to you, rather than personalised.</p>
         <h2>Withdrawing your consent</h2>
         <p>You can change your mind at any time. Simply clear your browser's cookies and local storage for this website — the cookie banner will appear again on your next visit, and you can make a new choice.</p>
@@ -329,7 +397,7 @@ What happens if you decline cookies?</h2>
             <li>Visit <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">YourAdChoices</a> or <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener">Network Advertising Initiative</a> to opt out from participating ad networks.</li>
         </ul>
         <h2>Managing cookies</h2>
-        <p>You can control and/or delete cookies as you wish — for details, see <a href="https://www.allaboutcookies.org/manage-cookies/" target="_blank">allaboutcookies.org/manage-cookies</a>. You can delete all cookies that are already on your computer, and you can set most browsers to prevent them from being placed. If you do this, however, you may have to manually adjust some preferences every time you visit a site and some services and functionalities may not work properly.</p>
+        <p>You can control and/or delete cookies as you wish — for details, see <a href="https://www.allaboutcookies.org/manage-cookies/" target="_blank" rel="noopener">allaboutcookies.org/manage-cookies</a>. You can delete all cookies that are already on your computer, and you can set most browsers to prevent them from being placed. If you do this, however, you may have to manually adjust some preferences every time you visit a site and some services and functionalities may not work properly.</p>
         <h2>Changes to this policy</h2>
         <p>We may update this Cookie Policy from time to time. We encourage you to review this page periodically to stay informed about our use of cookies.</p>
         <h2>Contact us</h2>
@@ -384,122 +452,6 @@ What happens if you decline cookies?</h2>
         });
         document.getElementById('cookie-notice').classList.remove('show');
     }
-</script>
-
-<!-- Which Is Cheaper Assistant Widget -->
-<button class="ai-fab" id="aiFab" aria-label="Ask shopping assistant" title="Ask Which Is Cheaper Assistant">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-</button>
-<div class="ai-panel" id="aiPanel">
-    <div class="ai-header">
-        <div class="ai-header-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-            Shopping Assistant
-        </div>
-        <div class="ai-header-actions">
-            <button id="aiHide" title="Hide assistant">Hide</button>
-            <button id="aiClose" title="Minimize">&times;</button>
-        </div>
-    </div>
-    <div class="ai-messages" id="aiMessages">
-        <div class="ai-msg bot">Hi! I'm your shopping assistant. Compare two products by unit price — e.g. "2 litres for £3 vs 500ml for £1" or "1kg for £4 vs 500g for £2.20". I'll tell you which is better value! &#128722;</div>
-    </div>
-    <div class="ai-typing" id="aiTyping"><span></span><span></span><span></span></div>
-    <div class="ai-input-row">
-        <input class="ai-input" id="aiInput" placeholder="e.g. 1L £1.50 vs 500ml £0.80" />
-        <button class="ai-send" id="aiSend">Send</button>
-    </div>
-</div>
-
-<script>
-(function(){
-    function normQty(qty, unit){
-        // returns {type: 'ml'|'g'|'unit', val: number}
-        var u = (unit||'').toLowerCase();
-        var q = parseFloat(qty);
-        if(/^(l|litre|liter|litres|liters)$/.test(u)) return {type:'ml', val: q*1000};
-        if(/^ml$/.test(u) || /^millilit/.test(u)) return {type:'ml', val: q};
-        if(/^kg$/.test(u) || /^kilogram/.test(u)) return {type:'g', val: q*1000};
-        if(/^g$/.test(u) || /^gram/.test(u)) return {type:'g', val: q};
-        return {type:'unit', val: q};
-    }
-    function parsePrice(pound, pence){
-        if(pound!==undefined && pound!=='') return parseFloat(pound);
-        if(pence!==undefined && pence!=='') return parseFloat(pence)/100;
-        return null;
-    }
-    function findProducts(text){
-        var t = text.toLowerCase();
-        var prods = [];
-        var re, m;
-        // Pattern A: price first — £X / Xp  [for]  qty  unit
-        re = /(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)\s*(?:for|=|per|@)?\s*(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)?/g;
-        while((m = re.exec(t)) !== null){
-            var price = parsePrice(m[1], m[2]);
-            var nq = normQty(m[3], m[4]);
-            if(price && nq.val > 0) prods.push({price: price, qty: nq.val, type: nq.type, unit: m[4]||'unit'});
-        }
-        // Pattern B: qty first — qty unit  [for]  £X / Xp
-        re = /(\d+(?:\.\d+)?)\s*(ml|millilitres?|litres?|l|g|grams?|kg|kilograms?|packs?|pieces?|each|units?|counts?|boxes?|bottles?|cans?)\s*(?:for|=|@|costs?|is)?\s*(?:£\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*p)/g;
-        while((m = re.exec(t)) !== null){
-            var price2 = parsePrice(m[3], m[4]);
-            var nq2 = normQty(m[1], m[2]);
-            if(price2 && nq2.val > 0) prods.push({price: price2, qty: nq2.val, type: nq2.type, unit: m[2]});
-        }
-        // dedupe by (price,qty)
-        var seen = {}, out = [];
-        for(var i=0;i<prods.length;i++){
-            var k = prods[i].price+'_'+prods[i].qty+'_'+prods[i].type;
-            if(!seen[k]){ seen[k]=1; out.push(prods[i]); }
-        }
-        return out.slice(0,2);
-    }
-    function unitPrice(p){
-        if(p.type==='ml') return {per: '100ml', val: p.price/(p.qty/100)};
-        if(p.type==='g') return {per: '100g', val: p.price/(p.qty/100)};
-        return {per: 'unit', val: p.price/p.qty};
-    }
-    function fmt(n){ return '£'+n.toFixed(2); }
-    function respond(text){
-        var t = text.toLowerCase().trim();
-        if(/^(hi|hello|hey|good (morning|afternoon|evening))\b/.test(t)) return "Hi! Compare two products and I'll tell you which is better value. E.g. '2L for £3 vs 500ml for £1' — or use the calculator above for exact results!";
-        if(/thank|thanks|cheers/.test(t)) return "You're welcome! Happy shopping — always check the per-unit price!";
-        if(/help|what can you do|how do (you|this) work/.test(t)) return "I compare unit prices! Try:\n• '1 litre for £1.50 vs 500ml for 80p'\n• '1kg for £4 vs 750g for £3.20'\n• '6 pack for £3 vs 4 pack for £2.20'\nFor exact results, use the calculator above.";
-        var prods = findProducts(text);
-        if(prods.length < 2){
-            return "I need two products to compare! Tell me both with quantity and price — e.g. '2 litres for £3 vs 500ml for £1'. Or enter them in the calculator above for exact results.";
-        }
-        var a = prods[0], b = prods[1];
-        if(a.type !== b.type){
-            return "Hmm, those are different unit types ("+a.unit+" vs "+b.unit+") — I can only compare like-for-like (ml with ml, g with g, pieces with pieces). Try again or use the calculator above.";
-        }
-        var ua = unitPrice(a), ub = unitPrice(b);
-        var cheaper, dearer;
-        if(ua.val < ub.val){ cheaper={p:a, u:ua}; dearer={p:b, u:ub}; }
-        else if(ub.val < ua.val){ cheaper={p:b, u:ub}; dearer={p:a, u:ua}; }
-        else return "They cost exactly the same per "+ua.per+"! Either is fine — use the calculator above to double-check.";
-        var saveAbs = dearer.u.val - cheaper.u.val;
-        var savePct = (saveAbs / dearer.u.val * 100).toFixed(0);
-        return "Product A: "+fmt(a.price)+" for "+a.qty+(a.type==='ml'?'ml':a.type==='g'?'g':' units')+" = "+fmt(ua.val)+"/"+ua.per+"\nProduct B: "+fmt(b.price)+" for "+b.qty+(b.type==='ml'?'ml':b.type==='g'?'g':' units')+" = "+fmt(ub.val)+"/"+ub.per+"\n→ The "+(cheaper.p===a?'FIRST':'SECOND')+" product is better value! It's "+savePct+"% cheaper per "+ua.per+" (you save "+fmt(saveAbs)+" per "+ua.per+").\nTip: bigger packs are usually better value — always check the per-unit price!";
-    }
-    var fab=document.getElementById("aiFab"), panel=document.getElementById("aiPanel"),
-        msgs=document.getElementById("aiMessages"), input=document.getElementById("aiInput"),
-        send=document.getElementById("aiSend"), typing=document.getElementById("aiTyping"),
-        closeBtn=document.getElementById("aiClose"), hideBtn=document.getElementById("aiHide");
-    if(localStorage.getItem("aiHiddenWIC")==="1") fab.style.display="none";
-    fab.addEventListener("click",function(){ panel.classList.toggle("open"); if(panel.classList.contains("open")) input.focus(); });
-    closeBtn.addEventListener("click",function(){ panel.classList.remove("open"); });
-    hideBtn.addEventListener("click",function(){ panel.classList.remove("open"); fab.style.display="none"; localStorage.setItem("aiHiddenWIC","1"); });
-    function render(text,who){ var d=document.createElement("div"); d.className="ai-msg "+who; d.textContent=text; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; }
-    function sendMsg(text){
-        if(!text.trim()) return;
-        render(text,"user"); input.value="";
-        typing.style.display="block"; msgs.scrollTop=msgs.scrollHeight;
-        setTimeout(function(){ typing.style.display="none"; render(respond(text),"bot"); }, 600);
-    }
-    send.addEventListener("click",function(){ sendMsg(input.value); });
-    input.addEventListener("keydown",function(e){ if(e.key==="Enter") sendMsg(input.value); });
-})();
 </script>
 </body>
 </html>
