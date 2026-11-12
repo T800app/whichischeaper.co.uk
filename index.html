@@ -6,20 +6,17 @@
     <title>Which Is Cheaper? — Compare Prices by Unit</title>
     <meta name="description" content="Which Is Cheaper? — Compare product prices by unit (per 100g, per litre, per item) in the UK. Instantly find the best value. Free, no sign-up.">
     <link rel="canonical" href="https://whichischeaper.co.uk/">
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://whichischeaper.co.uk/">
     <meta property="og:title" content="Which Is Cheaper? — Compare Prices by Unit">
     <meta property="og:description" content="Which Is Cheaper? — Compare product prices by unit (per 100g, per litre, per item) in the UK. Instantly find the best value. Free, no sign-up.">
     <meta property="og:site_name" content="Which Is Cheaper?">
-    <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Which Is Cheaper? — Compare Prices by Unit">
     <meta name="twitter:description" content="Which Is Cheaper? — Compare product prices by unit (per 100g, per litre, per item) in the UK. Instantly find the best value. Free, no sign-up.">
     
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316a34a'/%3E%3Cpath d='M22 28h9l7 34h36l7-24H35' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='74' r='5' fill='white'/%3E%3Ccircle cx='70' cy='74' r='5' fill='white'/%3E%3C/svg%3E">
 
-    <!-- Google Consent Mode v2: everything denied until the user gives consent -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -30,7 +27,6 @@
         analytics_storage: 'denied',
         wait_for_update: 500
       });
-      // Restore a previously given consent choice
       (function () {
         if (localStorage.getItem('cookiesAccepted') === 'yes') {
           gtag('consent', 'update', {
@@ -43,10 +39,8 @@
       })();
     </script>
 
-    <!-- Google AdSense Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363136655011505"
      crossorigin="anonymous"></script>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21XW9GXD6G"></script>
     <script>
       gtag('js', new Date());
@@ -54,7 +48,6 @@
     </script>
     
     <style>
-        /* ===== Apple-inspired modern design ===== */
         * {
             margin: 0;
             padding: 0;
@@ -126,7 +119,6 @@
         .icon-green { color: #16a34a; flex-shrink: 0; }
         .icon-orange { color: #f59e0b; flex-shrink: 0; }
 
-        /* ===== Collapsible cards (details/summary) ===== */
         .collapsible-card {
             padding: 0;
             margin-bottom: 16px;
@@ -172,7 +164,6 @@
             padding: 4px 24px 24px;
         }
 
-        /* How to Use section (green themed collapsible) */
         .howto-section {
             background: #f0fdf4;
             border-radius: 20px;
@@ -209,7 +200,6 @@
             padding: 4px 24px 24px;
         }
 
-        /* Hover effects only on devices that truly support hover (prevents sticky hover on mobile) */
         @media (hover: hover) and (pointer: fine) {
             .collapsible-card > details > summary:hover {
                 background: rgba(0, 0, 0, 0.02);
@@ -219,7 +209,6 @@
             }
         }
 
-        /* ===== Step cards (inside How to Use) ===== */
         .step-card {
             background: #ffffff;
             border-radius: 14px;
@@ -287,7 +276,6 @@
         }
         .important-note strong { color: #92400e; }
 
-        /* ===== Product cards / inputs ===== */
         .product-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
@@ -359,7 +347,6 @@
             pointer-events: none;
         }
 
-        /* ===== Compare button (no overflowing shadow) ===== */
         .compare-btn {
             width: 100%;
             padding: 16px;
@@ -387,7 +374,6 @@
             background: #0066cc;
         }
 
-        /* ===== Result box ===== */
         .result-box {
             margin-top: 4px;
             padding: 20px;
@@ -422,7 +408,6 @@
         }
         .price-line .best { font-weight: 700; color: #15803d; }
 
-        /* ===== Footer ===== */
         footer {
             text-align: center;
             margin-top: 32px;
@@ -437,7 +422,6 @@
         }
         footer a:hover { text-decoration: underline; }
 
-        /* ===== Cookie notice ===== */
         .cookie-overlay {
             position: fixed;
             bottom: 16px;
@@ -523,7 +507,6 @@
             background: #0071e3;
         }
 
-        /* ===== Guides / FAQ accordion (nested inside collapsible card) ===== */
         .guides-intro { color: #6e6e73; font-size: 0.95rem; margin-bottom: 14px; }
         .acc-item { background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
         .acc-item:last-child { margin-bottom: 0; }
@@ -543,7 +526,6 @@
         .acc-example { background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; }
         .acc-example strong { color: #0071e3; }
 
-        /* ===== Responsive ===== */
         @media (max-width: 480px) {
             body { padding: 12px 12px 32px; }
             header { padding: 20px 0 18px; }
@@ -597,7 +579,7 @@
   "@type": "FAQPage",
   "mainEntity": [
     {"@type": "Question", "name": "How do I calculate the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "Divide the total price by the total weight in grams, then multiply by 100. For example, £3.50 for 500g = 3.50 ÷ 500 × 100 = £0.70 per 100g. Enter both products in the calculator and it does the maths for you, instantly."}},
-    {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare the same unit type: grams with grams, millilitres with millilitres, packs with packs."}},
+    {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: weight with weight (g and kg can be mixed), volume with volume (ml and L can be mixed), and packs/items with packs/items."}},
     {"@type": "Question", "name": "Can I compare two different brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator compares the unit price of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost."}},
     {"@type": "Question", "name": "Is the calculator free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers."}},
     {"@type": "Question", "name": "Why does the same product cost different amounts in different sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. The unit price normalises these differences so you can see the true cost per measure, not just the headline sticker price."}},
@@ -622,7 +604,6 @@
     <p>Quickly compare prices between different pack sizes. Works for groceries, household items, toiletries — any product where you need to find the best value.</p>
 </div>
 
-<!-- ===== Shopping Guides & FAQs (collapsible) ===== -->
 <div class="card collapsible-card">
     <details>
         <summary>
@@ -735,7 +716,7 @@
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Which units can this tool compare?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p>Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare the same unit type: grams with grams, millilitres with millilitres, packs with packs.</p>
+                    <p>Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: <strong>weight with weight</strong> (g and kg can be mixed), <strong>volume with volume</strong> (ml and L can be mixed), and <strong>packs/items with packs/items</strong>.</p>
                 </div>
             </details>
             <details class="acc-item">
@@ -766,7 +747,6 @@
     </details>
 </div>
 
-<!-- ===== How to Use (collapsible) ===== -->
 <div class="howto-section">
     <details>
         <summary>
@@ -783,7 +763,7 @@
                 </div>
                 <div class="step-content">
                     <strong>Weight — Grams (g) or Kilograms (kg)</strong>
-                    <p>Enter total weight, e.g. 500 for 500g, or 1.5 for 1.5kg</p>
+                    <p>Type the weight amount, then pick g or kg. Example: type 500 and pick g for 500 grams, or type 1.5 and pick kg for 1.5 kilograms.</p>
                 </div>
             </div>
             <div class="step-card">
@@ -792,7 +772,7 @@
                 </div>
                 <div class="step-content">
                     <strong>Volume — Millilitres (ml) or Litres (L)</strong>
-                    <p>Enter total volume, e.g. 750 for 750ml, or 2 for 2 Litres</p>
+                    <p>Type the volume amount, then pick ml or L. Example: type 750 and pick ml for 750 millilitres, or type 2 and pick L for 2 litres.</p>
                 </div>
             </div>
             <div class="step-card">
@@ -801,7 +781,7 @@
                 </div>
                 <div class="step-content">
                     <strong>Quantity — Packs or Individual Items</strong>
-                    <p>Enter how many items are in the pack, e.g. 6 for a 6-pack</p>
+                    <p>Type the number of items in the pack, then pick "pack / each". Example: type 6 and pick "pack / each" for a 6-pack.</p>
                 </div>
             </div>
             <div class="steps-list">
@@ -812,7 +792,7 @@
             </div>
             <div class="important-note">
                 <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                <span><strong>Important:</strong> Always compare the same units. g with g, ml with ml, pack with pack.</span>
+                <span><strong>Important:</strong> Only compare within the same category — weight (g and kg), volume (ml and L), or items (pack / each). You cannot compare weight with volume or items.</span>
             </div>
         </div>
     </details>
@@ -928,6 +908,11 @@
     function displayMultiplier(unit) {
         return unit === 'each' ? 1 : 100;
     }
+    function unitCategory(unit) {
+        if (unit === 'g' || unit === 'kg') return 'weight';
+        if (unit === 'ml' || unit === 'l') return 'volume';
+        return 'count';
+    }
     var iconCheck = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
     var iconEqual = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>';
     function doCompare() {
@@ -939,6 +924,10 @@
         var unit2  = document.getElementById('p2-unit').value;
         if (!price1 || !price2 || !size1 || !size2 || price1 <= 0 || price2 <= 0 || size1 <= 0 || size2 <= 0) {
             alert('Please fill in all fields with valid numbers!');
+            return;
+        }
+        if (unitCategory(unit1) !== unitCategory(unit2)) {
+            alert('Please compare the same type of units:\n• weight (g, kg) with weight\n• volume (ml, L) with volume\n• items (pack, each) with items');
             return;
         }
         var norm1 = normalise(size1, unit1);
