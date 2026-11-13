@@ -67,10 +67,38 @@
             overflow-x: hidden;
             -webkit-text-size-adjust: 100%;
             letter-spacing: -0.01em;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         header {
             text-align: center;
             padding: 32px 0 28px;
+            position: relative;
+        }
+        #darkToggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #darkToggle:hover {
+            background: #f5f5f7;
+        }
+        #darkToggle svg {
+            width: 20px;
+            height: 20px;
         }
         .site-title {
             display: flex;
@@ -99,6 +127,7 @@
             margin-bottom: 16px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.03);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .card h2 {
             font-size: 1.25rem;
@@ -172,6 +201,7 @@
             border: 1px solid rgba(22, 163, 74, 0.08);
             padding: 0;
             overflow: hidden;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .howto-section > details > summary {
             display: flex;
@@ -217,6 +247,7 @@
             display: flex;
             gap: 14px;
             align-items: flex-start;
+            transition: background-color 0.3s ease;
         }
         .step-card:last-of-type { margin-bottom: 0; }
         .step-icon {
@@ -239,6 +270,7 @@
             border-radius: 14px;
             padding: 16px 18px;
             margin-top: 16px;
+            transition: background-color 0.3s ease;
         }
         .step-num {
             display: flex;
@@ -273,6 +305,7 @@
             align-items: flex-start;
             font-size: 0.9rem;
             color: #92400e;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
         .important-note strong { color: #92400e; }
 
@@ -303,7 +336,7 @@
             font-size: 1rem;
             background: #f5f5f7;
             color: #1d1d1f;
-            transition: background 0.15s ease, border-color 0.15s ease;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.3s ease;
             -webkit-appearance: none;
             appearance: none;
             -webkit-tap-highlight-color: transparent;
@@ -437,7 +470,7 @@
             z-index: 100;
             visibility: hidden;
             opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, background-color 0.3s ease;
         }
         .cookie-overlay.show {
             visibility: visible;
@@ -508,7 +541,7 @@
         }
 
         .guides-intro { color: #6e6e73; font-size: 0.95rem; margin-bottom: 14px; }
-        .acc-item { background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
+        .acc-item { background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; margin-bottom: 10px; overflow: hidden; transition: background-color 0.3s ease, border-color 0.3s ease; }
         .acc-item:last-child { margin-bottom: 0; }
         .acc-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; min-height: 46px; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #1d1d1f; list-style: none; letter-spacing: -0.01em; }
         .acc-summary::-webkit-details-marker { display: none; }
@@ -523,12 +556,45 @@
         .acc-body ul, .acc-body ol { margin: 0 0 10px 18px; }
         .acc-body li { margin-bottom: 6px; }
         .acc-body strong { color: #1d1d1f; }
-        .acc-example { background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; }
+        .acc-example { background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
         .acc-example strong { color: #0071e3; }
+
+        /* ===== DARK MODE OVERRIDES ===== */
+        body.dark { background-color: #000000; color: #f2f2f7; }
+        body.dark #darkToggle { background: #1c1c1e; border-color: rgba(255,255,255,0.1); color: #f2f2f7; }
+        body.dark #darkToggle:hover { background: #2c2c2e; }
+        body.dark .site-title, body.dark .card h2, body.dark .product-card h3, body.dark .summary-content, body.dark .step-content strong, body.dark .step-num, body.dark .acc-summary, body.dark .acc-body strong, body.dark .price-line, body.dark .cookie-title { color: #f2f2f7; }
+        body.dark header .subtitle, body.dark .card p, body.dark .step-content p, body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, body.dark .cookie-text { color: #a1a1a6; }
+        body.dark .card, body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
+        body.dark .howto-section { background: #0f1f16; border-color: rgba(48, 209, 88, 0.15); }
+        body.dark .howto-section .summary-content, body.dark .howto-section .chevron { color: #30d158; }
+        body.dark .step-card, body.dark .steps-list, body.dark .acc-item { background: #2c2c2e; border-color: rgba(255,255,255,0.05); }
+        body.dark input[type="number"], body.dark select { background: #2c2c2e; color: #f2f2f7; }
+        body.dark input[type="number"]:hover, body.dark select:hover { background: #3a3a3c; }
+        body.dark input[type="number"]:focus, body.dark select:focus { background: #1c1c1e; border-color: #0A84FF; }
+        body.dark .select-wrap::after { border-color: #a1a1a6; }
+        body.dark .important-note { background: #2c2214; border-color: rgba(245, 158, 11, 0.3); color: #fcd34d; }
+        body.dark .important-note strong { color: #fcd34d; }
+        body.dark .acc-example { background: #0b1e3d; border-color: #0A84FF; color: #93c5fd; }
+        body.dark .acc-example strong { color: #60a5fa; }
+        body.dark details[open] > .acc-summary { border-bottom-color: rgba(255,255,255,0.1); }
+        body.dark .result-box.win { background: #064e3b; border-color: #16a34a; }
+        body.dark .result-box.win .result-heading { color: #4ade80; }
+        body.dark .result-box.win .best { color: #4ade80; }
+        body.dark .result-box.tie { background: #78350f; border-color: #f59e0b; }
+        body.dark .result-box.tie .result-heading { color: #fcd34d; }
+        body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
+        body.dark .btn-decline:hover { background: #2c2c2e; border-color: #636366; }
+        body.dark .compare-btn { background: #0A84FF; }
+        body.dark .compare-btn:hover { background: #0071e3; }
+        body.dark footer { color: #8e8e93; }
+        body.dark footer a { color: #0A84FF; }
 
         @media (max-width: 480px) {
             body { padding: 12px 12px 32px; }
             header { padding: 20px 0 18px; }
+            #darkToggle { width: 36px; height: 36px; top: 0; right: 0; }
+            #darkToggle svg { width: 18px; height: 18px; }
             .site-title { font-size: 1.5rem; gap: 8px; }
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
@@ -590,6 +656,10 @@
 </head>
 <body>
 <header>
+    <button id="darkToggle" aria-label="Toggle dark mode">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="iconSun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    </button>
     <div class="site-title">
         <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
         Which Is Cheaper?
@@ -895,6 +965,33 @@
         });
         document.getElementById('cookie-notice').classList.remove('show');
     }
+    
+    // Dark mode logic
+    const darkToggle = document.getElementById('darkToggle');
+    const iconMoon = document.getElementById('iconMoon');
+    const iconSun = document.getElementById('iconSun');
+
+    function updateTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add('dark');
+            iconMoon.style.display = 'none';
+            iconSun.style.display = 'block';
+            localStorage.setItem('wic_dark', '1');
+        } else {
+            document.body.classList.remove('dark');
+            iconMoon.style.display = 'block';
+            iconSun.style.display = 'none';
+            localStorage.setItem('wic_dark', '0');
+        }
+    }
+
+    const isDark = localStorage.getItem('wic_dark') === '1';
+    updateTheme(isDark);
+
+    darkToggle.addEventListener('click', () => {
+        updateTheme(!document.body.classList.contains('dark'));
+    });
+
     function normalise(value, unit) {
         if (unit === 'kg') return value * 1000;
         if (unit === 'l')  return value * 1000;

@@ -65,6 +65,7 @@
             padding: 24px 16px 40px;
             min-height: 100vh;
             letter-spacing: -0.01em;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container {
             max-width: 640px;
@@ -74,6 +75,7 @@
             border-radius: 20px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.03);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         h1 {
             font-size: 1.55rem;
@@ -81,6 +83,7 @@
             color: #1d1d1f;
             letter-spacing: -0.03em;
             font-weight: 700;
+            transition: color 0.3s ease;
         }
         .last-updated {
             color: #6e6e73;
@@ -88,6 +91,7 @@
             margin-bottom: 28px;
             font-style: italic;
             letter-spacing: -0.01em;
+            transition: color 0.3s ease;
         }
         h2 {
             font-size: 1.08rem;
@@ -97,25 +101,28 @@
             border-left: 4px solid #007AFF;
             letter-spacing: -0.02em;
             font-weight: 700;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
         p {
             font-size: 0.92rem;
             margin-bottom: 15px;
             color: #6e6e73;
             letter-spacing: -0.01em;
+            transition: color 0.3s ease;
         }
         ul {
             margin-bottom: 15px;
             padding-left: 24px;
             color: #6e6e73;
+            transition: color 0.3s ease;
         }
         li {
             margin-bottom: 8px;
             font-size: 0.92rem;
             letter-spacing: -0.01em;
         }
-        strong { color: #1d1d1f; }
-        a { color: #007AFF; text-decoration: none; }
+        strong { color: #1d1d1f; transition: color 0.3s ease; }
+        a { color: #007AFF; text-decoration: none; transition: color 0.3s ease; }
         a:hover { text-decoration: underline; }
         .back-link {
             display: inline-block;
@@ -123,6 +130,7 @@
             padding-top: 24px;
             border-top: 1px solid rgba(0,0,0,0.06);
             font-weight: 500;
+            transition: border-color 0.3s ease;
         }
 
         /* Site header (matches index) */
@@ -131,6 +139,7 @@
             padding: 8px 0 24px;
             max-width: 640px;
             margin: 0 auto;
+            position: relative; /* For dark toggle */
         }
         a.site-title {
             display: flex;
@@ -142,18 +151,45 @@
             color: #1d1d1f;
             letter-spacing: -0.03em;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         a.site-title:hover { text-decoration: none; color: #1d1d1f; }
         .site-title .icon-cart {
             color: #007AFF;
             flex-shrink: 0;
+            transition: color 0.3s ease;
         }
         header .subtitle {
             color: #6e6e73;
             font-size: 1.05rem;
             margin-top: 8px;
             letter-spacing: -0.01em;
+            transition: color 0.3s ease;
         }
+
+        /* Dark Mode Toggle Button */
+        #darkToggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            z-index: 10;
+        }
+        #darkToggle:hover { background: #f5f5f7; }
+        #darkToggle svg { width: 20px; height: 20px; }
 
         footer {
             text-align: center;
@@ -164,11 +200,13 @@
             max-width: 640px;
             margin-left: auto;
             margin-right: auto;
+            transition: color 0.3s ease;
         }
         footer a {
             color: #007AFF;
             text-decoration: none;
             margin: 0 6px;
+            transition: color 0.3s ease;
         }
         footer a:hover { text-decoration: underline; }
 
@@ -189,7 +227,7 @@
             z-index: 100;
             visibility: hidden;
             opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, background-color 0.3s ease, border-color 0.3s ease;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         .cookie-overlay.show {
@@ -211,18 +249,21 @@
             align-items: center;
             justify-content: center;
             color: #007AFF;
+            transition: color 0.3s ease;
         }
         .cookie-title {
             font-size: 1.02rem;
             font-weight: 700;
             color: #1d1d1f;
             letter-spacing: -0.02em;
+            transition: color 0.3s ease;
         }
         .cookie-text {
             font-size: 0.9rem;
             color: #6e6e73;
             line-height: 1.55;
             margin: 0 0 16px 0;
+            transition: color 0.3s ease;
         }
         .cookie-text a {
             color: #007AFF;
@@ -258,6 +299,25 @@
             background: #0071e3;
         }
 
+        /* ===== DARK MODE OVERRIDES ===== */
+        body.dark { background-color: #000000; color: #f2f2f7; }
+        body.dark #darkToggle { background: #1c1c1e; border-color: rgba(255,255,255,0.1); color: #f2f2f7; }
+        body.dark #darkToggle:hover { background: #2c2c2e; }
+        body.dark .container { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
+        body.dark h1, body.dark h2, body.dark strong, body.dark a.site-title, body.dark .cookie-title { color: #f2f2f7; }
+        body.dark a.site-title:hover { color: #f2f2f7; }
+        body.dark .last-updated, body.dark p, body.dark ul, body.dark li, body.dark header .subtitle, body.dark .cookie-text { color: #a1a1a6; }
+        body.dark .back-link { border-top-color: rgba(255,255,255,0.1); }
+        body.dark footer { color: #8e8e93; }
+        body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
+        body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
+        body.dark .btn-decline:hover { background: #2c2c2e; border-color: #636366; }
+        body.dark .btn-accept { background: #0A84FF; }
+        body.dark .btn-accept:hover { background: #0071e3; }
+        body.dark a { color: #0A84FF; }
+        body.dark .site-title .icon-cart { color: #0A84FF; }
+        body.dark .cookie-icon { color: #0A84FF; }
+
         /* ===== Responsive ===== */
         @media (max-width: 480px) {
             body { padding: 12px 12px 32px; }
@@ -268,6 +328,8 @@
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
             header { padding: 8px 0 18px; }
+            #darkToggle { width: 36px; height: 36px; }
+            #darkToggle svg { width: 18px; height: 18px; }
             .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; box-shadow: none; }
             .cookie-title { font-size: 0.95rem; }
             .cookie-text { font-size: 0.84rem; }
@@ -284,6 +346,10 @@
 </head>
 <body>
 <header>
+    <button id="darkToggle" aria-label="Toggle dark mode">
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="iconSun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    </button>
     <a href="index.html" class="site-title">
         <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
         Which Is Cheaper?
@@ -349,12 +415,14 @@
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     (function () {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            document.getElementById('cookie-notice').classList.add('show');
-        }
+        try {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-notice').classList.add('show');
+            }
+        } catch(e) {}
     })();
     function acceptCookies() {
-        localStorage.setItem('cookiesAccepted', 'yes');
+        try { localStorage.setItem('cookiesAccepted', 'yes'); } catch(e) {}
         gtag('consent', 'update', {
             ad_storage: 'granted',
             ad_user_data: 'granted',
@@ -364,7 +432,7 @@
         document.getElementById('cookie-notice').classList.remove('show');
     }
     function declineCookies() {
-        localStorage.setItem('cookiesAccepted', 'no');
+        try { localStorage.setItem('cookiesAccepted', 'no'); } catch(e) {}
         gtag('consent', 'update', {
             ad_storage: 'denied',
             ad_user_data: 'denied',
@@ -372,6 +440,35 @@
             analytics_storage: 'denied'
         });
         document.getElementById('cookie-notice').classList.remove('show');
+    }
+
+    // Dark mode logic
+    const darkToggle = document.getElementById('darkToggle');
+    const iconMoon = document.getElementById('iconMoon');
+    const iconSun = document.getElementById('iconSun');
+
+    function updateTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add('dark');
+            if (iconMoon) iconMoon.style.display = 'none';
+            if (iconSun) iconSun.style.display = 'block';
+            try { localStorage.setItem('wic_dark', '1'); } catch(e) {}
+        } else {
+            document.body.classList.remove('dark');
+            if (iconMoon) iconMoon.style.display = 'block';
+            if (iconSun) iconSun.style.display = 'none';
+            try { localStorage.setItem('wic_dark', '0'); } catch(e) {}
+        }
+    }
+
+    let isDark = false;
+    try { isDark = localStorage.getItem('wic_dark') === '1'; } catch(e) {}
+    updateTheme(isDark);
+
+    if (darkToggle) {
+        darkToggle.addEventListener('click', () => {
+            updateTheme(!document.body.classList.contains('dark'));
+        });
     }
 </script>
 </body>
