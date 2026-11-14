@@ -79,6 +79,13 @@
             -moz-osx-font-smoothing: grayscale;
             -webkit-tap-highlight-color: transparent;
         }
+        
+        /* ===== VILLANÁS JAVÍTÁS ===== */
+        details, details > summary, details > .content {
+            -webkit-tap-highlight-color: transparent;
+            background-color: transparent;
+        }
+        
         body {
             background-color: #f5f5f7;
             color: #1d1d1f;
@@ -116,7 +123,7 @@
             letter-spacing: -0.01em;
         }
 
-        /* ===== Theme toggle (slider switch, checkbox-based) ===== */
+        /* ===== Theme toggle ===== */
         .theme-toggle-row {
             display: flex;
             align-items: center;
@@ -148,7 +155,6 @@
             flex-shrink: 0;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
-            -webkit-user-select: none;
             -webkit-user-drag: none;
             vertical-align: middle;
         }
@@ -181,16 +187,16 @@
             pointer-events: none;
             z-index: 1;
         }
-        body.dark .theme-switch {
-            background: #0A84FF;
-        }
-        body.dark .theme-switch-thumb {
-            transform: translateX(22px);
-        }
+        body.dark .theme-switch { background: #0A84FF; }
+        body.dark .theme-switch-thumb { transform: translateX(22px); }
         @media (hover: hover) and (pointer: fine) {
-            .theme-switch:hover .theme-switch-thumb {
-                box-shadow: 0 2px 6px rgba(0,0,0,0.32);
-            }
+            .theme-switch:hover .theme-switch-thumb { box-shadow: 0 2px 6px rgba(0,0,0,0.32); }
+        }
+
+        /* Hardveres gyorsítás a kártyákra, hogy ne villanjanak */
+        .card, .howto-section, .tip-card {
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .card {
@@ -221,457 +227,316 @@
         .icon-green { color: #16a34a; flex-shrink: 0; }
         .icon-orange { color: #f59e0b; flex-shrink: 0; }
 
-        .collapsible-card {
-            padding: 0;
-            margin-bottom: 16px;
-            overflow: hidden;
-        }
+        .collapsible-card { padding: 0; margin-bottom: 16px; overflow: hidden; }
         .collapsible-card > details > summary {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 22px 24px;
-            cursor: pointer;
-            list-style: none;
-            user-select: none;
-            -webkit-user-select: none;
-            background: transparent;
-            transition: background 0.2s ease;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 22px 24px; cursor: pointer; list-style: none; user-select: none;
+            background: transparent; 
+            /* Kivéve a tranzíció */
         }
         .collapsible-card > details > summary::-webkit-details-marker { display: none; }
         .collapsible-card > details > summary::marker { content: ""; }
         .collapsible-card > details > summary:focus { outline: none; }
         .collapsible-card > details > summary:focus-visible { outline: none; }
         .summary-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
+            display: flex; align-items: center; gap: 10px; font-size: 1.25rem;
+            font-weight: 700; color: #1d1d1f; letter-spacing: -0.02em;
         }
         .chevron {
-            width: 18px;
-            height: 18px;
-            color: #86868b;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
+            width: 18px; height: 18px; color: #86868b; flex-shrink: 0; transition: transform 0.3s ease;
         }
-        details[open] > summary .chevron {
-            transform: rotate(180deg);
-        }
-        .collapsible-card > details > .content {
-            padding: 4px 24px 24px;
-        }
+        details[open] > summary .chevron { transform: rotate(180deg); }
+        .collapsible-card > details > .content { padding: 4px 24px 24px; }
 
         .howto-section {
-            background: #f0fdf4;
-            border-radius: 20px;
-            margin-bottom: 16px;
+            background: #f0fdf4; border-radius: 20px; margin-bottom: 16px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
-            border: 1px solid rgba(22, 163, 74, 0.08);
-            padding: 0;
-            overflow: hidden;
+            border: 1px solid rgba(22, 163, 74, 0.08); padding: 0; overflow: hidden;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .howto-section > details > summary {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 22px 24px;
-            cursor: pointer;
-            list-style: none;
-            user-select: none;
-            -webkit-user-select: none;
-            background: transparent;
-            transition: background 0.2s ease;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+            padding: 22px 24px; cursor: pointer; list-style: none; user-select: none;
+            background: transparent; 
+            /* Kivéve a tranzíció */
         }
         .howto-section > details > summary::-webkit-details-marker { display: none; }
         .howto-section > details > summary::marker { content: ""; }
         .howto-section > details > summary:focus { outline: none; }
         .howto-section > details > summary:focus-visible { outline: none; }
-        .howto-section .summary-content {
-            color: #16a34a;
-        }
-        .howto-section .chevron {
-            color: #16a34a;
-        }
-        .howto-section > details > .content {
-            padding: 4px 24px 24px;
-        }
+        .howto-section .summary-content { color: #16a34a; }
+        .howto-section .chevron { color: #16a34a; }
+        .howto-section > details > .content { padding: 4px 24px 24px; }
 
         @media (hover: hover) and (pointer: fine) {
-            .collapsible-card > details > summary:hover {
-                background: rgba(0, 0, 0, 0.02);
-            }
-            .howto-section > details > summary:hover {
-                background: rgba(22, 163, 74, 0.05);
-            }
+            .collapsible-card > details > summary:hover { background: rgba(0, 0, 0, 0.02); }
+            .howto-section > details > summary:hover { background: rgba(22, 163, 74, 0.05); }
         }
 
         .step-card {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 16px 18px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            transition: background-color 0.3s ease;
+            background: #ffffff; border-radius: 14px; padding: 16px 18px; margin-bottom: 12px;
+            display: flex; gap: 14px; align-items: flex-start; 
+            /* Kivéve a tranzíció a villanás miatt */
         }
         .step-card:last-of-type { margin-bottom: 0; }
-        .step-icon {
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+        .step-icon { flex-shrink: 0; margin-top: 2px; }
         .step-content strong {
-            display: block;
-            font-size: 1rem;
-            color: #1d1d1f;
-            margin-bottom: 4px;
-            letter-spacing: -0.01em;
+            display: block; font-size: 1rem; color: #1d1d1f; margin-bottom: 4px; letter-spacing: -0.01em;
         }
-        .step-content p {
-            color: #6e6e73;
-            font-size: 0.92rem;
-        }
+        .step-content p { color: #6e6e73; font-size: 0.92rem; }
         .steps-list {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 16px 18px;
-            margin-top: 16px;
-            transition: background-color 0.3s ease;
+            background: #ffffff; border-radius: 14px; padding: 16px 18px; margin-top: 16px;
+            /* Kivéve a tranzíció a villanás miatt */
         }
         .step-num {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: #1d1d1f;
-            font-weight: 500;
-            padding: 6px 0;
+            display: flex; align-items: center; gap: 12px; font-size: 0.95rem;
+            color: #1d1d1f; font-weight: 500; padding: 6px 0;
         }
         .step-num span {
-            flex-shrink: 0;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: #007AFF;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+            background: #007AFF; color: #ffffff; font-weight: 700; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
         }
         .important-note {
-            background: #fefce8;
-            border: 1px solid #fde68a;
-            border-radius: 14px;
-            padding: 14px 16px;
-            margin-top: 16px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            font-size: 0.9rem;
-            color: #92400e;
+            background: #fefce8; border: 1px solid #fde68a; border-radius: 14px;
+            padding: 14px 16px; margin-top: 16px; display: flex; gap: 10px;
+            align-items: flex-start; font-size: 0.9rem; color: #92400e;
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
         .important-note strong { color: #92400e; }
 
+        .highlight-step-card {
+            margin-top: 12px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+        }
+
         .product-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: -0.02em;
+            font-size: 1.3rem; font-weight: 700; color: #1d1d1f; margin-bottom: 18px;
+            display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em;
         }
         label {
-            display: block;
-            margin: 16px 0 6px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: #1d1d1f;
-            letter-spacing: -0.01em;
+            display: block; margin: 16px 0 6px; font-weight: 500; font-size: 0.95rem;
+            color: #1d1d1f; letter-spacing: -0.01em;
         }
         label:first-of-type { margin-top: 0; }
         input[type="number"], select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid transparent;
-            border-radius: 12px;
-            font-size: 1rem;
-            background: #f5f5f7;
-            color: #1d1d1f;
+            width: 100%; padding: 14px 16px; border: 1px solid transparent; border-radius: 12px;
+            font-size: 1rem; background: #f5f5f7; color: #1d1d1f;
             transition: background 0.15s ease, border-color 0.15s ease, color 0.3s ease;
-            -webkit-appearance: none;
-            appearance: none;
-            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
         }
-        input[type="number"]:hover, select:hover {
-            background: #efeff2;
-        }
+        input[type="number"]:hover, select:hover { background: #efeff2; }
         input[type="number"]:focus, select:focus {
-            outline: none;
-            border-color: #007AFF;
-            background: #ffffff;
-            box-shadow: none;
+            outline: none; border-color: #007AFF; background: #ffffff; box-shadow: none;
         }
         input::placeholder { color: #a1a1a6; }
-        .amount-row {
-            display: flex;
-            gap: 10px;
-        }
+        .amount-row { display: flex; gap: 10px; }
         .amount-row input { flex: 1; min-width: 0; }
-        .amount-row .select-wrap {
-            position: relative;
-            width: 110px;
-            flex-shrink: 0;
-        }
-        .amount-row select {
-            width: 100%;
-            padding-right: 32px;
-            cursor: pointer;
-            font-weight: 500;
-        }
+        .amount-row .select-wrap { position: relative; width: 110px; flex-shrink: 0; }
+        .amount-row select { width: 100%; padding-right: 32px; cursor: pointer; font-weight: 500; }
         .select-wrap::after {
-            content: "";
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            width: 10px;
-            height: 10px;
-            border-right: 2px solid #86868b;
-            border-bottom: 2px solid #86868b;
-            transform: translateY(-70%) rotate(45deg);
-            pointer-events: none;
+            content: ""; position: absolute; right: 14px; top: 50%;
+            width: 10px; height: 10px; border-right: 2px solid #86868b; border-bottom: 2px solid #86868b;
+            transform: translateY(-70%) rotate(45deg); pointer-events: none;
         }
 
+        /* ===== Progress Bars inside Product Cards ===== */
+        .product-bar-container {
+            height: 8px;
+            background: #f5f5f7;
+            border-radius: 4px;
+            margin-top: 16px;
+            overflow: hidden;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+        .product-bar-container.show {
+            display: block;
+        }
+        .product-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .p1-bar { background: #007AFF; }
+        .p2-bar { background: #f59e0b; }
+
+        /* ===== Buttons ===== */
+        .btn-row {
+            display: flex; gap: 10px; margin: 8px 0 8px;
+        }
         .compare-btn {
-            width: 100%;
-            padding: 16px;
-            background: #007AFF;
-            color: #ffffff;
-            border: none;
-            border-radius: 14px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 8px 0 8px;
-            transition: background 0.15s ease, transform 0.1s ease;
-            box-shadow: none;
+            flex: 1; padding: 16px; background: #007AFF; color: #ffffff; border: none;
+            border-radius: 14px; font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: background 0.15s ease, transform 0.1s ease; box-shadow: none;
         }
-        .compare-btn:hover {
-            background: #0071e3;
-        }
-        .compare-btn:active {
-            transform: scale(0.98);
-            background: #0066cc;
+        .compare-btn:active { transform: scale(0.98); background: #0066cc; }
+        @media (hover: hover) and (pointer: fine) {
+            .compare-btn:hover { background: #0071e3; }
         }
         
-        /* ÚJ: Guidance only figyelmeztetés a gomb alatt */
-        .calc-disclaimer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #86868b;
-            margin-bottom: 16px;
-            padding: 0 10px;
-            line-height: 1.4;
+        .clear-btn {
+            width: 54px; padding: 16px; background: #f5f5f7; color: #1d1d1f; border: none;
+            border-radius: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s ease, color 0.3s ease, transform 0.1s ease; flex-shrink: 0;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .clear-btn:hover { background: #e5e5ea; }
+        }
+        .clear-btn:active { 
+            transform: scale(0.95); 
+            background: #d1d1d6; 
         }
 
+        /* ===== Guidance Disclaimer ===== */
+        .calc-disclaimer {
+            text-align: center; font-size: 0.75rem; color: #86868b;
+            margin-bottom: 16px; padding: 0 10px; line-height: 1.4;
+        }
+
+        /* ===== Result Box ===== */
         .result-box {
-            margin-top: 4px;
-            padding: 20px;
-            border-radius: 18px;
-            display: none;
+            margin-top: 4px; padding: 20px; border-radius: 18px; display: none;
         }
         .result-box.show { display: block; }
-        .result-box.win {
-            background: #dcfce7;
-            border: 2px solid #16a34a;
-        }
-        .result-box.tie {
-            background: #fef3c7;
-            border: 2px solid #f59e0b;
-        }
+        .result-box.win { background: #dcfce7; border: 2px solid #16a34a; }
+        .result-box.tie { background: #fef3c7; border: 2px solid #f59e0b; }
         .result-heading {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: -0.02em;
+            font-size: 1.15rem; font-weight: 700; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 8px; letter-spacing: -0.02em;
         }
         .result-box.win .result-heading { color: #15803d; }
         .result-box.tie .result-heading { color: #b45309; }
         .price-line {
-            font-size: 1rem;
-            margin: 6px 0;
-            color: #1d1d1f;
-            font-weight: 500;
+            font-size: 1rem; margin: 6px 0; color: #1d1d1f; font-weight: 500;
         }
         .price-line .best { font-weight: 700; color: #15803d; }
         
         .result-explanation {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(0,0,0,0.08);
-            font-size: 0.95em;
-            color: #15803d;
-            font-weight: 500;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
+            margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.95em; color: #15803d; font-weight: 500;
+            display: flex; align-items: flex-start; gap: 8px;
         }
         .result-explanation svg {
-            flex-shrink: 0;
-            width: 18px;
-            height: 18px;
-            margin-top: 1px;
+            flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
         }
         
-        /* ÚJ: Apróbetűs szöveg az eredmény alján */
         .result-footnote {
-            margin-top: 16px;
-            font-size: 0.75rem;
-            color: rgba(0,0,0,0.5);
-            text-align: center;
+            margin-top: 16px; font-size: 0.75rem; color: rgba(0,0,0,0.5); text-align: center;
         }
+
+        /* ===== Tip Card ===== */
+        .tip-card {
+            background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 20px;
+            padding: 20px; margin-bottom: 16px; display: flex; gap: 14px; align-items: flex-start;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .tip-card .tip-icon { color: #007AFF; flex-shrink: 0; margin-top: 2px; }
+        .tip-card strong {
+            display: block; font-size: 0.95rem; color: #1e3a8a; margin-bottom: 4px; letter-spacing: -0.01em;
+        }
+        .tip-card p { color: #1e40af; font-size: 0.9rem; margin: 0; }
+
+        /* ===== History Section ===== */
+        .history-list { margin-top: 10px; }
+        .history-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 16px; background: #f5f5f7; border-radius: 12px;
+            margin-bottom: 8px; font-size: 0.88rem; cursor: pointer;
+            border: 1px solid transparent; transition: all 0.2s ease;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .history-item:hover { border-color: #007AFF; background: #eff6ff; }
+        }
+        .history-details { display: flex; flex-direction: column; gap: 2px; }
+        .history-meta { color: #6e6e73; font-size: 0.8rem; }
+        .history-winner { font-weight: 700; color: #16a34a; }
 
         footer {
-            text-align: center;
-            margin-top: 32px;
-            padding: 16px;
-            font-size: 0.8rem;
+            text-align: center; margin-top: 32px; padding: 16px; font-size: 0.8rem;
             color: #86868b;
         }
-        footer a {
-            color: #007AFF;
-            text-decoration: none;
-            margin: 0 6px;
+        footer a { color: #007AFF; text-decoration: none; margin: 0 6px; }
+        @media (hover: hover) and (pointer: fine) {
+            footer a:hover { text-decoration: underline; }
         }
-        footer a:hover { text-decoration: underline; }
 
+        /* ===== Cookie overlay ===== */
         .cookie-overlay {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%) translateY(24px);
-            width: calc(100% - 32px);
-            max-width: 600px;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 20px;
-            padding: 22px 22px 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-            z-index: 100;
-            visibility: hidden;
-            opacity: 0;
+            position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(24px);
+            width: calc(100% - 32px); max-width: 600px; background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; padding: 22px 22px 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12); z-index: 100;
+            visibility: hidden; opacity: 0;
             transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, background-color 0.3s ease;
         }
         .cookie-overlay.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0);
         }
-        .cookie-head {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+        .cookie-head { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
         .cookie-icon {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #007AFF;
+            flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #007AFF;
         }
-        .cookie-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-        }
-        .cookie-text {
-            font-size: 0.9rem;
-            color: #6e6e73;
-            line-height: 1.55;
-            margin: 0 0 16px 0;
-        }
-        .cookie-text a {
-            color: #007AFF;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .cookie-buttons {
-            display: flex;
-            gap: 10px;
-        }
+        .cookie-title { font-size: 1.02rem; font-weight: 700; color: #1d1d1f; letter-spacing: -0.02em; }
+        .cookie-text { font-size: 0.9rem; color: #6e6e73; line-height: 1.55; margin: 0 0 16px 0; }
+        .cookie-text a { color: #007AFF; text-decoration: underline; font-weight: 500; }
+        .cookie-buttons { display: flex; gap: 10px; }
         .cookie-buttons button {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.18s ease;
+            flex: 1; padding: 12px 16px; border-radius: 12px; font-size: 0.92rem;
+            font-weight: 600; cursor: pointer; transition: all 0.18s ease;
         }
-        .btn-decline {
-            background: transparent;
-            color: #6e6e73;
-            border: 1px solid #d2d2d7;
-        }
-        .btn-decline:hover {
-            background: #f5f5f7;
-            border-color: #86868b;
-        }
-        .btn-accept {
-            background: #007AFF;
-            color: #ffffff;
-            border: none;
-        }
-        .btn-accept:hover {
-            background: #0071e3;
-        }
+        .btn-decline { background: transparent; color: #6e6e73; border: 1px solid #d2d2d7; }
+        .btn-decline:hover { background: #f5f5f7; border-color: #86868b; }
+        .btn-accept { background: #007AFF; color: #ffffff; border: none; }
+        .btn-accept:hover { background: #0071e3; }
 
+        /* ===== FAQ / Guides ===== */
         .guides-intro { color: #6e6e73; font-size: 0.95rem; margin-bottom: 14px; }
-        .acc-item { background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; margin-bottom: 10px; overflow: hidden; transition: background-color 0.3s ease, border-color 0.3s ease; }
+        .acc-item { 
+            background: #f5f5f7; border: 1px solid rgba(0,0,0,0.04); border-radius: 14px; 
+            margin-bottom: 10px; overflow: hidden; 
+            /* Kivéve a tranzíció a villanás miatt */
+        }
         .acc-item:last-child { margin-bottom: 0; }
-        .acc-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; min-height: 46px; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: #1d1d1f; list-style: none; letter-spacing: -0.01em; }
+        .acc-summary { 
+            display: flex; align-items: center; justify-content: space-between; gap: 12px; 
+            padding: 14px 16px; min-height: 46px; cursor: pointer; font-weight: 600; font-size: 0.95rem; 
+            color: #1d1d1f; list-style: none; letter-spacing: -0.01em; 
+            border-bottom: 1px solid transparent; /* Fix border a layout shift ellen */
+        }
         .acc-summary::-webkit-details-marker { display: none; }
         .acc-summary::marker { content: ""; }
         .acc-summary .acc-q { flex: 1; }
         .acc-chevron { flex-shrink: 0; width: 18px; height: 18px; color: #007AFF; transition: transform 0.25s ease; }
         details[open] > .acc-summary .acc-chevron { transform: rotate(180deg); }
-        details[open] > .acc-summary { border-bottom: 1px solid rgba(0,0,0,0.06); }
+        
+        /* Csak a színt váltjuk, így nincs méretugrás */
+        details[open] > .acc-summary { border-bottom-color: rgba(0,0,0,0.06); }
+        
         .acc-body { padding: 14px 16px 16px; color: #6e6e73; font-size: 0.9rem; }
         .acc-body p { margin-bottom: 10px; color: #6e6e73; font-size: 0.9rem; }
         .acc-body p:last-child { margin-bottom: 0; }
         .acc-body ul, .acc-body ol { margin: 0 0 10px 18px; }
         .acc-body li { margin-bottom: 6px; }
         .acc-body strong { color: #1d1d1f; }
-        .acc-example { background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+        .acc-example { 
+            background: #eff6ff; border-left: 3px solid #007AFF; border-radius: 10px; 
+            padding: 12px 14px; margin: 10px 0; font-size: 0.88rem; color: #1e3a8a; 
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; 
+        }
         .acc-example strong { color: #0071e3; }
 
         /* ===== DARK MODE OVERRIDES ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
-        body.dark .site-title, body.dark .card h2, body.dark .product-card h3, body.dark .summary-content, body.dark .step-content strong, body.dark .step-num, body.dark .acc-summary, body.dark .acc-body strong, body.dark .price-line, body.dark .cookie-title { color: #f2f2f7; }
-        body.dark header .subtitle, body.dark .card p, body.dark .step-content p, body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, body.dark .cookie-text, body.dark .calc-disclaimer { color: #a1a1a6; }
+        body.dark .site-title, body.dark .card h2, body.dark .product-card h3, 
+        body.dark .summary-content, body.dark .step-content strong, body.dark .step-num, 
+        body.dark .acc-summary, body.dark .acc-body strong, body.dark .price-line, body.dark .cookie-title { color: #f2f2f7; }
+        body.dark header .subtitle, body.dark .card p, body.dark .step-content p, 
+        body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, 
+        body.dark .cookie-text, body.dark .calc-disclaimer { color: #a1a1a6; }
         body.dark .card, body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
         body.dark .howto-section { background: #0f1f16; border-color: rgba(48, 209, 88, 0.15); }
         body.dark .howto-section .summary-content, body.dark .howto-section .chevron { color: #30d158; }
@@ -684,21 +549,49 @@
         body.dark .important-note strong { color: #fcd34d; }
         body.dark .acc-example { background: #0b1e3d; border-color: #0A84FF; color: #93c5fd; }
         body.dark .acc-example strong { color: #60a5fa; }
+        
         body.dark details[open] > .acc-summary { border-bottom-color: rgba(255,255,255,0.1); }
+        
         body.dark .result-box.win { background: #064e3b; border-color: #16a34a; }
         body.dark .result-box.win .result-heading { color: #4ade80; }
         body.dark .result-box.win .best { color: #4ade80; }
         body.dark .result-box.tie { background: #78350f; border-color: #f59e0b; }
         body.dark .result-box.tie .result-heading { color: #fcd34d; }
         
-        body.dark .result-explanation {
-            color: #4ade80 !important; 
-            border-top-color: rgba(255,255,255,0.1);
-        }
+        body.dark .result-explanation { color: #4ade80 !important; border-top-color: rgba(255,255,255,0.1); }
+        body.dark .result-footnote { color: rgba(255,255,255,0.4); }
         
-        /* ÚJ: Apróbetűs szöveg éjszakai módban */
-        body.dark .result-footnote {
-            color: rgba(255,255,255,0.4);
+        body.dark .clear-btn { background: #2c2c2e; color: #f2f2f7; }
+        @media (hover: hover) and (pointer: fine) {
+            body.dark .clear-btn:hover { background: #3a3a3c; }
+        }
+        body.dark .clear-btn:active { background: #48484a; }
+
+        body.dark .product-bar-container { background: #2c2c2e; }
+        
+        body.dark .tip-card { background: #0b1e3d; border-color: rgba(10, 132, 255, 0.3); }
+        body.dark .tip-card .tip-icon { color: #0A84FF; }
+        body.dark .tip-card strong { color: #93c5fd; }
+        body.dark .tip-card p { color: #bfdbfe; }
+
+        body.dark .history-item { background: #2c2c2e; }
+        @media (hover: hover) and (pointer: fine) {
+            body.dark .history-item:hover { background: #3a3a3c; border-color: #0A84FF; }
+        }
+        body.dark .history-winner { color: #4ade80; }
+
+        body.dark .highlight-step-card { 
+            background: #0b1e3d; 
+            border-color: rgba(10, 132, 255, 0.3); 
+        }
+        body.dark .highlight-step-card .step-content strong { 
+            color: #93c5fd; 
+        }
+        body.dark .highlight-step-card .step-content p { 
+            color: #bfdbfe; 
+        }
+        body.dark .highlight-step-card .step-icon .icon-blue {
+            color: #60a5fa;
         }
 
         body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
@@ -737,6 +630,7 @@
             .amount-row select { padding: 14px 28px 14px 12px; font-size: 0.95rem; }
             input[type="number"] { padding: 14px 12px; font-size: 16px; }
             .compare-btn { padding: 15px; font-size: 1.02rem; }
+            .clear-btn { width: 50px; padding: 15px; }
             .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; box-shadow: none; }
             .cookie-title { font-size: 0.95rem; }
             .cookie-text { font-size: 0.84rem; }
@@ -744,6 +638,7 @@
             .acc-summary { padding: 13px 14px; min-height: 44px; }
             .acc-body { padding: 12px 14px 14px; }
             .acc-example { padding: 10px 12px; }
+            .tip-card { padding: 16px; }
         }
         @media (max-width: 360px) {
             .site-title { font-size: 1.28rem; }
@@ -768,6 +663,8 @@
     {"@type": "Question", "name": "Are the calculator results 100% accurate?", "acceptedAnswer": {"@type": "Answer", "text": "The mathematical comparison is precise, but the results should be used as guidance only. The tool does not account for product quality, special multi-buy offers, concentrated products (like squash), or drained weights (like tinned food). Always double-check the labels."}},
     {"@type": "Question", "name": "Why doesn't the calculator show the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "While supermarkets use 'price per 100g' for shelf labels, it's not always easy to visualize in the aisle. This tool compares the actual products you enter and tells you exactly which one to buy and how much money you save on your specific shopping choice."}},
     {"@type": "Question", "name": "How does the calculator determine the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It calculates the hidden unit price behind the scenes to find the winner. Then, it translates this into plain English, showing you the real-world difference—like 'You get 250g more for £1.50 less'."}},
+    {"@type": "Question", "name": "What do the blue and orange bars mean?", "acceptedAnswer": {"@type": "Answer", "text": "The blue bar inside the Product 1 box and the orange bar inside the Product 2 box visually represent the unit price of each item. The shorter bar is the cheaper option per gram, millilitre, or item."}},
+    {"@type": "Question", "name": "How does the Recent Comparisons feature work?", "acceptedAnswer": {"@type": "Answer", "text": "The tool automatically saves your last 3 comparisons directly in your browser. You can click on them to instantly reload the data and see the results again. No data is sent to any server."}},
     {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: weight with weight, volume with volume, and packs/items with packs/items."}},
     {"@type": "Question", "name": "Can I compare two different brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator compares the true value of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost."}},
     {"@type": "Question", "name": "Is the calculator free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers."}}
@@ -820,6 +717,14 @@
     <p>Quickly compare prices between different pack sizes. Works for groceries, household items, toiletries — any product where you need to find the best value.</p>
 </div>
 
+<div class="tip-card" id="tip-card">
+    <svg class="tip-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+    <div>
+        <strong>Tip of the Day</strong>
+        <p id="tip-text">Loading tip...</p>
+    </div>
+</div>
+
 <div class="card collapsible-card">
     <details>
         <summary>
@@ -852,6 +757,22 @@
                 <div class="acc-body">
                     <p>Supermarkets use "price per 100g" on shelf labels to make comparison easier, but when you are standing in the aisle holding two different packs, doing the maths in your head is annoying. Most people just want to know: <strong>Which one do I buy, and how much money am I saving?</strong></p>
                     <p>This tool does the complex 100g maths behind the scenes, but translates the result into plain English for you. It tells you exactly which product is the better deal based on the sizes you entered, and explains the real-world difference.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">What do the blue and orange bars mean?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>When you click "Compare Prices", a small visual bar appears inside the Product 1 card (blue) and Product 2 card (orange).</p>
+                    <p>These bars visually represent the unit price of each product. The product with the <strong>shorter bar</strong> is mathematically cheaper per gram, per millilitre, or per item. It's a quick visual way to see the difference at a glance.</p>
+                </div>
+            </details>
+
+            <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">How does the Recent Comparisons feature work?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>The tool automatically saves your last 3 calculations directly in your browser using local storage. This means you can look back at recent comparisons without re-entering the data.</p>
+                    <p>Simply tap on a history item to instantly reload the data and see the result again. Your data is never sent to a server, and you can clear the history at any time.</p>
                 </div>
             </details>
 
@@ -948,6 +869,17 @@
                 <div class="step-num"><span>3</span> Select the unit type from the menu</div>
                 <div class="step-num"><span>4</span> Click Compare to see exactly which is the better deal!</div>
             </div>
+            
+            <div class="step-card highlight-step-card">
+                <div class="step-icon">
+                    <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <div class="step-content">
+                    <strong>Visual Bars & History</strong>
+                    <p>After comparing, look for the <strong>blue and orange bars</strong> inside the product boxes — the shorter bar is the cheaper option. Your last 3 comparisons are automatically saved further down the page in <strong>"Recent Comparisons"</strong> so you can easily check them again.</p>
+                </div>
+            </div>
+
             <div class="important-note">
                 <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
                 <span><strong>Important:</strong> Only compare within the same category — weight (g and kg), volume (ml and L), or items (pack / each). You cannot compare weight with volume or items. Results are for <strong>guidance only</strong>.</span>
@@ -976,6 +908,9 @@
             </select>
         </div>
     </div>
+    <div class="product-bar-container" id="p1-bar-container">
+        <div class="product-bar p1-bar" id="p1-bar"></div>
+    </div>
 </div>
 <div class="card product-card">
     <h3>
@@ -997,20 +932,45 @@
             </select>
         </div>
     </div>
+    <div class="product-bar-container" id="p2-bar-container">
+        <div class="product-bar p2-bar" id="p2-bar"></div>
+    </div>
 </div>
-<button class="compare-btn" onclick="doCompare()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    Compare Prices
-</button>
 
-<!-- ÚJ: Guidance only disclaimer a gomb alatt -->
+<div class="btn-row">
+    <button class="compare-btn" onclick="doCompare()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Compare Prices
+    </button>
+    <button class="clear-btn" onclick="resetCalculator()" aria-label="Clear all fields">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+    </button>
+</div>
+
 <p class="calc-disclaimer">* Results are for guidance only. Always check product labels for drained weights, concentration instructions, and special multi-buy offers.</p>
 
 <div id="result-box" class="result-box">
     <div class="result-heading" id="result-heading"></div>
     <p class="price-line" id="p1-result"></p>
     <p class="price-line" id="p2-result"></p>
-    <!-- A footnote dinamikusan, a JS-ben kerül beillesztésre a magyarázat alá -->
+</div>
+
+<div class="card collapsible-card" id="history-card" style="display: none; margin-top: 32px;">
+    <details>
+        <summary>
+            <span class="summary-content">
+                <svg class="icon-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+                <span>Recent Comparisons</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="content">
+            <div class="history-list" id="history-list">
+                <!-- Ide kerülnek a korábbi számítások JS-ből -->
+            </div>
+            <button class="clear-btn" style="width: auto; padding: 10px 16px; font-size: 0.85rem; margin-top: 4px;" onclick="clearHistory()">Clear History</button>
+        </div>
+    </details>
 </div>
 
 <footer>
@@ -1060,7 +1020,7 @@
         document.getElementById('cookie-notice').classList.remove('show');
     }
     
-    // Dark mode logic — bulletproof checkbox-based toggle
+    // Dark mode logic
     (function () {
         var darkToggle = document.getElementById('darkToggle');
         if (!darkToggle) return;
@@ -1088,6 +1048,23 @@
         });
     })();
 
+    // Tip of the Day
+    var tips = [
+        "Check the 'drained weight' on tins of beans or fruit. You might be paying mostly for water!",
+        "Multipacks are not always cheaper per item. Always compare the individual item price.",
+        "A 'Buy One Get One Free' deal is only a saving if you actually need the second item.",
+        "Use the unit price on the shelf edge label to see through 'shrinkflation' (smaller packs for the same price).",
+        "Concentrated squash or detergent might look expensive, but check how much water you add – it often works out much cheaper per glass/wash.",
+        "Frozen vegetables are often cheaper per gram than fresh, and they last longer, reducing food waste."
+    ];
+    (function setTipOfTheDay() {
+        var tipEl = document.getElementById('tip-text');
+        if(tipEl) {
+            var randomTip = tips[Math.floor(Math.random() * tips.length)];
+            tipEl.textContent = randomTip;
+        }
+    })();
+
     function normalise(value, unit) {
         if (unit === 'kg') return value * 1000;
         if (unit === 'l')  return value * 1000;
@@ -1101,6 +1078,106 @@
     var iconCheck = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
     var iconEqual = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>';
     var iconBulb = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>';
+
+    // Clear/Reset funkció
+    function resetCalculator() {
+        document.getElementById('p1-price').value = '';
+        document.getElementById('p1-size').value = '';
+        document.getElementById('p1-unit').value = 'g';
+        
+        document.getElementById('p2-price').value = '';
+        document.getElementById('p2-size').value = '';
+        document.getElementById('p2-unit').value = 'g';
+        
+        var box = document.getElementById('result-box');
+        box.classList.remove('show');
+
+        // Csíkok elrejtése
+        document.getElementById('p1-bar-container').classList.remove('show');
+        document.getElementById('p2-bar-container').classList.remove('show');
+        document.getElementById('p1-bar').style.width = '0%';
+        document.getElementById('p2-bar').style.width = '0%';
+    }
+
+    // History logika
+    function getHistory() {
+        try {
+            var h = localStorage.getItem('wic_history');
+            return h ? JSON.parse(h) : [];
+        } catch(e) { return []; }
+    }
+
+    function saveHistory(data) {
+        try {
+            var history = getHistory();
+            if (history.length > 0 && 
+                history[0].p1p === data.p1p && history[0].p1s === data.p1s && history[0].p1u === data.p1u &&
+                history[0].p2p === data.p2p && history[0].p2s === data.p2s && history[0].p2u === data.p2u) {
+                return;
+            }
+            history.unshift(data);
+            if (history.length > 3) history.pop();
+            localStorage.setItem('wic_history', JSON.stringify(history));
+            renderHistory();
+        } catch(e) {}
+    }
+
+    function clearHistory() {
+        try {
+            localStorage.removeItem('wic_history');
+            renderHistory();
+        } catch(e) {}
+    }
+
+    function renderHistory() {
+        var history = getHistory();
+        var card = document.getElementById('history-card');
+        var list = document.getElementById('history-list');
+        
+        if (history.length === 0) {
+            card.style.display = 'none';
+            return;
+        }
+        
+        card.style.display = 'block';
+        list.innerHTML = '';
+        
+        history.forEach(function(item, index) {
+            var div = document.createElement('div');
+            div.className = 'history-item';
+            div.onclick = function() { loadHistoryItem(index); };
+            
+            var u1 = item.p1u === 'each' ? 'items' : item.p1u;
+            var u2 = item.p2u === 'each' ? 'items' : item.p2u;
+            
+            div.innerHTML = `
+                <div class="history-details">
+                    <span>${item.p1s}${u1} for £${item.p1p} vs ${item.p2s}${u2} for £${item.p2p}</span>
+                    <span class="history-meta">Click to load</span>
+                </div>
+                <span class="history-winner">${item.winner}!</span>
+            `;
+            list.appendChild(div);
+        });
+    }
+
+    function loadHistoryItem(index) {
+        var history = getHistory();
+        if (!history[index]) return;
+        var item = history[index];
+        
+        document.getElementById('p1-price').value = item.p1p;
+        document.getElementById('p1-size').value = item.p1s;
+        document.getElementById('p1-unit').value = item.p1u;
+        
+        document.getElementById('p2-price').value = item.p2p;
+        document.getElementById('p2-size').value = item.p2s;
+        document.getElementById('p2-unit').value = item.p2u;
+        
+        doCompare();
+    }
+
+    renderHistory();
 
     function doCompare() {
         var price1 = parseFloat(document.getElementById('p1-price').value);
@@ -1120,7 +1197,6 @@
             return;
         }
 
-        // Háttérszámítás (mindent alap mértékegységre váltunk: g, ml, vagy sima darab)
         var norm1 = normalise(size1, unit1);
         var norm2 = normalise(size2, unit2);
         var perUnit1 = price1 / norm1;
@@ -1133,18 +1209,13 @@
 
         box.classList.add('show');
 
-        // Segédfüggvény a szép számformázáshoz (pl. 1.50 -> 1.5)
         function formatNum(num) {
             return parseFloat(num.toFixed(2)).toString();
         }
-
-        // Segédfüggvény az eredeti mértékegységek megjelenítéséhez a termékeknél
         function getUnitText(unit, amount) {
             if (unit === 'each') return amount == 1 ? 'item' : 'items';
             return unit;
         }
-
-        // Segédfüggvény a KÜLÖNBSÉG (megspórolt mennyiség) okos megjelenítéséhez
         function getDiffText(diff, category) {
             if (category === 'weight') {
                 return diff >= 1000 ? formatNum(diff / 1000) + ' kg' : formatNum(diff) + ' g';
@@ -1158,12 +1229,22 @@
         var label1 = size1 + ' ' + getUnitText(unit1, size1);
         var label2 = size2 + ' ' + getUnitText(unit2, size2);
 
-        // Döntetlen ellenőrzése
+        document.getElementById('p1-bar-container').classList.add('show');
+        document.getElementById('p2-bar-container').classList.add('show');
+
+        var totalUnitPrice = perUnit1 + perUnit2;
+        var barWidth1 = (perUnit1 / totalUnitPrice) * 100;
+        var barWidth2 = (perUnit2 / totalUnitPrice) * 100;
+        
+        document.getElementById('p1-bar').style.width = barWidth1 + '%';
+        document.getElementById('p2-bar').style.width = barWidth2 + '%';
+
         if (Math.abs(perUnit1 - perUnit2) < 0.00001) {
             box.className = 'result-box show tie';
             heading.innerHTML = iconEqual + ' Same value!';
             r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2);
             r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2);
+            saveHistory({ p1p: price1, p1s: size1, p1u: unit1, p2p: price2, p2s: size2, p2u: unit2, winner: 'Tie' });
             box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             return;
         }
@@ -1177,11 +1258,11 @@
 
         box.className = 'result-box show win';
         var explanation = '';
+        var winnerName = '';
 
         if (perUnit1 < perUnit2) {
-            // Product 1 a nyertes
+            winnerName = 'Product 1';
             heading.innerHTML = iconCheck + ' Buy Product 1!';
-            
             r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2) + ' <span class="best">(better value)</span>';
             r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2);
             
@@ -1194,11 +1275,9 @@
             } else {
                 explanation = 'It has a better overall price-to-amount ratio.';
             }
-
         } else {
-            // Product 2 a nyertes
+            winnerName = 'Product 2';
             heading.innerHTML = iconCheck + ' Buy Product 2!';
-            
             r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2);
             r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2) + ' <span class="best">(better value)</span>';
             
@@ -1214,12 +1293,11 @@
         }
 
         if (explanation) {
-            // Az új, formázott div és az SVG ikon beszúrása
             r2.innerHTML += '<div class="result-explanation">' + iconBulb + '<span>' + explanation + '</span></div>';
         }
-
-        // ÚJ: Footnote hozzáadása az eredménydoboz aljához
         r2.innerHTML += '<div class="result-footnote">* Based on the exact numbers entered. Results are guidance only.</div>';
+
+        saveHistory({ p1p: price1, p1s: size1, p1u: unit1, p2p: price2, p2s: size2, p2u: unit2, winner: winnerName });
 
         box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
