@@ -468,7 +468,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin: 8px 0 16px;
+            margin: 8px 0 8px;
             transition: background 0.15s ease, transform 0.1s ease;
             box-shadow: none;
         }
@@ -478,6 +478,16 @@
         .compare-btn:active {
             transform: scale(0.98);
             background: #0066cc;
+        }
+        
+        /* ÚJ: Guidance only figyelmeztetés a gomb alatt */
+        .calc-disclaimer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #86868b;
+            margin-bottom: 16px;
+            padding: 0 10px;
+            line-height: 1.4;
         }
 
         .result-box {
@@ -514,7 +524,6 @@
         }
         .price-line .best { font-weight: 700; color: #15803d; }
         
-        /* ÚJ: Magyarázat doboz stílusa */
         .result-explanation {
             margin-top: 12px;
             padding-top: 12px;
@@ -531,6 +540,14 @@
             width: 18px;
             height: 18px;
             margin-top: 1px;
+        }
+        
+        /* ÚJ: Apróbetűs szöveg az eredmény alján */
+        .result-footnote {
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: rgba(0,0,0,0.5);
+            text-align: center;
         }
 
         footer {
@@ -654,7 +671,7 @@
         /* ===== DARK MODE OVERRIDES ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
         body.dark .site-title, body.dark .card h2, body.dark .product-card h3, body.dark .summary-content, body.dark .step-content strong, body.dark .step-num, body.dark .acc-summary, body.dark .acc-body strong, body.dark .price-line, body.dark .cookie-title { color: #f2f2f7; }
-        body.dark header .subtitle, body.dark .card p, body.dark .step-content p, body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, body.dark .cookie-text { color: #a1a1a6; }
+        body.dark header .subtitle, body.dark .card p, body.dark .step-content p, body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, body.dark .cookie-text, body.dark .calc-disclaimer { color: #a1a1a6; }
         body.dark .card, body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
         body.dark .howto-section { background: #0f1f16; border-color: rgba(48, 209, 88, 0.15); }
         body.dark .howto-section .summary-content, body.dark .howto-section .chevron { color: #30d158; }
@@ -674,10 +691,14 @@
         body.dark .result-box.tie { background: #78350f; border-color: #f59e0b; }
         body.dark .result-box.tie .result-heading { color: #fcd34d; }
         
-        /* ÚJ: Magyarázat szöveg színe éjszakai módban */
         body.dark .result-explanation {
             color: #4ade80 !important; 
             border-top-color: rgba(255,255,255,0.1);
+        }
+        
+        /* ÚJ: Apróbetűs szöveg éjszakai módban */
+        body.dark .result-footnote {
+            color: rgba(255,255,255,0.4);
         }
 
         body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
@@ -744,13 +765,12 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Why doesn't the calculator show the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "While supermarkets use 'price per 100g' for shelf labels, it's not always easy to visualize in the aisle. This tool compares the actual products you enter (e.g., 500g vs 750g) and tells you exactly which one to buy and how much money you save on your specific shopping choice."}},
-    {"@type": "Question", "name": "How does the calculator determine the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It calculates the hidden unit price behind the scenes to find the winner. Then, it translates this into plain English, showing you the real-world difference—like 'You get 250g more for £1.50 less' or 'It costs £0.50 more but you get double the amount'."}},
-    {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: weight with weight (g and kg can be mixed), volume with volume (ml and L can be mixed), and packs/items with packs/items."}},
+    {"@type": "Question", "name": "Are the calculator results 100% accurate?", "acceptedAnswer": {"@type": "Answer", "text": "The mathematical comparison is precise, but the results should be used as guidance only. The tool does not account for product quality, special multi-buy offers, concentrated products (like squash), or drained weights (like tinned food). Always double-check the labels."}},
+    {"@type": "Question", "name": "Why doesn't the calculator show the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "While supermarkets use 'price per 100g' for shelf labels, it's not always easy to visualize in the aisle. This tool compares the actual products you enter and tells you exactly which one to buy and how much money you save on your specific shopping choice."}},
+    {"@type": "Question", "name": "How does the calculator determine the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It calculates the hidden unit price behind the scenes to find the winner. Then, it translates this into plain English, showing you the real-world difference—like 'You get 250g more for £1.50 less'."}},
+    {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: weight with weight, volume with volume, and packs/items with packs/items."}},
     {"@type": "Question", "name": "Can I compare two different brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator compares the true value of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost."}},
-    {"@type": "Question", "name": "Is the calculator free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers."}},
-    {"@type": "Question", "name": "Why does the same product cost different amounts in different sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. Our tool normalises these differences so you can see the true cost and make the smartest choice."}},
-    {"@type": "Question", "name": "Does it work for non-food products?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Compare laundry detergent, fabric conditioner, toilet rolls, nappies, cleaning sprays, shampoo, toothpaste and pet food — anything sold by weight, volume or count."}}
+    {"@type": "Question", "name": "Is the calculator free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers."}}
   ]
 }
 </script>
@@ -813,6 +833,21 @@
             <p class="guides-intro">Practical, plain-English guides to help you compare unit prices like a pro. Tap any question to open the answer.</p>
             
             <details class="acc-item">
+                <summary class="acc-summary"><span class="acc-q">Are the calculator results 100% accurate?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <div class="acc-body">
+                    <p>The mathematical comparison is <strong>precise</strong>, but the final result should be used as <strong>guidance only</strong>. The tool only knows the numbers you feed it.</p>
+                    <p>It cannot account for real-world nuances, such as:</p>
+                    <ul>
+                        <li><strong>Quality/Ingredients:</strong> A premium brand might cost more per gram but taste better or last longer.</li>
+                        <li><strong>Drained Weight:</strong> A tin of beans has water in it. If you compare total weight instead of drained weight, the maths will be misleading.</li>
+                        <li><strong>Concentration:</strong> A concentrated squash or detergent makes more liquid when diluted. Comparing bottle sizes directly can be tricky.</li>
+                        <li><strong>Waste:</strong> A huge bag of potatoes is cheaper per kg, but if half of it rots, it was a false economy.</li>
+                        <li><strong>Special Offers:</strong> The tool doesn't automatically calculate "3-for-2" or "Buy One Get One Free" offers unless you input the final paid price and total quantity.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Why doesn't the calculator show the price per 100g?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
                     <p>Supermarkets use "price per 100g" on shelf labels to make comparison easier, but when you are standing in the aisle holding two different packs, doing the maths in your head is annoying. Most people just want to know: <strong>Which one do I buy, and how much money am I saving?</strong></p>
@@ -845,37 +880,6 @@
                         <li><strong>Offers:</strong> a half-price small pack can beat a full-price large pack on unit price.</li>
                     </ul>
                     <p>Use this tool to compare the exact sizes, then buy the largest size you will realistically use.</p>
-                </div>
-            </details>
-            
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">Multipacks vs single items (toilet roll, nappies, tins, cans)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>For counted items (toilet roll, nappies, tins, cans, biscuits, bottled drinks), select "pack / each" from the dropdown menu.</p>
-                    <p>Special offers need extra care:</p>
-                    <ul>
-                        <li>&ldquo;Buy one get one free&rdquo; only saves money if you need both items and can store them.</li>
-                        <li>&ldquo;3 for 2&rdquo; is cheapest when all three items have a similar unit price.</li>
-                        <li>A multipack of small portions can cost more per item than loose items sold individually.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">Top UK categories where unit-price comparison saves the most</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>Across typical UK supermarket ranges, these categories reward checking the true value every week:</p>
-                    <ul>
-                        <li><strong>Coffee and tea</strong> — bags vs loose, jars vs instant sachets.</li>
-                        <li><strong>Cereals, granola and porridge oats</strong>.</li>
-                        <li><strong>Rice, pasta, flour and lentils</strong> — value own-label vs branded.</li>
-                        <li><strong>Laundry and dishwasher tablets</strong> — compare the price per wash.</li>
-                        <li><strong>Nappies and toilet roll</strong> — price per nappy / per roll.</li>
-                        <li><strong>Soft drinks, juice and milk</strong>.</li>
-                        <li><strong>Pet food</strong> — tins vs pouches vs dry kibble.</li>
-                        <li><strong>Cleaning sprays, washing-up liquid and toiletries</strong>.</li>
-                    </ul>
-                    <p>Supermarket own-label and value lines are frequently 20&ndash;40% cheaper per unit than leading brands with very similar ingredients.</p>
                 </div>
             </details>
             
@@ -946,7 +950,7 @@
             </div>
             <div class="important-note">
                 <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                <span><strong>Important:</strong> Only compare within the same category — weight (g and kg), volume (ml and L), or items (pack / each). You cannot compare weight with volume or items.</span>
+                <span><strong>Important:</strong> Only compare within the same category — weight (g and kg), volume (ml and L), or items (pack / each). You cannot compare weight with volume or items. Results are for <strong>guidance only</strong>.</span>
             </div>
         </div>
     </details>
@@ -998,11 +1002,17 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
     Compare Prices
 </button>
+
+<!-- ÚJ: Guidance only disclaimer a gomb alatt -->
+<p class="calc-disclaimer">* Results are for guidance only. Always check product labels for drained weights, concentration instructions, and special multi-buy offers.</p>
+
 <div id="result-box" class="result-box">
     <div class="result-heading" id="result-heading"></div>
     <p class="price-line" id="p1-result"></p>
     <p class="price-line" id="p2-result"></p>
+    <!-- A footnote dinamikusan, a JS-ben kerül beillesztésre a magyarázat alá -->
 </div>
+
 <footer>
     <p>&copy; <span id="year"></span> Which Is Cheaper? &nbsp;|&nbsp;
         <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
@@ -1050,7 +1060,7 @@
         document.getElementById('cookie-notice').classList.remove('show');
     }
     
-    // Dark mode logic — bulletproof checkbox-based toggle (shared across all pages via localStorage key 'wic_dark')
+    // Dark mode logic — bulletproof checkbox-based toggle
     (function () {
         var darkToggle = document.getElementById('darkToggle');
         if (!darkToggle) return;
@@ -1090,8 +1100,6 @@
     }
     var iconCheck = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
     var iconEqual = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>';
-    
-    // ÚJ: Ikon a magyarázathoz (izzó)
     var iconBulb = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>';
 
     function doCompare() {
@@ -1209,6 +1217,9 @@
             // Az új, formázott div és az SVG ikon beszúrása
             r2.innerHTML += '<div class="result-explanation">' + iconBulb + '<span>' + explanation + '</span></div>';
         }
+
+        // ÚJ: Footnote hozzáadása az eredménydoboz aljához
+        r2.innerHTML += '<div class="result-footnote">* Based on the exact numbers entered. Results are guidance only.</div>';
 
         box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
