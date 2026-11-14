@@ -72,33 +72,6 @@
         header {
             text-align: center;
             padding: 32px 0 28px;
-            position: relative;
-        }
-        #darkToggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1d1d1f;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        #darkToggle:hover {
-            background: #f5f5f7;
-        }
-        #darkToggle svg {
-            width: 20px;
-            height: 20px;
         }
         .site-title {
             display: flex;
@@ -120,6 +93,84 @@
             margin-top: 8px;
             letter-spacing: -0.01em;
         }
+
+        /* ===== Theme toggle (slider switch, checkbox-based) ===== */
+        .theme-toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .theme-label-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: #c7c7cc;
+            transition: color 0.3s ease;
+        }
+        .theme-sun-icon { color: #f59e0b; }
+        body.dark .theme-sun-icon { color: #48484a; }
+        .theme-moon-icon { color: #c7c7cc; }
+        body.dark .theme-moon-icon { color: #5ac8fa; }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 30px;
+            border-radius: 15px;
+            background: #e5e5ea;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+            vertical-align: middle;
+        }
+        .theme-switch-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .theme-switch:focus-within {
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.35);
+        }
+        .theme-switch-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        body.dark .theme-switch {
+            background: #0A84FF;
+        }
+        body.dark .theme-switch-thumb {
+            transform: translateX(22px);
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .theme-switch:hover .theme-switch-thumb {
+                box-shadow: 0 2px 6px rgba(0,0,0,0.32);
+            }
+        }
+
         .card {
             background: #ffffff;
             border-radius: 20px;
@@ -561,8 +612,6 @@
 
         /* ===== DARK MODE OVERRIDES ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
-        body.dark #darkToggle { background: #1c1c1e; border-color: rgba(255,255,255,0.1); color: #f2f2f7; }
-        body.dark #darkToggle:hover { background: #2c2c2e; }
         body.dark .site-title, body.dark .card h2, body.dark .product-card h3, body.dark .summary-content, body.dark .step-content strong, body.dark .step-num, body.dark .acc-summary, body.dark .acc-body strong, body.dark .price-line, body.dark .cookie-title { color: #f2f2f7; }
         body.dark header .subtitle, body.dark .card p, body.dark .step-content p, body.dark .guides-intro, body.dark .acc-body, body.dark .acc-body p, body.dark .cookie-text { color: #a1a1a6; }
         body.dark .card, body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
@@ -593,11 +642,14 @@
         @media (max-width: 480px) {
             body { padding: 12px 12px 32px; }
             header { padding: 20px 0 18px; }
-            #darkToggle { width: 36px; height: 36px; top: 0; right: 0; }
-            #darkToggle svg { width: 18px; height: 18px; }
             .site-title { font-size: 1.5rem; gap: 8px; }
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
+            .theme-toggle-row { gap: 8px; margin-top: 12px; }
+            .theme-label-icon { width: 16px; height: 16px; }
+            .theme-switch { width: 48px; height: 28px; border-radius: 14px; }
+            .theme-switch-thumb { width: 24px; height: 24px; }
+            body.dark .theme-switch-thumb { transform: translateX(20px); }
             .card, .howto-section { border-radius: 18px; }
             .card { padding: 18px; }
             .card h2 { font-size: 1.1rem; }
@@ -656,15 +708,31 @@
 </head>
 <body>
 <header>
-    <button id="darkToggle" aria-label="Toggle dark mode">
-        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="iconSun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-    </button>
     <div class="site-title">
         <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
         Which Is Cheaper?
     </div>
     <p class="subtitle">Compare prices by unit. Simple, fast, free.</p>
+    <div class="theme-toggle-row">
+        <svg class="theme-label-icon theme-sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <label class="theme-switch">
+            <input type="checkbox" id="darkToggle" class="theme-switch-input" role="switch" aria-label="Toggle dark mode">
+            <span class="theme-switch-thumb"></span>
+        </label>
+        <svg class="theme-label-icon theme-moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </div>
 </header>
 <div class="card">
     <h2>
@@ -966,31 +1034,31 @@
         document.getElementById('cookie-notice').classList.remove('show');
     }
     
-    // Dark mode logic
-    const darkToggle = document.getElementById('darkToggle');
-    const iconMoon = document.getElementById('iconMoon');
-    const iconSun = document.getElementById('iconSun');
+    // Dark mode logic — bulletproof checkbox-based toggle (shared across all pages via localStorage key 'wic_dark')
+    (function () {
+        var darkToggle = document.getElementById('darkToggle');
+        if (!darkToggle) return;
 
-    function updateTheme(isDark) {
-        if (isDark) {
-            document.body.classList.add('dark');
-            iconMoon.style.display = 'none';
-            iconSun.style.display = 'block';
-            localStorage.setItem('wic_dark', '1');
-        } else {
-            document.body.classList.remove('dark');
-            iconMoon.style.display = 'block';
-            iconSun.style.display = 'none';
-            localStorage.setItem('wic_dark', '0');
+        function updateTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark');
+                darkToggle.checked = true;
+                try { localStorage.setItem('wic_dark', '1'); } catch (e) {}
+            } else {
+                document.body.classList.remove('dark');
+                darkToggle.checked = false;
+                try { localStorage.setItem('wic_dark', '0'); } catch (e) {}
+            }
         }
-    }
 
-    const isDark = localStorage.getItem('wic_dark') === '1';
-    updateTheme(isDark);
+        var isDark = false;
+        try { isDark = localStorage.getItem('wic_dark') === '1'; } catch (e) {}
+        updateTheme(isDark);
 
-    darkToggle.addEventListener('click', () => {
-        updateTheme(!document.body.classList.contains('dark'));
-    });
+        darkToggle.addEventListener('change', function () {
+            updateTheme(this.checked);
+        });
+    })();
 
     function normalise(value, unit) {
         if (unit === 'kg') return value * 1000;

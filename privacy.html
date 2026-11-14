@@ -139,7 +139,6 @@
             padding: 8px 0 24px;
             max-width: 640px;
             margin: 0 auto;
-            position: relative; /* For dark toggle */
         }
         a.site-title {
             display: flex;
@@ -166,30 +165,6 @@
             letter-spacing: -0.01em;
             transition: color 0.3s ease;
         }
-
-        /* Dark Mode Toggle Button */
-        #darkToggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1d1d1f;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            z-index: 10;
-        }
-        #darkToggle:hover { background: #f5f5f7; }
-        #darkToggle svg { width: 20px; height: 20px; }
 
         footer {
             text-align: center;
@@ -301,8 +276,6 @@
 
         /* ===== DARK MODE OVERRIDES ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
-        body.dark #darkToggle { background: #1c1c1e; border-color: rgba(255,255,255,0.1); color: #f2f2f7; }
-        body.dark #darkToggle:hover { background: #2c2c2e; }
         body.dark .container { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
         body.dark h1, body.dark h2, body.dark strong, body.dark a.site-title, body.dark .cookie-title { color: #f2f2f7; }
         body.dark a.site-title:hover { color: #f2f2f7; }
@@ -328,8 +301,6 @@
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
             header { padding: 8px 0 18px; }
-            #darkToggle { width: 36px; height: 36px; }
-            #darkToggle svg { width: 18px; height: 18px; }
             .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; box-shadow: none; }
             .cookie-title { font-size: 0.95rem; }
             .cookie-text { font-size: 0.84rem; }
@@ -346,10 +317,6 @@
 </head>
 <body>
 <header>
-    <button id="darkToggle" aria-label="Toggle dark mode">
-        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="iconSun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-    </button>
     <a href="index.html" class="site-title">
         <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
         Which Is Cheaper?
@@ -442,34 +409,14 @@
         document.getElementById('cookie-notice').classList.remove('show');
     }
 
-    // Dark mode logic
-    const darkToggle = document.getElementById('darkToggle');
-    const iconMoon = document.getElementById('iconMoon');
-    const iconSun = document.getElementById('iconSun');
-
-    function updateTheme(isDark) {
-        if (isDark) {
-            document.body.classList.add('dark');
-            if (iconMoon) iconMoon.style.display = 'none';
-            if (iconSun) iconSun.style.display = 'block';
-            try { localStorage.setItem('wic_dark', '1'); } catch(e) {}
-        } else {
-            document.body.classList.remove('dark');
-            if (iconMoon) iconMoon.style.display = 'block';
-            if (iconSun) iconSun.style.display = 'none';
-            try { localStorage.setItem('wic_dark', '0'); } catch(e) {}
-        }
-    }
-
-    let isDark = false;
-    try { isDark = localStorage.getItem('wic_dark') === '1'; } catch(e) {}
-    updateTheme(isDark);
-
-    if (darkToggle) {
-        darkToggle.addEventListener('click', () => {
-            updateTheme(!document.body.classList.contains('dark'));
-        });
-    }
+    // Dark mode — synced from index page via localStorage 'wic_dark' (no toggle on this page)
+    (function () {
+        try {
+            if (localStorage.getItem('wic_dark') === '1') {
+                document.body.classList.add('dark');
+            }
+        } catch(e) {}
+    })();
 </script>
 </body>
 </html>
