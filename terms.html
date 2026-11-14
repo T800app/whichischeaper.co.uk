@@ -17,6 +17,18 @@
     <meta name="twitter:title" content="Terms of Use — Which Is Cheaper">
     <meta name="twitter:description" content="Terms of Use for Which Is Cheaper? — a free UK unit-price comparison tool. Results are estimates for guidance only.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316a34a'/%3E%3Cpath d='M22 28h9l7 34h36l7-24H35' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='74' r='5' fill='white'/%3E%3Ccircle cx='70' cy='74' r='5' fill='white'/%3E%3C/svg%3E">
+
+    <!-- Apply dark class to <html> before paint to avoid FOUC -->
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('wic_dark') === '1') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <!-- Google Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -48,6 +60,10 @@
       gtag('config', 'G-21XW9GXD6G');
     </script>
     <style>
+        html { background-color: #f5f5f7; }
+        html.dark { background-color: #000000; }
+        html.dark body { background-color: #000000; }
+
         /* ===== Apple-inspired modern design ===== */
         * {
             margin: 0;
@@ -316,6 +332,15 @@
     </style>
 </head>
 <body>
+<script>
+    (function () {
+        try {
+            if (localStorage.getItem('wic_dark') === '1') {
+                document.body.classList.add('dark');
+            }
+        } catch (e) {}
+    })();
+</script>
 <header>
     <a href="index.html" class="site-title">
         <svg class="icon-cart" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
