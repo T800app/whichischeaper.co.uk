@@ -513,6 +513,25 @@
             font-weight: 500;
         }
         .price-line .best { font-weight: 700; color: #15803d; }
+        
+        /* ÚJ: Magyarázat doboz stílusa */
+        .result-explanation {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.95em;
+            color: #15803d;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .result-explanation svg {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+        }
 
         footer {
             text-align: center;
@@ -654,6 +673,13 @@
         body.dark .result-box.win .best { color: #4ade80; }
         body.dark .result-box.tie { background: #78350f; border-color: #f59e0b; }
         body.dark .result-box.tie .result-heading { color: #fcd34d; }
+        
+        /* ÚJ: Magyarázat szöveg színe éjszakai módban */
+        body.dark .result-explanation {
+            color: #4ade80 !important; 
+            border-top-color: rgba(255,255,255,0.1);
+        }
+
         body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
         body.dark .btn-decline:hover { background: #2c2c2e; border-color: #636366; }
         body.dark .compare-btn { background: #0A84FF; }
@@ -718,11 +744,12 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "How do I calculate the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "Divide the total price by the total weight in grams, then multiply by 100. For example, £3.50 for 500g = 3.50 ÷ 500 × 100 = £0.70 per 100g. Enter both products in the calculator and it does the maths for you, instantly."}},
+    {"@type": "Question", "name": "Why doesn't the calculator show the price per 100g?", "acceptedAnswer": {"@type": "Answer", "text": "While supermarkets use 'price per 100g' for shelf labels, it's not always easy to visualize in the aisle. This tool compares the actual products you enter (e.g., 500g vs 750g) and tells you exactly which one to buy and how much money you save on your specific shopping choice."}},
+    {"@type": "Question", "name": "How does the calculator determine the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It calculates the hidden unit price behind the scenes to find the winner. Then, it translates this into plain English, showing you the real-world difference—like 'You get 250g more for £1.50 less' or 'It costs £0.50 more but you get double the amount'."}},
     {"@type": "Question", "name": "Which units can this tool compare?", "acceptedAnswer": {"@type": "Answer", "text": "Grams (g), kilograms (kg), millilitres (ml), litres (L) and packs or individual items (each). Always compare within the same category: weight with weight (g and kg can be mixed), volume with volume (ml and L can be mixed), and packs/items with packs/items."}},
-    {"@type": "Question", "name": "Can I compare two different brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator compares the unit price of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost."}},
+    {"@type": "Question", "name": "Can I compare two different brands?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculator compares the true value of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost."}},
     {"@type": "Question", "name": "Is the calculator free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers."}},
-    {"@type": "Question", "name": "Why does the same product cost different amounts in different sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. The unit price normalises these differences so you can see the true cost per measure, not just the headline sticker price."}},
+    {"@type": "Question", "name": "Why does the same product cost different amounts in different sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. Our tool normalises these differences so you can see the true cost and make the smartest choice."}},
     {"@type": "Question", "name": "Does it work for non-food products?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Compare laundry detergent, fabric conditioner, toilet rolls, nappies, cleaning sprays, shampoo, toothpaste and pet food — anything sold by weight, volume or count."}}
   ]
 }
@@ -783,41 +810,30 @@
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <div class="content">
-            <p class="guides-intro">Practical, plain-English guides to help you compare unit prices like a pro — from price per 100g to multipack value. Tap any question to open the answer.</p>
+            <p class="guides-intro">Practical, plain-English guides to help you compare unit prices like a pro. Tap any question to open the answer.</p>
+            
             <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">What is unit price — and why does it matter?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <summary class="acc-summary"><span class="acc-q">Why doesn't the calculator show the price per 100g?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p><strong>Unit price</strong> (or price per unit) is the cost of one standard measure of a product — for example 100 grams, 100 millilitres, 1 kilogram, 1 litre or a single item. The total price on the shelf tells you how much you pay in total; the unit price tells you how much value you actually get. Two packs can look similar in price while containing very different amounts.</p>
-                    <p>In UK supermarkets, shelf-edge labels usually show the price per kg or per litre underneath the product price. This tool does the same calculation for any two products, including packs sold in grams, millilitres or counts, so you can compare like-for-like in seconds.</p>
-                    <p>Comparing unit prices also protects you from <strong>shrinkflation</strong>: when a manufacturer keeps the price similar but reduces the contents (for example a 500g bag becoming 450g). Only the unit price reveals that the item has quietly become more expensive.</p>
+                    <p>Supermarkets use "price per 100g" on shelf labels to make comparison easier, but when you are standing in the aisle holding two different packs, doing the maths in your head is annoying. Most people just want to know: <strong>Which one do I buy, and how much money am I saving?</strong></p>
+                    <p>This tool does the complex 100g maths behind the scenes, but translates the result into plain English for you. It tells you exactly which product is the better deal based on the sizes you entered, and explains the real-world difference.</p>
                 </div>
             </details>
+
             <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">How to compare price per 100g and per kg (food, coffee, cereal, rice)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+                <summary class="acc-summary"><span class="acc-q">How does the calculator determine the best value?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p>For solid foods and dry goods (coffee, cereal, rice, pasta, flour, sugar, pet food), compare by weight. Convert kilograms to grams first (1 kg = 1000 g), then use the formula:</p>
-                    <div class="acc-example"><strong>Price per 100g = (total price &divide; total weight in g) &times; 100</strong></div>
-                    <div class="acc-example"><strong>Worked example:</strong> Pack A: 500g coffee for &pound;3.50 &rarr; 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Pack B: 1kg (1000g) coffee for &pound;6.50 &rarr; 6.50 &divide; 1000 &times; 100 = &pound;0.65 per 100g. Pack B is cheaper per 100g even though its total price is higher.</div>
-                    <ul>
-                        <li>Always convert kg to g before comparing, or simply pick the kg option in the calculator.</li>
-                        <li>For tinned foods, check the <strong>drained weight</strong> (e.g. beans in sauce) — the label lists both drained and total weight.</li>
-                        <li>Compare within the same quality tier: premium ground coffee or speciality blends can cost more per gram for good reason.</li>
-                    </ul>
+                    <p>When you enter the price and size of two products, the tool first calculates the hidden unit price of both (price per gram, per millilitre, or per item) to find the mathematical winner.</p>
+                    <p>Then, instead of just showing you confusing decimal numbers, it compares the actual amounts and prices you entered. It will tell you things like:</p>
+                    <div class="acc-example">
+                        <strong>"You get 112 g more AND save £0.23."</strong><br>
+                        or<br>
+                        <strong>"It costs £2.00 more upfront, but you get 500 g extra product."</strong>
+                    </div>
+                    <p>This gives you a clear, real-world answer to decide which pack goes in your trolley.</p>
                 </div>
             </details>
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">How to compare price per litre and per 100ml (drinks, detergent, softener)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>For liquids (milk, soft drinks, juice, washing-up liquid, fabric conditioner, bleach, shampoo), compare by volume. Remember that 1 litre = 1000 ml.</p>
-                    <div class="acc-example"><strong>Price per 100ml = (total price &divide; total volume in ml) &times; 100</strong></div>
-                    <div class="acc-example"><strong>Worked example:</strong> Pack A: 2 litres cola for &pound;1.65 &rarr; 165p &divide; 2000 &times; 100 = 8.25p per 100ml. Pack B: 500ml bottle for 45p &rarr; 45 &divide; 500 &times; 100 = 9.0p per 100ml. The 2-litre bottle works out cheaper.</div>
-                    <ul>
-                        <li>Concentrated products (dilute-as-directed juice, concentrated fabric softener) should be compared on the diluted final amount, not the bottle size.</li>
-                        <li>Multipacks of small bottles often cost more per 100ml than one large bottle.</li>
-                        <li>Read the dilution instructions before assuming that a bigger bottle equals better value.</li>
-                    </ul>
-                </div>
-            </details>
+
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Are bigger packs always better value?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
@@ -828,15 +844,14 @@
                         <li><strong>Branding:</strong> some &ldquo;family size&rdquo; packs carry a premium price rather than a saving.</li>
                         <li><strong>Offers:</strong> a half-price small pack can beat a full-price large pack on unit price.</li>
                     </ul>
-                    <p>The safest approach is to compare the unit price of both sizes with this tool, then buy the largest size you will realistically use.</p>
+                    <p>Use this tool to compare the exact sizes, then buy the largest size you will realistically use.</p>
                 </div>
             </details>
+            
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Multipacks vs single items (toilet roll, nappies, tins, cans)</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p>For counted items (toilet roll, nappies, tins, cans, biscuits, bottled drinks), compare the price per item:</p>
-                    <div class="acc-example"><strong>Price per item = total price &divide; number of items</strong></div>
-                    <div class="acc-example"><strong>Worked example:</strong> 6-pack of toilet rolls for &pound;2.40 = 40p per roll. 4-pack for &pound;1.70 = 42.5p per roll. The 6-pack wins.</div>
+                    <p>For counted items (toilet roll, nappies, tins, cans, biscuits, bottled drinks), select "pack / each" from the dropdown menu.</p>
                     <p>Special offers need extra care:</p>
                     <ul>
                         <li>&ldquo;Buy one get one free&rdquo; only saves money if you need both items and can store them.</li>
@@ -845,43 +860,25 @@
                     </ul>
                 </div>
             </details>
+
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Top UK categories where unit-price comparison saves the most</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p>Across typical UK supermarket ranges, these categories reward checking the unit price every week:</p>
+                    <p>Across typical UK supermarket ranges, these categories reward checking the true value every week:</p>
                     <ul>
                         <li><strong>Coffee and tea</strong> — bags vs loose, jars vs instant sachets.</li>
                         <li><strong>Cereals, granola and porridge oats</strong>.</li>
                         <li><strong>Rice, pasta, flour and lentils</strong> — value own-label vs branded.</li>
-                        <li><strong>Laundry and dishwasher tablets</strong> — compare the price per wash, not per box.</li>
+                        <li><strong>Laundry and dishwasher tablets</strong> — compare the price per wash.</li>
                         <li><strong>Nappies and toilet roll</strong> — price per nappy / per roll.</li>
                         <li><strong>Soft drinks, juice and milk</strong>.</li>
-                        <li><strong>Pet food</strong> — tins vs pouches vs dry kibble, compared per kg.</li>
+                        <li><strong>Pet food</strong> — tins vs pouches vs dry kibble.</li>
                         <li><strong>Cleaning sprays, washing-up liquid and toiletries</strong>.</li>
                     </ul>
                     <p>Supermarket own-label and value lines are frequently 20&ndash;40% cheaper per unit than leading brands with very similar ingredients.</p>
                 </div>
             </details>
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">Common supermarket shopping mistakes that quietly cost money</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <ul>
-                        <li>Judging by the total price tag instead of the unit price.</li>
-                        <li>Comparing two different units (for example a 1kg bag against a 750g bag without converting).</li>
-                        <li>Assuming multipacks and &ldquo;value&rdquo; packs are automatically cheaper.</li>
-                        <li>Skipping the supermarket&rsquo;s own-label range, which often matches branded quality.</li>
-                        <li>Buying reduced-to-clear items without checking their normal unit price first.</li>
-                        <li>Stocking up on perishable goods that expire before they can be used.</li>
-                    </ul>
-                    <p>Two minutes of unit-price comparison on the items you buy every week typically saves more than chasing one-off discounts.</p>
-                </div>
-            </details>
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">How do I calculate the price per 100g?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>Divide the total price by the total weight in grams, then multiply by 100. For example, &pound;3.50 for 500g = 3.50 &divide; 500 &times; 100 = &pound;0.70 per 100g. Enter both products in the calculator above and it does the maths for you, instantly.</p>
-                </div>
-            </details>
+            
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Which units can this tool compare?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
@@ -891,25 +888,13 @@
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Can I compare two different brands?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
-                    <p>Yes. The calculator compares the unit price of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost.</p>
+                    <p>Yes. The calculator compares the true value of any two products regardless of brand, which is the best way to see whether a premium brand is actually worth the extra cost.</p>
                 </div>
             </details>
             <details class="acc-item">
                 <summary class="acc-summary"><span class="acc-q">Is the calculator free to use?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
                 <div class="acc-body">
                     <p>Yes, it is completely free, with no sign-up, no login and no app download. It works in the browser on mobile phones, tablets, laptops and desktop computers.</p>
-                </div>
-            </details>
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">Why does the same product cost different amounts in different sizes?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>Pack size, production costs, multi-buy promotions and retailer pricing all affect the total price. The unit price normalises these differences so you can see the true cost per measure, not just the headline sticker price.</p>
-                </div>
-            </details>
-            <details class="acc-item">
-                <summary class="acc-summary"><span class="acc-q">Does it work for non-food products?</span><svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
-                <div class="acc-body">
-                    <p>Yes. Compare laundry detergent, fabric conditioner, toilet rolls, nappies, cleaning sprays, shampoo, toothpaste and pet food — anything sold by weight, volume or count.</p>
                 </div>
             </details>
         </div>
@@ -932,7 +917,7 @@
                 </div>
                 <div class="step-content">
                     <strong>Weight — Grams (g) or Kilograms (kg)</strong>
-                    <p>Type the weight amount, then pick g or kg. Example: type 500 and pick g for 500 grams, or type 1.5 and pick kg for 1.5 kilograms.</p>
+                    <p>Enter the exact amount from the label. Example: type 500 and pick g for 500 grams, or type 1.5 and pick kg for 1.5 kilograms.</p>
                 </div>
             </div>
             <div class="step-card">
@@ -941,7 +926,7 @@
                 </div>
                 <div class="step-content">
                     <strong>Volume — Millilitres (ml) or Litres (L)</strong>
-                    <p>Type the volume amount, then pick ml or L. Example: type 750 and pick ml for 750 millilitres, or type 2 and pick L for 2 litres.</p>
+                    <p>Enter the exact volume. Example: type 750 and pick ml for 750 millilitres, or type 2 and pick L for 2 litres.</p>
                 </div>
             </div>
             <div class="step-card">
@@ -950,14 +935,14 @@
                 </div>
                 <div class="step-content">
                     <strong>Quantity — Packs or Individual Items</strong>
-                    <p>Type the number of items in the pack, then pick "pack / each". Example: type 6 and pick "pack / each" for a 6-pack.</p>
+                    <p>Type the total number of items, then pick "pack / each". Example: type 6 and pick "pack / each" for a 6-pack of crisps.</p>
                 </div>
             </div>
             <div class="steps-list">
-                <div class="step-num"><span>1</span> Enter total price in £</div>
+                <div class="step-num"><span>1</span> Enter the real total price in £</div>
                 <div class="step-num"><span>2</span> Enter the weight, volume, or quantity</div>
-                <div class="step-num"><span>3</span> Select the unit type</div>
-                <div class="step-num"><span>4</span> Click Compare Prices</div>
+                <div class="step-num"><span>3</span> Select the unit type from the menu</div>
+                <div class="step-num"><span>4</span> Click Compare to see exactly which is the better deal!</div>
             </div>
             <div class="important-note">
                 <svg class="icon-orange" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
@@ -1098,14 +1083,6 @@
         if (unit === 'l')  return value * 1000;
         return value;
     }
-    function displayLabel(unit) {
-        if (unit === 'g' || unit === 'kg') return '100g';
-        if (unit === 'ml' || unit === 'l') return '100ml';
-        return 'pack / item';
-    }
-    function displayMultiplier(unit) {
-        return unit === 'each' ? 1 : 100;
-    }
     function unitCategory(unit) {
         if (unit === 'g' || unit === 'kg') return 'weight';
         if (unit === 'ml' || unit === 'l') return 'volume';
@@ -1113,6 +1090,10 @@
     }
     var iconCheck = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>';
     var iconEqual = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>';
+    
+    // ÚJ: Ikon a magyarázathoz (izzó)
+    var iconBulb = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>';
+
     function doCompare() {
         var price1 = parseFloat(document.getElementById('p1-price').value);
         var price2 = parseFloat(document.getElementById('p2-price').value);
@@ -1120,43 +1101,115 @@
         var size2  = parseFloat(document.getElementById('p2-size').value);
         var unit1  = document.getElementById('p1-unit').value;
         var unit2  = document.getElementById('p2-unit').value;
+
         if (!price1 || !price2 || !size1 || !size2 || price1 <= 0 || price2 <= 0 || size1 <= 0 || size2 <= 0) {
             alert('Please fill in all fields with valid numbers!');
             return;
         }
+
         if (unitCategory(unit1) !== unitCategory(unit2)) {
             alert('Please compare the same type of units:\n• weight (g, kg) with weight\n• volume (ml, L) with volume\n• items (pack, each) with items');
             return;
         }
+
+        // Háttérszámítás (mindent alap mértékegységre váltunk: g, ml, vagy sima darab)
         var norm1 = normalise(size1, unit1);
         var norm2 = normalise(size2, unit2);
         var perUnit1 = price1 / norm1;
         var perUnit2 = price2 / norm2;
-        var label = displayLabel(unit1);
-        var mult  = displayMultiplier(unit1);
-        var disp1 = perUnit1 * mult;
-        var disp2 = perUnit2 * mult;
+
         var box     = document.getElementById('result-box');
         var heading = document.getElementById('result-heading');
         var r1      = document.getElementById('p1-result');
         var r2      = document.getElementById('p2-result');
+
         box.classList.add('show');
-        if (Math.abs(disp1 - disp2) < 0.001) {
-            box.className = 'result-box show tie';
-            heading.innerHTML = iconEqual + ' Same price!';
-            r1.innerHTML = 'Product 1 — £' + disp1.toFixed(2) + ' per ' + label;
-            r2.innerHTML = 'Product 2 — £' + disp2.toFixed(2) + ' per ' + label;
-        } else if (disp1 < disp2) {
-            box.className = 'result-box show win';
-            heading.innerHTML = iconCheck + ' Product 1 is better value!';
-            r1.innerHTML = '<span class="best">Product 1 — £' + disp1.toFixed(2) + ' per ' + label + ' (cheaper)</span>';
-            r2.innerHTML = 'Product 2 — £' + disp2.toFixed(2) + ' per ' + label;
-        } else {
-            box.className = 'result-box show win';
-            heading.innerHTML = iconCheck + ' Product 2 is better value!';
-            r1.innerHTML = 'Product 1 — £' + disp1.toFixed(2) + ' per ' + label;
-            r2.innerHTML = '<span class="best">Product 2 — £' + disp2.toFixed(2) + ' per ' + label + ' (cheaper)</span>';
+
+        // Segédfüggvény a szép számformázáshoz (pl. 1.50 -> 1.5)
+        function formatNum(num) {
+            return parseFloat(num.toFixed(2)).toString();
         }
+
+        // Segédfüggvény az eredeti mértékegységek megjelenítéséhez a termékeknél
+        function getUnitText(unit, amount) {
+            if (unit === 'each') return amount == 1 ? 'item' : 'items';
+            return unit;
+        }
+
+        // Segédfüggvény a KÜLÖNBSÉG (megspórolt mennyiség) okos megjelenítéséhez
+        function getDiffText(diff, category) {
+            if (category === 'weight') {
+                return diff >= 1000 ? formatNum(diff / 1000) + ' kg' : formatNum(diff) + ' g';
+            } else if (category === 'volume') {
+                return diff >= 1000 ? formatNum(diff / 1000) + ' L' : formatNum(diff) + ' ml';
+            } else {
+                return formatNum(diff) + (diff == 1 ? ' item' : ' items');
+            }
+        }
+
+        var label1 = size1 + ' ' + getUnitText(unit1, size1);
+        var label2 = size2 + ' ' + getUnitText(unit2, size2);
+
+        // Döntetlen ellenőrzése
+        if (Math.abs(perUnit1 - perUnit2) < 0.00001) {
+            box.className = 'result-box show tie';
+            heading.innerHTML = iconEqual + ' Same value!';
+            r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2);
+            r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2);
+            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            return;
+        }
+
+        var category = unitCategory(unit1);
+        var sizeDiff = Math.abs(norm1 - norm2); 
+        var priceDiff = Math.abs(price1 - price2);
+        
+        var sizeDiffText = getDiffText(sizeDiff, category);
+        var priceDiffText = '£' + priceDiff.toFixed(2);
+
+        box.className = 'result-box show win';
+        var explanation = '';
+
+        if (perUnit1 < perUnit2) {
+            // Product 1 a nyertes
+            heading.innerHTML = iconCheck + ' Buy Product 1!';
+            
+            r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2) + ' <span class="best">(better value)</span>';
+            r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2);
+            
+            if (norm1 > norm2 && price1 <= price2) {
+                explanation = 'You get <strong>' + sizeDiffText + '</strong> more AND save <strong>' + priceDiffText + '</strong>.';
+            } else if (norm1 > norm2 && price1 > price2) {
+                explanation = 'It costs <strong>' + priceDiffText + '</strong> more upfront, but you get <strong>' + sizeDiffText + '</strong> extra product.';
+            } else if (norm1 < norm2 && price1 < price2) {
+                explanation = 'It is smaller, but you save <strong>' + priceDiffText + '</strong>.';
+            } else {
+                explanation = 'It has a better overall price-to-amount ratio.';
+            }
+
+        } else {
+            // Product 2 a nyertes
+            heading.innerHTML = iconCheck + ' Buy Product 2!';
+            
+            r1.innerHTML = '<strong>Product 1:</strong> ' + label1 + ' for £' + price1.toFixed(2);
+            r2.innerHTML = '<strong>Product 2:</strong> ' + label2 + ' for £' + price2.toFixed(2) + ' <span class="best">(better value)</span>';
+            
+            if (norm2 > norm1 && price2 <= price1) {
+                explanation = 'You get <strong>' + sizeDiffText + '</strong> more AND save <strong>' + priceDiffText + '</strong>.';
+            } else if (norm2 > norm1 && price2 > price1) {
+                explanation = 'It costs <strong>' + priceDiffText + '</strong> more upfront, but you get <strong>' + sizeDiffText + '</strong> extra product.';
+            } else if (norm2 < norm1 && price2 < price1) {
+                explanation = 'It is smaller, but you save <strong>' + priceDiffText + '</strong>.';
+            } else {
+                explanation = 'It has a better overall price-to-amount ratio.';
+            }
+        }
+
+        if (explanation) {
+            // Az új, formázott div és az SVG ikon beszúrása
+            r2.innerHTML += '<div class="result-explanation">' + iconBulb + '<span>' + explanation + '</span></div>';
+        }
+
         box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     document.getElementById('year').textContent = new Date().getFullYear();
