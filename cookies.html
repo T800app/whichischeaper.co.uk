@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie Policy — Which Is Cheaper?</title>
-    <meta name="description" content="Cookie Policy for Which Is Cheaper? — essential, Google Analytics and Google AdSense cookies, consent mode, and how to manage your choices.">
+    <meta name="description" content="Cookie Policy for Which Is Cheaper? — no advertising or analytics cookies; functional local storage for your theme preference and recent comparisons, and how to manage it.">
     <link rel="canonical" href="https://whichischeaper.co.uk/cookies.html">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://whichischeaper.co.uk/cookies.html">
     <meta property="og:title" content="Cookie Policy — Which Is Cheaper?">
-    <meta property="og:description" content="Cookie Policy for Which Is Cheaper? — essential, Google Analytics and Google AdSense cookies, consent mode, and how to manage your choices.">
+    <meta property="og:description" content="Cookie Policy for Which Is Cheaper? — no advertising or analytics cookies; functional local storage for your theme preference and recent comparisons, and how to manage it.">
     <meta property="og:site_name" content="Which Is Cheaper?">
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Cookie Policy — Which Is Cheaper?">
-    <meta name="twitter:description" content="Cookie Policy for Which Is Cheaper? — essential, Google Analytics and Google AdSense cookies, consent mode, and how to manage your choices.">
+    <meta name="twitter:description" content="Cookie Policy for Which Is Cheaper? — no advertising or analytics cookies; functional local storage for your theme preference and recent comparisons, and how to manage it.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2316a34a'/%3E%3Cpath d='M22 28h9l7 34h36l7-24H35' fill='none' stroke='white' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='74' r='5' fill='white'/%3E%3Ccircle cx='70' cy='74' r='5' fill='white'/%3E%3C/svg%3E">
 
     <!-- Apply dark class to <html> before paint to avoid FOUC -->
@@ -30,36 +30,6 @@
         })();
     </script>
 
-    <!-- Google Consent Mode v2 -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        wait_for_update: 500
-      });
-      (function () {
-        if (localStorage.getItem('cookiesAccepted') === 'yes') {
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-            analytics_storage: 'granted'
-          });
-        }
-      })();
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363136655011505"
-     crossorigin="anonymous"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21XW9GXD6G"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', 'G-21XW9GXD6G');
-    </script>
     <style>
         html { background-color: #f5f5f7; }
         html.dark { background-color: #000000; }
@@ -248,114 +218,19 @@
         }
         footer a:hover { text-decoration: underline; }
 
-        /* Cookie consent banner */
-        .cookie-overlay, .cookie-overlay * { box-sizing: border-box; }
-        .cookie-overlay {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%) translateY(24px);
-            width: calc(100% - 32px);
-            max-width: 600px;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 20px;
-            padding: 22px 22px 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-            z-index: 100;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, background-color 0.3s ease, border-color 0.3s ease;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-        .cookie-overlay.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        .cookie-head {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .cookie-icon {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #007AFF;
-            transition: color 0.3s ease;
-        }
-        .cookie-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-            transition: color 0.3s ease;
-        }
-        .cookie-text {
-            font-size: 0.9rem;
-            color: #6e6e73;
-            line-height: 1.55;
-            margin: 0 0 16px 0;
-            transition: color 0.3s ease;
-        }
-        .cookie-text a {
-            color: #007AFF;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .cookie-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .cookie-buttons button {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.18s ease;
-            font-family: inherit;
-        }
-        .btn-decline {
-            background: transparent;
-            border: 1px solid #d2d2d7;
-            color: #6e6e73;
-        }
-        .btn-decline:hover { background: #f5f5f7; border-color: #86868b; }
-        .btn-accept {
-            background: #007AFF;
-            color: white;
-            border: none;
-        }
-        .btn-accept:hover {
-            background: #0071e3;
-        }
-
         /* ===== DARK MODE ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
         body.dark .container { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
-        body.dark h1, body.dark h2, body.dark h3, body.dark strong, body.dark a.site-title, body.dark .cookie-title, body.dark .cookie-table th { color: #f2f2f7; }
+        body.dark h1, body.dark h2, body.dark h3, body.dark strong, body.dark a.site-title, body.dark .cookie-table th { color: #f2f2f7; }
         body.dark a.site-title:hover { color: #f2f2f7; }
-        body.dark .last-updated, body.dark p, body.dark ul, body.dark li, body.dark header .subtitle, body.dark .cookie-text { color: #a1a1a6; }
+        body.dark .last-updated, body.dark p, body.dark ul, body.dark li, body.dark header .subtitle { color: #a1a1a6; }
         body.dark .cookie-table thead tr { background: #2c2c2e; }
         body.dark .cookie-table th, body.dark .cookie-table td { border-color: #38383a; color: #a1a1a6; }
         body.dark code { background: #2c2c2e; color: #f2f2f7; }
         body.dark .back-link { border-top-color: rgba(255,255,255,0.1); }
         body.dark footer { color: #8e8e93; }
-        body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
-        body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
-        body.dark .btn-decline:hover { background: #2c2c2e; border-color: #636366; }
-        body.dark .btn-accept { background: #0A84FF; }
-        body.dark .btn-accept:hover { background: #0071e3; }
         body.dark a { color: #0A84FF; }
         body.dark .site-title .icon-cart { color: #0A84FF; }
-        body.dark .cookie-icon { color: #0A84FF; }
 
         /* ===== Responsive ===== */
         @media (max-width: 480px) {
@@ -368,10 +243,6 @@
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
             header { padding: 8px 0 18px; }
-            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; box-shadow: none; }
-            .cookie-title { font-size: 0.95rem; }
-            .cookie-text { font-size: 0.84rem; }
-            .cookie-buttons button { padding: 11px; font-size: 0.88rem; }
         }
         @media (max-width: 360px) {
             a.site-title { font-size: 1.28rem; }
@@ -404,24 +275,24 @@
 
     <div class="container">
         <h1>Cookie Policy</h1>
-        <p class="last-updated">Last updated: October 26, 2026</p>
+        <p class="last-updated">Last updated: November 15, 2026</p>
         <h2>What are cookies?</h2>
         <p>Cookies are small text files that are placed on your computer or mobile device by websites that you visit. They are widely used to make websites work, or work more efficiently, as well as to provide information to the owners of the site.</p>
         <p>To find out more about cookies, visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a> — this provides comprehensive information about cookies and how they are used.</p><p>Our use of cookies and similar technologies complies with the <strong>Privacy and Electronic Communications Regulations 2003 (PECR)</strong>, which requires us to obtain your consent before placing non-essential cookies on your device. Essential cookies necessary for the site to function may be set without consent.</p>
-        <h2>How we use cookies</h2>
-        <p>We ask for your consent before placing any non-essential cookies. We use the following types of cookies:</p>
+        <h2>What this site uses</h2>
+        <p>This calculator sets <strong>no advertising cookies, no analytics or measurement cookies, and no third-party tracking cookies</strong>. There are no Google Analytics, Google AdSense, or similar tags on this site. The only data kept on your device is functional browser storage for your own preferences and recent comparisons; it is never sent to our servers.</p>
         <ul>
-            <li><strong>Essential cookies:</strong> These cookies are necessary for the website to function properly. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.</li>
-            <li><strong>Analytics/performance cookies:</strong> With your consent, we use Google Analytics to recognise and count the number of visitors and to see how visitors move around our website. This helps us improve the way our website works. The data collected is anonymous and aggregated.</li>
-            <li><strong>Advertising cookies:</strong> With your consent, we use Google AdSense to display advertisements. Google uses advertising cookies to show you ads that are more relevant to you, to limit how many times you see an ad, and to measure the effectiveness of advertising campaigns. These cookies track your activity across websites. For details on how Google uses data, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use our services</a>.</li>
+            <li><strong>Local storage — theme preference (<code>wic_dark</code>):</strong> remembers whether you prefer light or dark mode after you use the theme toggle. It stays on your device and is not used for advertising, analytics, or cross-site tracking.</li>
+            <li><strong>Local storage — recent comparisons (<code>wic_history</code>):</strong> keeps your last three price comparisons (the prices, sizes and units you typed) so you can reopen them on this device. It contains no account details and can be cleared at any time with the "Clear History" button or your browser settings.</li>
+            <li><strong>Calculator inputs:</strong> prices, weights, quantities and other numbers you enter are processed entirely in your browser and are not used for profiling or advertising.</li>
         </ul>
-        <h3>Cookies and similar technologies we use</h3>
-        <p>The table below lists the specific cookies and similar technologies that may be used. Analytics and advertising cookies are set only after you give consent via the cookie banner.</p>
+        <h3>Technologies we use</h3>
+        <p>The table below lists the only browser-stored technologies used on this site.</p>
         <div class="cookie-table-wrap">
             <table class="cookie-table">
                 <thead>
                     <tr>
-                        <th>Cookie / technology</th>
+                        <th>Technology</th>
                         <th>Purpose</th>
                         <th>Duration</th>
                         <th>Set by</th>
@@ -429,41 +300,32 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Local storage (saved preferences &amp; consent choice)</td>
-                        <td>Remembers your settings and your cookie consent choice — necessary for the site to work</td>
-                        <td>Persistent (until you clear it)</td>
-                        <td>This site (first party)</td>
+                        <td>Local storage <code>wic_dark</code> (functional preference)</td>
+                        <td>Remembers your chosen light/dark appearance after you use the theme toggle</td>
+                        <td>Persistent until you clear site data</td>
+                        <td>This site (first party, on your device)</td>
                     </tr>
                     <tr>
-                        <td><code>_ga</code>, <code>_ga_&lt;container-id&gt;</code> (Google Analytics 4)</td>
-                        <td>Counts visitors and shows how the site is used (anonymous, aggregated)</td>
-                        <td>2 years</td>
-                        <td>This site (first party, processed by Google)</td>
+                        <td>Local storage <code>wic_history</code> (your recent comparisons)</td>
+                        <td>Stores your last three comparisons on this device so you can reopen them; cleared with "Clear History"</td>
+                        <td>Last three entries; removed when you clear history or site data</td>
+                        <td>This site (first party, on your device)</td>
                     </tr>
                     <tr>
-                        <td><code>__gads</code>, <code>__gpi</code> (Google AdSense)</td>
-                        <td>Shows relevant ads, limits how often you see an ad, and measures ad performance</td>
-                        <td>Up to 1 year</td>
-                        <td>Google (third party)</td>
+                        <td>Analytics / advertising cookies</td>
+                        <td>Not used — no analytics, advertising, or third-party tracking tags on this site</td>
+                        <td>—</td>
+                        <td>—</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>Google may also set additional cookies (such as <code>NID</code> and <code>1P_JAR</code>) when serving ads. For the full, up-to-date list see <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">Google's cookie policy</a>.</p>
-        <h3>How we use consent (Google Consent Mode v2)</h3>
-        <p>We use Google Consent Mode v2. Before you accept, all advertising and analytics cookies are blocked by default — the four Google signals (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code> and <code>analytics_storage</code>) are set to <code>'denied'</code>. When you click <strong>Accept</strong>, they are set to <code>'granted'</code>; when you click <strong>Decline</strong>, they remain <code>'denied'</code> and no advertising or analytics cookies are set. You can change your choice at any time by clearing your browser cookies and local storage for this site — the consent banner will reappear.</p>
-        <h2>What happens if you decline cookies?</h2>
-        <p>If you click "Decline" on the cookie banner, we will not place analytics or advertising cookies. The website will still work fully, and you will still see advertisements — but they will be generic and less relevant to you, rather than personalised.</p>
-        <h2>Withdrawing your consent</h2>
-        <p>You can change your mind at any time. Simply clear your browser's cookies and local storage for this website — the cookie banner will appear again on your next visit, and you can make a new choice.</p>
-        <h2>Opting out of personalised advertising</h2>
-        <p>Even if you have consented, you can opt out of personalised advertising at any time:</p>
-        <ul>
-            <li>Visit <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a> to manage or turn off personalised ads from Google.</li>
-            <li>Visit <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">YourAdChoices</a> or <a href="https://www.networkadvertising.org/choices/" target="_blank" rel="noopener">Network Advertising Initiative</a> to opt out from participating ad networks.</li>
-        </ul>
+        <h2>No consent banner</h2>
+        <p>Because the site sets no non-essential (advertising or analytics) cookies or similar tracking technologies, no Accept/Decline consent banner is required under the UK Privacy and Electronic Communications Regulations (PECR), and none is shown. The calculator works fully even if you block or clear browser storage.</p>
+        <h2>No advertising or tracking</h2>
+        <p>This website displays no advertisements and runs no third-party advertising or analytics tags. No data about your visits is shared with advertisers, analytics providers, or data brokers.</p>
         <h2>Managing cookies</h2>
-        <p>You can control and/or delete cookies as you wish — for details, see <a href="https://www.allaboutcookies.org/manage-cookies/" target="_blank" rel="noopener">allaboutcookies.org/manage-cookies</a>. You can delete all cookies that are already on your computer, and you can set most browsers to prevent them from being placed. If you do this, however, you may have to manually adjust some preferences every time you visit a site and some services and functionalities may not work properly.</p>
+        <p>You can clear the locally stored preference and history at any time through your browser settings (clear site data / local storage for this site), or use the "Clear History" button in the calculator. Clearing this data only resets the appearance and removes your saved recent comparisons — the calculator and all results work normally. For general information about browser cookies, see <a href="https://www.allaboutcookies.org/manage-cookies/" target="_blank" rel="noopener">allaboutcookies.org/manage-cookies</a>.</p>
         <h2>Changes to this policy</h2>
         <p>We may update this Cookie Policy from time to time. We encourage you to review this page periodically to stay informed about our use of cookies.</p>
         <h2>Contact us</h2>
@@ -478,47 +340,8 @@
         <a href="terms.html">Terms of Use</a>
     </p>
 </footer>
-<div id="cookie-notice" class="cookie-overlay">
-    <div class="cookie-head">
-        <span class="cookie-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
-        </span>
-        <span class="cookie-title">We value your privacy</span>
-    </div>
-    <p class="cookie-text">We use essential cookies to make this site work. With your consent we also use analytics cookies (Google Analytics) and advertising cookies (Google AdSense) to measure traffic and show relevant ads. You can accept or decline non-essential cookies. Read our <a href="cookies.html">Cookie Policy</a>.</p>
-    <div class="cookie-buttons">
-        <button class="btn-decline" onclick="declineCookies()">Decline</button>
-        <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
-    </div>
-</div>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    (function () {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            document.getElementById('cookie-notice').classList.add('show');
-        }
-    })();
-    function acceptCookies() {
-        localStorage.setItem('cookiesAccepted', 'yes');
-        gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-            analytics_storage: 'granted'
-        });
-        document.getElementById('cookie-notice').classList.remove('show');
-    }
-    function declineCookies() {
-        localStorage.setItem('cookiesAccepted', 'no');
-        gtag('consent', 'update', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            analytics_storage: 'denied'
-        });
-        document.getElementById('cookie-notice').classList.remove('show');
-    }
-
     // Dark mode — synced from index page via localStorage 'wic_dark' (no toggle on this page)
     (function () {
         try {

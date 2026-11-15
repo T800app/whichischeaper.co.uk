@@ -30,36 +30,6 @@
         })();
     </script>
 
-    <!-- Google Consent Mode v2 -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied',
-        wait_for_update: 500
-      });
-      (function () {
-        if (localStorage.getItem('cookiesAccepted') === 'yes') {
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-            analytics_storage: 'granted'
-          });
-        }
-      })();
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363136655011505"
-     crossorigin="anonymous"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-21XW9GXD6G"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', 'G-21XW9GXD6G');
-    </script>
     <style>
         html { background-color: #f5f5f7; }
         html.dark { background-color: #000000; }
@@ -202,111 +172,16 @@
         }
         footer a:hover { text-decoration: underline; }
 
-        /* Cookie consent banner */
-        .cookie-overlay, .cookie-overlay * { box-sizing: border-box; }
-        .cookie-overlay {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%) translateY(24px);
-            width: calc(100% - 32px);
-            max-width: 600px;
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 20px;
-            padding: 22px 22px 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-            z-index: 100;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s, background-color 0.3s ease, border-color 0.3s ease;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
-        .cookie-overlay.show {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-        .cookie-head {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .cookie-icon {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #007AFF;
-            transition: color 0.3s ease;
-        }
-        .cookie-title {
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: #1d1d1f;
-            letter-spacing: -0.02em;
-            transition: color 0.3s ease;
-        }
-        .cookie-text {
-            font-size: 0.9rem;
-            color: #6e6e73;
-            line-height: 1.55;
-            margin: 0 0 16px 0;
-            transition: color 0.3s ease;
-        }
-        .cookie-text a {
-            color: #007AFF;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .cookie-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .cookie-buttons button {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.18s ease;
-            font-family: inherit;
-        }
-        .btn-decline {
-            background: transparent;
-            border: 1px solid #d2d2d7;
-            color: #6e6e73;
-        }
-        .btn-decline:hover { background: #f5f5f7; border-color: #86868b; }
-        .btn-accept {
-            background: #007AFF;
-            color: white;
-            border: none;
-        }
-        .btn-accept:hover {
-            background: #0071e3;
-        }
-
         /* ===== DARK MODE OVERRIDES ===== */
         body.dark { background-color: #000000; color: #f2f2f7; }
         body.dark .container { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
-        body.dark h1, body.dark h2, body.dark strong, body.dark a.site-title, body.dark .cookie-title { color: #f2f2f7; }
+        body.dark h1, body.dark h2, body.dark strong, body.dark a.site-title { color: #f2f2f7; }
         body.dark a.site-title:hover { color: #f2f2f7; }
-        body.dark .last-updated, body.dark p, body.dark ul, body.dark li, body.dark header .subtitle, body.dark .cookie-text { color: #a1a1a6; }
+        body.dark .last-updated, body.dark p, body.dark ul, body.dark li, body.dark header .subtitle { color: #a1a1a6; }
         body.dark .back-link { border-top-color: rgba(255,255,255,0.1); }
         body.dark footer { color: #8e8e93; }
-        body.dark .cookie-overlay { background: #1c1c1e; border-color: rgba(255,255,255,0.05); }
-        body.dark .btn-decline { border-color: #3a3a3c; color: #0A84FF; }
-        body.dark .btn-decline:hover { background: #2c2c2e; border-color: #636366; }
-        body.dark .btn-accept { background: #0A84FF; }
-        body.dark .btn-accept:hover { background: #0071e3; }
         body.dark a { color: #0A84FF; }
         body.dark .site-title .icon-cart { color: #0A84FF; }
-        body.dark .cookie-icon { color: #0A84FF; }
 
         /* ===== Responsive ===== */
         @media (max-width: 480px) {
@@ -318,10 +193,6 @@
             .site-title .icon-cart { width: 26px; height: 26px; }
             header .subtitle { font-size: 0.92rem; }
             header { padding: 8px 0 18px; }
-            .cookie-overlay { padding: 18px; bottom: 10px; width: calc(100% - 20px); border-radius: 18px; box-shadow: none; }
-            .cookie-title { font-size: 0.95rem; }
-            .cookie-text { font-size: 0.84rem; }
-            .cookie-buttons button { padding: 11px; font-size: 0.88rem; }
         }
         @media (max-width: 360px) {
             a.site-title { font-size: 1.28rem; }
@@ -354,7 +225,7 @@
 
 <div class="container">
 <h1>Terms of Use</h1>
-<p class="last-updated">Last updated: October 26, 2026</p>
+<p class="last-updated">Last updated: November 15, 2026</p>
 <h2>1. Acceptance of Terms</h2>
 <p>By accessing and using the Which Is Cheaper website and calculator tool, you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our website.</p>
 <h2>2. Description of Service and "Guidance Only" Disclaimer</h2>
@@ -375,8 +246,8 @@
 <p>We shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenue, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the website.</p><p><strong>Important.</strong> Nothing in these Terms shall exclude or limit our liability for (a) death or personal injury caused by our negligence, (b) fraud or fraudulent misrepresentation, or (c) any other liability that cannot be excluded or limited under English law. The limitations above apply only to the extent permitted by law.</p>
 <h2>6. Intellectual Property</h2>
 <p>The website design, layout, text, graphics, and their arrangement are the property of Which Is Cheaper and are protected by copyright and other intellectual property laws. You may not extract, reuse, or reproduce any part of the website without our express permission.</p>
-<h2>7. Third-Party Advertising</h2>
-<p>This website displays advertisements served by third-party advertising providers, including Google AdSense. These providers may use cookies or similar technologies — only with your consent — to deliver and measure advertisements. Your use of this website is also subject to the <a href="privacy.html">Privacy Policy</a> and <a href="cookies.html">Cookie Policy</a>, which explain how these technologies are used and how you can control them. We are not responsible for the content, products, or services advertised by third parties.</p>
+<h2>7. No Advertising or Sponsored Content</h2>
+<p>This website does not display paid advertisements, affiliate banners, or sponsored listings, and it does not run third-party tracking scripts. Your use of this website is subject to the <a href="privacy.html">Privacy Policy</a> and <a href="cookies.html">Cookie Policy</a>, which describe the limited on-device functional storage used. We are not responsible for the content of any external website you choose to visit.</p>
 <h2>8. Contact Us</h2>
 <p>If you have any questions about these Terms of Use, please contact us at: <strong>whichischeaperapp@gmail.com</strong></p>
 <h2>9. Changes to Terms</h2>
@@ -393,49 +264,8 @@
         <a href="terms.html">Terms of Use</a>
     </p>
 </footer>
-<div id="cookie-notice" class="cookie-overlay">
-    <div class="cookie-head">
-        <span class="cookie-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
-        </span>
-        <span class="cookie-title">We value your privacy</span>
-    </div>
-    <p class="cookie-text">We use essential cookies to make this site work. With your consent we also use analytics cookies (Google Analytics) and advertising cookies (Google AdSense) to measure traffic and show relevant ads. You can accept or decline non-essential cookies. Read our <a href="cookies.html">Cookie Policy</a>.</p>
-    <div class="cookie-buttons">
-        <button class="btn-decline" onclick="declineCookies()">Decline</button>
-        <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
-    </div>
-</div>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    (function () {
-        try {
-            if (!localStorage.getItem('cookiesAccepted')) {
-                document.getElementById('cookie-notice').classList.add('show');
-            }
-        } catch(e) {}
-    })();
-    function acceptCookies() {
-        try { localStorage.setItem('cookiesAccepted', 'yes'); } catch(e) {}
-        gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-            analytics_storage: 'granted'
-        });
-        document.getElementById('cookie-notice').classList.remove('show');
-    }
-    function declineCookies() {
-        try { localStorage.setItem('cookiesAccepted', 'no'); } catch(e) {}
-        gtag('consent', 'update', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            analytics_storage: 'denied'
-        });
-        document.getElementById('cookie-notice').classList.remove('show');
-    }
-
     // Dark mode — synced from index page via localStorage 'wic_dark' (no toggle on this page)
     (function () {
         try {
